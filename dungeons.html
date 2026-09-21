@@ -77,7 +77,7 @@ section.dg{padding-top:44px;scroll-margin-top:120px}
 section.new{margin-top:40px;border-top:1px solid var(--tip-edge)}
 .newtag{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold-soft);border-radius:2px;padding:1px 6px}
 .chip-new{color:var(--gold);border-color:var(--gold-soft)}
-.nd{margin-top:28px}
+.nd{margin-top:28px;scroll-margin-top:120px}
 .nd .dg-head h3{font-family:var(--display);font-weight:400;font-size:22px;margin:0}
 .nd .dg-head h3 a{text-decoration:none} .nd .dg-head h3 a:hover{text-decoration:underline}
 .nd-lede{color:var(--ink-dim);max-width:78ch;margin:6px 0 0;font-size:15px}
@@ -90,7 +90,7 @@ section.new{margin-top:40px;border-top:1px solid var(--tip-edge)}
 .notes p{margin:0}
 .empty{color:var(--ink-faint);font-style:italic;padding-top:32px}
 @media (max-width:560px){#q{width:100%;margin-left:0}.bosses{grid-template-columns:1fr}}
-@media (max-width:720px){.bar{position:static}section.dg{scroll-margin-top:12px}}
+@media (max-width:720px){.bar{position:static}section.dg,.nd{scroll-margin-top:12px}}
 @media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
 </style>
 </head>
@@ -154,7 +154,7 @@ const HINTS=[[/Silverlaine|Blindwatcher|Worgen|Worgpelt/,"Shadowfang Keep"],[/^S
 const hintOf=x=>(HINTS.find(([re])=>re.test(x.n))||[])[1]||"";
 const BANDS=[[1,15,"Requires level 13–15"],[16,19,"Requires level 16–19"],[20,24,"Requires level 20–24"],[25,30,"Requires level 25–30"]];
 const newItems=N.dungeons.reduce((a,d)=>a+d.quests.reduce((b,x)=>b+x.items.length,0),0);
-nav.innerHTML+=`<a class="chip chip-new" href="#NEW">New in Forever</a>`;
+nav.innerHTML+=N.dungeons.map(d=>`<a class="chip chip-new" href="#Z${d.zoneId}">${esc(d.name.replace(/^The /,""))} · new</a>`).join("")+`<a class="chip chip-new" href="#UNSOURCED">Unconfirmed drops</a>`;
 const hay=x=>[x.n,x.slot,x.type,...x.st,...x.eq,x.set||"",hintOf(x)].join(" ").toLowerCase();
 function row(x,key,right,extra=""){
   const id=`i${key}-${x.id}`;
@@ -166,7 +166,7 @@ function renderNew(t){
     const qs=d.quests.map(qq=>{const hit=!t||(qq.n+" "+d.name).toLowerCase().includes(t);return {qq,items:qq.items.filter(x=>hit||hay(x).includes(t))}}).filter(o=>o.items.length);
     if(!qs.length) continue;
     const lv=d.quests.map(x=>x.lvl);
-    h+=`<div class="nd"><div class="dg-head"><h3><a href="${W}zone=${d.zoneId}" target="_blank" rel="noopener">${esc(d.name)}</a></h3><span class="dg-meta">${esc(d.zone)} · quests level ${Math.min(...lv)}–${Math.max(...lv)} · no boss data on Wowhead yet</span></div><div class="bosses">`;
+    h+=`<div class="nd" id="Z${d.zoneId}"><div class="dg-head"><h3><a href="${W}zone=${d.zoneId}" target="_blank" rel="noopener">${esc(d.name)}</a></h3><span class="dg-meta">${esc(d.zone)} · quests level ${Math.min(...lv)}–${Math.max(...lv)} · no boss data on Wowhead yet</span></div><div class="bosses">`;
     for(const {qq,items} of qs){
       n+=items.length;
       h+=`<article class="boss"><div class="boss-h"><span><a href="${W}quest=${qq.id}" target="_blank" rel="noopener">${esc(qq.n)}</a></span><span class="boss-k">${qq.side===1?"Alliance":"Both factions"}</span></div><p class="qnote">Quest reward${qq.choice&&qq.items.length>1?" · choose one":""}</p>`;
@@ -177,7 +177,7 @@ function renderNew(t){
   }
   const unk=N.unconfirmed.filter(x=>!t||hay(x).includes(t));
   if(unk.length){
-    h+=`<div class="nd"><div class="dg-head"><h3>No confirmed source yet</h3><span class="dg-meta">${N.unconfirmed.length} Forever-new rares</span></div><p class="nd-lede">These rares are new in Forever and show up in the level 1–30 Alliance item lists, but Wowhead has no drop, quest or vendor source for them yet. Most are probably boss drops from the new dungeons or new loot in the old ones. Where a name clearly points somewhere, it's marked <span class="hint">name suggests</span>. That's a guess, not a source.</p><div class="bosses">`;
+    h+=`<div class="nd" id="UNSOURCED"><div class="dg-head"><h3>No confirmed source yet</h3><span class="dg-meta">${N.unconfirmed.length} Forever-new rares</span></div><p class="nd-lede">These rares are new in Forever and show up in the level 1–30 Alliance item lists, but Wowhead has no drop, quest or vendor source for them yet. Most are probably boss drops from the new dungeons or new loot in the old ones. Where a name clearly points somewhere, it's marked <span class="hint">name suggests</span>. That's a guess, not a source.</p><div class="bosses">`;
     for(const [lo,hi,label] of BANDS){
       const xs=unk.filter(x=>(x.rl||0)>=lo&&(x.rl||0)<=hi).sort((a,b)=>(a.rl-b.rl)||a.n.localeCompare(b.n));
       if(!xs.length) continue;
