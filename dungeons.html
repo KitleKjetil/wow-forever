@@ -219,7 +219,7 @@ out.addEventListener("click",e=>{const b=e.target.closest(".toggle");if(!b)retur
 q.addEventListener("input",render);
 render();
 // Sections are drawn by script, so honour a #DUNGEON link once they exist.
-if(location.hash){const el=document.getElementById(decodeURIComponent(location.hash.slice(1)));if(el)el.scrollIntoView();}
+if(location.hash){const el=document.getElementById(decodeURIComponent(location.hash.slice(1)));if(el)el.scrollIntoView({behavior:"instant"});}
 </script>
 </body>
 </html>
