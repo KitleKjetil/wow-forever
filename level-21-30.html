@@ -78,7 +78,7 @@ section>p.sub{margin:0 0 20px;color:var(--ink-dim);max-width:70ch}
 <header>
   <div class="eyebrow">WoW Forever · Alliance · Required level 21–30</div>
   <div class="xlink"><a href="index.html">All brackets</a> · <a href="level-1-20.html">Level 1–20 →</a></div>
-  <h1>Forever 21–30 Standouts</h1>
+  <h1>Forever <span style="white-space:nowrap">21–30</span> Standouts</h1>
   <p class="lede">The items in the Wowhead Forever database that punch far above their required level. Picked by <b>item level against required level</b>, top-end <b>weapon DPS</b>, and <b>procs or effects</b> nothing else in the bracket has. Every card is the real tooltip, pulled from Wowhead on 21 Sep 2026.</p>
   <div class="facts">
     <span><b>6,394</b> items in the filter</span>
@@ -203,9 +203,11 @@ const chips=document.getElementById("chips"),out=document.getElementById("out"),
 chips.innerHTML=ROLES.map(([k,l])=>`<button class="chip" id="r-${k}" data-r="${k}" aria-pressed="${k===role}">${l}</button>`).join("");
 chips.addEventListener("click",e=>{const b=e.target.closest(".chip");if(!b)return;role=b.dataset.r;try{localStorage.setItem("f30role",role)}catch(e){}chips.querySelectorAll(".chip").forEach(c=>c.setAttribute("aria-pressed",c.dataset.r===role));render()});
 q.addEventListener("input",render);
+const DN={RFC:"Ragefire Chasm",DM:"Deadmines",WC:"Wailing Caverns",SFK:"Shadowfang Keep",BFD:"Blackfathom Deeps",Stocks:"Stockade Stormwind",Gnomer:"Gnomeregan",RFK:"Razorfen Kraul",SM:"Scarlet Monastery",STV:"Stranglethorn Vale"};
+const dn=s=>Object.keys(DN).filter(k=>new RegExp("\\b"+k+"\\b").test(s)).map(k=>DN[k]).join(" ");
 function render(){
   const t=q.value.trim().toLowerCase();
-  const hit=x=>(role==="all"||x.roles.includes(role))&&(!t||[x.n,x.src,x.type,x.slot,x.cls||"",...x.st,...x.eq,x.why].join(" ").toLowerCase().includes(t));
+  const hit=x=>(role==="all"||x.roles.includes(role))&&(!t||[x.n,x.src,dn(x.src),x.type,x.slot,x.cls||"",...x.st,...x.eq,x.why].join(" ").toLowerCase().includes(t));
   let n=0,h="";
   for(const [k,title,sub] of SECS){
     const xs=I.filter(x=>x.sec===k&&hit(x));n+=xs.length;
