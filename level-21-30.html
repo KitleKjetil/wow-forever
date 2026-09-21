@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>*,*::before,*::after{box-sizing:border-box}body{margin:0}img{max-width:100%}[hidden]{display:none!important}.xlink{font-family:var(--mono);font-size:13px;color:var(--gold-soft)}.xlink a{color:var(--gold)}</style>
+<title>Forever 21–30 Standouts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus+SC&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --ground:#0b0f17; --panel:#111827; --tip:#070b16; --tip-edge:#3a4458; --tip-edge-hi:#5d6a84;
+  --ink:#e8e4d8; --ink-dim:#a9a596; --ink-faint:#6f6c63;
+  --gold:#ffd100; --gold-soft:#c9a64a;
+  --q2:#1eff00; --q3:#0070dd; --q3-text:#3d9bff; --q4:#a335ee;
+  --equip:#1eff00; --flavor:#ffd100;
+  --display:"Marcellus SC","Trajan Pro",Georgia,serif;
+  --body:"Alegreya Sans","Segoe UI",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+  color-scheme:dark;
+}
+html,body{background:var(--ground);color:var(--ink)}
+body{font-family:var(--body);font-size:16px;line-height:1.5;padding-inline:16px;padding-block:0 64px}
+.wrap{max-width:1180px;margin:0 auto}
+a{color:inherit}
+header{padding-block:44px 28px;border-bottom:1px solid var(--tip-edge);display:grid;gap:18px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-soft)}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(34px,6vw,58px);line-height:1.02;margin:0;color:var(--gold);text-wrap:balance;letter-spacing:.01em}
+.lede{max-width:68ch;color:var(--ink-dim);font-size:17px;margin:0}
+.lede b{color:var(--ink);font-weight:500}
+.facts{display:flex;flex-wrap:wrap;gap:8px 28px;font-family:var(--mono);font-size:13px;color:var(--ink-dim)}
+.facts span b{color:var(--ink);font-weight:500}
+.facts .q3{color:var(--q3-text)} .facts .q2{color:var(--q2)} .facts .q4{color:var(--q4)}
+
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--ground) 92%,transparent);backdrop-filter:blur(6px);padding-block:14px;border-bottom:1px solid #1c2433;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font:500 14px var(--body);color:var(--ink-dim);background:transparent;border:1px solid var(--tip-edge);border-radius:3px;padding:5px 11px;cursor:pointer}
+.chip:hover{color:var(--ink);border-color:var(--tip-edge-hi)}
+.chip[aria-pressed="true"]{color:#111;background:var(--gold);border-color:var(--gold)}
+.chip:focus-visible,#q:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+#q{margin-left:auto;font:15px var(--body);color:var(--ink);background:var(--tip);border:1px solid var(--tip-edge);border-radius:3px;padding:6px 10px;width:220px;max-width:100%}
+#count{font-family:var(--mono);font-size:12px;color:var(--ink-faint)}
+
+section{padding-top:40px}
+section>h2{font-family:var(--display);font-weight:400;font-size:26px;margin:0 0 4px;color:var(--ink);text-wrap:balance}
+section>p.sub{margin:0 0 20px;color:var(--ink-dim);max-width:70ch}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px;align-items:start}
+
+/* the in-game tooltip */
+.tt{background:linear-gradient(180deg,#0a1024 0%,var(--tip) 100%);border:1px solid var(--tip-edge);border-radius:4px;box-shadow:inset 0 0 0 1px #000,0 6px 18px rgba(0,0,0,.45);padding:12px 14px 13px;font-size:14.5px;line-height:1.38;display:grid;gap:1px}
+.tt .nm{font-weight:700;font-size:16.5px;text-decoration:none;line-height:1.25}
+.tt .nm:hover{text-decoration:underline}
+.q2 .nm{color:var(--q2)} .q3 .nm{color:var(--q3-text)} .q4 .nm{color:var(--q4)}
+.tt .il{color:var(--gold)}
+.tt .row{display:flex;justify-content:space-between;gap:12px}
+.tt .st{color:var(--ink)}
+.tt .eq{color:var(--equip)}
+.tt .rq{color:var(--ink-dim)}
+.tt .why{margin-top:9px;padding-top:9px;border-top:1px solid #1d2638;color:var(--ink-dim);font-size:14px}
+.tt .why b{color:var(--gold-soft);font-weight:500}
+.tt .src{margin-top:6px;display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--ink-dim);border:1px solid #273046;border-radius:2px;padding:1px 6px}
+.tag.src{color:#d7c9a0;border-color:#4a4127}
+.tag.star{color:#111;background:var(--gold);border-color:var(--gold)}
+.gap{font-family:var(--mono);font-size:12px;color:var(--gold-soft)}
+
+.notes{margin-top:48px;border-top:1px solid var(--tip-edge);padding-top:24px;color:var(--ink-dim);font-size:14.5px;display:grid;gap:10px;max-width:78ch}
+.notes h3{font-family:var(--display);font-weight:400;color:var(--ink);font-size:20px;margin:0}
+.notes p{margin:0}
+.empty{color:var(--ink-faint);font-style:italic}
+@media (max-width:560px){#q{width:100%;margin-left:0}.grid{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+<header>
+  <div class="eyebrow">WoW Forever · Alliance · Required level 21–30</div>
+  <div class="xlink"><a href="index.html">All brackets</a> · <a href="level-1-20.html">Level 1–20 →</a></div>
+  <h1>Forever 21–30 Standouts</h1>
+  <p class="lede">The items in the Wowhead Forever database that punch far above their required level. Picked by <b>item level against required level</b>, top-end <b>weapon DPS</b>, and <b>procs or effects</b> nothing else in the bracket has. Every card is the real tooltip, pulled from Wowhead on 21 Sep 2026.</p>
+  <div class="facts">
+    <span><b>6,394</b> items in the filter</span>
+    <span class="q3"><b>321</b> rare</span>
+    <span class="q2"><b>5,877</b> uncommon</span>
+    <span class="q4"><b>0</b> epic</span>
+  </div>
+</header>
+
+<div class="bar" role="toolbar" aria-label="Filter items">
+  <div class="chips" id="chips"></div>
+  <input id="q" type="search" placeholder="Search name, stat, dungeon…" aria-label="Search items">
+  <span id="count" aria-live="polite"></span>
+</div>
+
+<main id="out"></main>
+
+<div class="notes">
+  <h3>Reading the cards</h3>
+  <p><span class="gap">+10 ilvl</span> is the item level above its required level. Most rares in this bracket sit at +5. The big outliers are quest rewards from the classic Stranglethorn, Desolace and Gnomeregan chains, which have much higher item levels than their requirement.</p>
+  <p>Dungeon abbreviations: SFK Shadowfang Keep, BFD Blackfathom Deeps, Stocks Stormwind Stockade, Gnomer Gnomeregan, RFK Razorfen Kraul, SM Scarlet Monastery. Items marked <span class="tag">source not listed</span> are Forever-new items Wowhead hasn't tagged with a drop source yet.</p>
+  <p>The filter also returns Darkspear Raiders gear, but that's a Horde faction, so it's left out here. The Theramore Expeditionary Force sells Alliance copies of the same items (seals, Rebels' Rugged Reaper, Theramore Signet).</p>
+</div>
+</div>
+
+<script>
+const W="https://www.wowhead.com/forever/item=";
+const I=[
+// ---------- headline ----------
+{id:6975,n:"Whirlwind Axe",q:3,il:40,rl:30,bop:1,slot:"Two-Hand",type:"Axe",lines:["102 - 154 Damage|Speed 3.60","(35.56 damage per second)"],st:["+15 Strength","+14 Stamina"],eq:[],cls:"Warrior",src:"Quest · Whirlwind Weapon",roles:["melee"],sec:"top",why:"<b>The best weapon in the bracket</b>, about 3 DPS clear of the next one. The quest also offers a Sword and a Warhammer with the same stats, so pick your weapon skill."},
+{id:17686,n:"Master Hunter's Bow",q:2,il:43,rl:28,bop:1,slot:"Ranged",type:"Bow",lines:["54 - 102 Damage|Speed 2.40","(32.50 damage per second)"],st:["+6 Agility"],eq:[],src:"Quest · Big Game Hunter (Stranglethorn)",roles:["hunter"],sec:"top",why:"A green at <b>item level 43 from level 28</b>. 32.5 DPS beats every blue bow in the bracket by almost 4. The Rifle version has the same DPS."},
+{id:9449,n:"Manual Crowd Pummeler",q:3,il:34,rl:29,bop:1,slot:"Two-Hand",type:"Mace",lines:["46 - 70 Damage|Speed 2.00","(29.00 damage per second)"],st:["+16 Strength","+5 Agility"],eq:["Use: Increases your attack speed by 50% for 30 sec. (3 Min Cooldown)","3 Charges"],src:"Drop · Crowd Pummeler 9-60, Gnomer",roles:["melee"],sec:"top",why:"<b>50% attack speed on demand</b>, a fast two-hander and 16 Strength. The charges run out, but it's still the most famous weapon of the bracket."},
+{id:6909,n:"Strike of the Hydra",q:3,il:31,rl:26,bop:1,slot:"Two-Hand",type:"Sword",lines:["67 - 102 Damage|Speed 3.30","(25.61 damage per second)"],st:[],eq:["Chance on hit: Deal 42 Fire and 14 Frost damage, slow the target by 50% for 5 sec, reduce armor by 50, and deal 7 Nature damage every 3 sec for 12 sec."],src:"Drop · Aku'mai, BFD",roles:["melee","pvp"],sec:"top",why:"<b>Five effects on one proc</b>: fire, frost, a slow, an armor cut and a poison. Strong in PvP."},
+{id:4983,n:"Rock Pulverizer",q:2,il:42,rl:30,bop:1,slot:"Two-Hand",type:"Mace",lines:["92 - 139 Damage|Speed 3.70","(31.22 damage per second)"],st:["+34 Attack Power"],eq:[],src:"Quest · Murdaloc (Redridge)",roles:["melee"],sec:"top",why:"A quest green with <b>31 DPS and +34 Attack Power</b>. The best two-hander here for anyone who can't do the warrior quest."},
+{id:4746,n:"Doomsayer's Robe",q:3,il:42,rl:30,bop:1,slot:"Chest",type:"Cloth",lines:["61 Armor"],st:["+25 Spirit","+8 Damage Done","+22 Healing Done"],eq:[],src:"Quest · Solution to Doom",roles:["heal"],sec:"top",why:"<b>Item level 42</b>, with +25 Spirit, the most on any item here. Priests will wear it past 40."},
+{id:9604,n:"Mechanic's Pipehammer",q:3,il:32,rl:25,bop:1,slot:"Two-Hand",type:"Mace",lines:["59 - 90 Damage|Speed 2.80","(26.61 damage per second)"],st:["+5 Intellect","+19 Spell Power"],eq:[],src:"Quest · Data Rescue (Gnomer)",roles:["caster"],sec:"top",why:"<b>+19 Spell Power from level 25</b>, the most on any item in the bracket."},
+{id:4743,n:"Pulsating Crystalline Shard",q:2,il:50,rl:30,bop:1,slot:"Neck",type:"",lines:[],st:["+8 Stamina","+8 Spirit"],eq:[],src:"Quest · Summoning the Princess (Desolace)",roles:["caster","heal","tank"],sec:"top",why:"<b>Item level 50 at level 30</b>, the biggest gap in the whole list. Good for any class that uses Spirit."},
+
+// ---------- weapons ----------
+{id:7689,n:"Morbid Dawn",q:3,il:35,rl:30,bop:1,slot:"Two-Hand",type:"Sword",lines:["70 - 105 Damage|Speed 2.90","(30.17 damage per second)"],st:["+10 Strength","+15 Stamina"],eq:[],src:"Drop · Fallen Champion, SM Graveyard",roles:["melee","tank"],sec:"wep",why:"30 DPS and +15 Stamina from the first SM wing. A rare spawn, so check every run."},
+{id:13045,n:"Viscous Hammer",q:3,il:35,rl:30,bop:0,slot:"Two-Hand",type:"Mace",lines:["70 - 105 Damage|Speed 2.90","(30.17 damage per second)"],st:["+3 Strength","+6 Stamina","+34 Attack Power"],eq:[],src:"Drop · world (BoE)",roles:["melee"],sec:"wep",why:"Same DPS as Morbid Dawn, and <b>Bind on Equip</b> so you can buy it."},
+{id:6687,n:"Corpsemaker",q:3,il:34,rl:29,bop:1,slot:"Two-Hand",type:"Axe",lines:["88 - 132 Damage|Speed 3.80","(28.95 damage per second)"],st:["+15 Strength","+8 Stamina"],eq:[],src:"Drop · Overlord Ramtusk, RFK",roles:["melee"],sec:"wep",why:"Slow 3.8 speed and big hits make it great for Mortal Strike and Overpower."},
+{id:2299,n:"Burning War Axe",q:3,il:33,rl:28,bop:0,slot:"Two-Hand",type:"Axe",lines:["73 - 110 Damage|Speed 3.30","(27.73 damage per second)"],st:[],eq:["Chance on hit: Hurls a fiery ball that causes 98 Fire damage and an additional 18 damage over 6 sec."],src:"Drop · world (BoE)",roles:["melee"],sec:"wep",why:"<b>116 damage per proc</b> on a near-top-DPS axe. Bind on Equip."},
+{id:2000,n:"Archeus",q:2,il:35,rl:28,bop:1,slot:"Two-Hand",type:"Sword",lines:["63 - 95 Damage|Speed 3.30","(23.94 damage per second)"],st:[],eq:["Chance on hit: Blasts a target for 85 Arcane damage."],src:"Quest · A Daughter's Love (Duskwood)",roles:["melee"],sec:"wep",why:"Morgan Ladimore's sword. A quest green with an 85-damage proc."},
+{id:13016,n:"Killmaim",q:3,il:26,rl:21,bop:0,slot:"Two-Hand",type:"Axe",lines:["55 - 84 Damage|Speed 3.20","(21.72 damage per second)"],st:[],eq:["Chance on hit: Wounds the target causing them to bleed for 100 damage over 30 sec."],src:"Drop · world (BoE)",roles:["melee"],sec:"wep",why:"<b>100 bleed damage at level 21.</b> Bloodpike (level 23, 98 bleed) is the polearm option."},
+{id:2816,n:"Death Speaker Scepter",q:3,il:33,rl:28,bop:1,slot:"Main Hand",type:"Mace",lines:["42 - 78 Damage|Speed 2.80","(21.43 damage per second)"],st:["+68 Healing Done","Restores +12 health per 5 sec."],eq:[],src:"Drop · Death Speaker Jargba, RFK",roles:["heal"],sec:"wep",why:"<b>+68 Healing</b> — about double any other healing item in the bracket."},
+{id:6641,n:"Haunting Blade",q:3,il:27,rl:22,bop:1,slot:"Two-Hand",type:"Sword",lines:["68 - 102 Damage|Speed 3.80","(22.37 damage per second)"],st:["+11 Damage Done","+33 Healing Done"],eq:[],src:"Drop · Deathsworn Captain, SFK",roles:["heal","melee"],sec:"wep",why:"A slow, hard-hitting sword that also carries healing power. Made for Retribution-style paladins."},
+{id:6696,n:"Nightstalker Bow",q:3,il:34,rl:29,bop:1,slot:"Ranged",type:"Bow",lines:["34 - 64 Damage|Speed 1.70","(28.82 damage per second)"],st:["+3 Agility","+5 Shadow Resistance"],eq:[],src:"Drop · Blind Hunter, RFK",roles:["hunter"],sec:"wep",why:"The best blue bow here. The very fast 1.7 speed suits Auto Shot, but gives smaller Aimed Shots."},
+{id:274748,n:"Booty Bay Bruiser's Buckshot",q:3,il:35,rl:30,bop:1,slot:"Ranged",type:"Gun",lines:["59 - 110 Damage|Speed 2.80","(30.18 damage per second)"],st:["+3 Stamina","+9 Attack Power"],eq:["Use: Take steady aim and fire a round to knock your target away. (10 Min Cooldown)"],req:"Requires Booty Bay - Honored",src:"Vendor · Gezzy Gunkgear (Stranglethorn)",roles:["hunter","pvp"],sec:"wep",why:"Forever-new. 30 DPS <b>plus a knockback</b> — a panic button for hunters."},
+{id:6691,n:"Swinetusk Shank",q:3,il:35,rl:30,bop:1,slot:"Main Hand",type:"Dagger",lines:["24 - 45 Damage|Speed 1.50","(23.00 damage per second)"],st:["+6 Stamina","+4 Spirit"],eq:[],src:"Drop · Agathelos the Raging, RFK",roles:["melee"],sec:"wep",why:"The highest-DPS dagger here. Rogues who stab from behind want it."},
+{id:9453,n:"Toxic Revenger",q:3,il:32,rl:27,bop:1,slot:"One-Hand",type:"Dagger",lines:["27 - 51 Damage|Speed 1.90","(20.53 damage per second)"],st:[],eq:["Chance on hit: Deals 14 Nature damage every 3 sec to any enemy in an 8 yard radius around the caster for 12 sec."],src:"Drop · Viscous Fallout, Gnomer",roles:["melee"],sec:"wep",why:"An <b>area poison proc</b> that hits every enemy around you."},
+{id:6681,n:"Thornspike",q:3,il:32,rl:27,bop:1,slot:"One-Hand",type:"Dagger",lines:["24 - 46 Damage|Speed 1.70","(20.59 damage per second)"],st:[],eq:["Chance on hit: Hurl spikes at the target, dealing 45 Physical damage and jumping to 1 additional nearby enemy. Each jump reduces the damage by 50%."],src:"Drop · Aggem Thorncurse, RFK",roles:["melee"],sec:"wep",why:"A dagger with a proc that jumps to a second target."},
+{id:5249,n:"Burning Sliver",q:2,il:40,rl:30,bop:1,slot:"Ranged",type:"Wand",lines:["20 - 38 Fire Damage|Speed 1.30","(22.31 damage per second)"],st:["+6 Spell Power"],eq:[],src:"Quest · Crushridge Warmongers (Alterac)",roles:["caster","heal"],sec:"wep",why:"Close to Necrotic Wand (22.9 DPS) as the best wand for non-mages, and adds Spell Power. Mages get the three item level 40 class wands (27+ DPS) instead."},
+{id:7514,n:"Icefury Wand",q:3,il:40,rl:30,bop:1,slot:"Ranged",type:"Wand",lines:["30 - 57 Frost Damage|Speed 1.60","(27.19 damage per second)"],st:["+3 Intellect"],eq:[],cls:"Mage",src:"Quest · Mage's Wand",roles:["caster"],sec:"wep",why:"Mage class quest. You choose one of Icefury, Ragefire or Nether Force, all around 27 DPS."},
+
+// ---------- armor ----------
+{id:9624,n:"Triprunner Dungarees",q:3,il:37,rl:25,bop:1,slot:"Legs",type:"Leather",lines:["101 Armor"],st:["+3 Strength","+18 Agility","+6 Stamina"],eq:[],src:"Quest · Gnomer",roles:["melee","hunter"],sec:"arm",why:"<b>+18 Agility</b>, the most on any item here, from level 25. Rogues wear these into the 40s."},
+{id:9625,n:"Dual Reinforced Leggings",q:3,il:37,rl:25,bop:1,slot:"Legs",type:"Mail",lines:["211 Armor"],st:["+12 Strength","+5 Defense","+120 Bonus Armor"],eq:[],src:"Quest · Gnomer",roles:["tank"],sec:"arm",why:"The tank choice from the same Gnomeregan quest. <b>331 armor</b> on a single slot."},
+{id:9623,n:"Civinad Robes",q:3,il:37,rl:25,bop:1,slot:"Chest",type:"Cloth",lines:["54 Armor"],st:["+7 Stamina","+12 Spirit","+9 Damage Done","+26 Healing Done"],eq:[],src:"Quest · Gnomer",roles:["heal"],sec:"arm",why:"The healer choice from the same quest. Carries you until Doomsayer's Robe at 30."},
+{id:6690,n:"Ferine Leggings",q:3,il:34,rl:29,bop:1,slot:"Legs",type:"Leather",lines:["96 Armor"],st:["+12 Intellect","+26 Attack Power"],eq:[],src:"Drop · Agathelos the Raging, RFK",roles:["hunter"],sec:"arm",why:"Attack Power and Intellect together — <b>made for hunters</b>."},
+{id:6686,n:"Tusken Helm",q:3,il:34,rl:29,bop:1,slot:"Head",type:"Mail",lines:["188 Armor"],st:["+13 Strength","+120 Bonus Armor"],eq:[],src:"Drop · Overlord Ramtusk, RFK",roles:["tank"],sec:"arm",why:"308 armor on a helm. The tank pick from RFK."},
+{id:4129,n:"Collection Plate",q:2,il:44,rl:30,bop:1,slot:"Off Hand",type:"Shield",lines:["1380 Armor","20 Block"],st:["+2 Strength","+9 Stamina"],eq:[],src:"Quest · Cracking Maury's Foot (Stranglethorn)",roles:["tank"],sec:"arm",why:"A quest green with <b>1,380 armor</b>, about 70% more than any blue shield here."},
+{id:9522,n:"Energized Stone Circle",q:3,il:38,rl:30,bop:1,slot:"Off Hand",type:"Shield",lines:["814 Armor","19 Block"],st:["+6 Stamina","+5 Damage Done","+15 Healing Done","+60 Bonus Armor"],eq:[],src:"Quest · Power Stones (Arathi)",roles:["heal","tank"],sec:"arm",why:"The best blue shield. Good for paladins and shamans who both heal and tank."},
+{id:7688,n:"Ironspine's Ribcage",q:3,il:35,rl:30,bop:1,slot:"Chest",type:"Mail",lines:["235 Armor"],st:["+6 Strength","+3 Agility","+17 Stamina"],eq:[],src:"Drop · Ironspine, SM Graveyard",roles:["tank","melee"],sec:"arm",why:"<b>+17 Stamina</b> and the most armor of any chest here."},
+{id:4119,n:"Raptor Hunter Tunic",q:2,il:43,rl:28,bop:1,slot:"Chest",type:"Leather",lines:["117 Armor"],st:["+4 Strength","+3 Agility","+16 Stamina"],eq:[],src:"Quest · Raptor Mastery (Stranglethorn)",roles:["melee","hunter"],sec:"arm",why:"A green at item level 43, from the Nesingwary quests. More armor than any blue leather chest here."},
+{id:273038,n:"Garb of Fallen Felbark",q:3,il:34,rl:29,bop:1,slot:"Chest",type:"Leather",lines:["110 Armor"],st:["+13 Agility","+7 Stamina","+9 Intellect"],eq:[],src:"Forever-new · source not listed",roles:["hunter"],sec:"arm",why:"Forever-new. Agility and Intellect — another piece built for hunters."},
+{id:6742,n:"Stonefist Girdle",q:3,il:36,rl:29,bop:1,slot:"Waist",type:"Mail",lines:["134 Armor"],st:["+6 Strength","+5 Stamina","+100 Bonus Armor"],eq:[],src:"Quest · RFK",roles:["tank"],sec:"arm",why:"234 armor on a belt."},
+{id:2721,n:"Holy Shroud",q:3,il:32,rl:27,bop:0,slot:"Head",type:"Cloth",lines:["40 Armor"],st:["+6 Spirit","+11 Damage Done","+33 Healing Done"],eq:[],src:"Drop · world (BoE)",roles:["heal"],sec:"arm",why:"The classic priest helm. Bind on Equip."},
+{id:6903,n:"Gaze Dreamer Pants",q:3,il:28,rl:23,bop:1,slot:"Legs",type:"Cloth",lines:["40 Armor"],st:["+9 Spirit","+12 Spell Power"],eq:[],src:"Drop · Twilight Lord Kelris, BFD",roles:["caster"],sec:"arm",why:"+12 Spell Power at level 23."},
+{id:3020,n:"Enduring Cap",q:3,il:33,rl:28,bop:0,slot:"Head",type:"Leather",lines:["88 Armor"],st:["+16 Intellect","+7 Spirit"],eq:[],src:"Drop · world (BoE)",roles:["heal","caster"],sec:"arm",why:"<b>+16 Intellect</b>, the most on any item here. Druids love it."},
+{id:273805,n:"Blackrock Harness",q:3,il:26,rl:21,bop:1,slot:"Chest",type:"Leather",lines:["96 Armor"],st:["+8 Stamina","+4 Defense","+14 Attack Power"],eq:[],src:"Forever-new · source not listed",roles:["melee"],sec:"arm",why:"Forever-new. +14 Attack Power on a chest at level 21."},
+{id:13114,n:"Troll's Bane Leggings",q:3,il:30,rl:25,bop:0,slot:"Legs",type:"Leather",lines:["90 Armor"],st:["+14 Agility","+4 Stamina","+4 Spirit"],eq:[],src:"Drop · world (BoE)",roles:["melee","hunter"],sec:"arm",why:"A buyable Agility option until you finish the Triprunners quest."},
+
+// ---------- accessories ----------
+{id:7746,n:"Explorers' League Commendation",q:3,il:40,rl:28,bop:1,slot:"Neck",type:"",lines:[],st:["+9 Stamina","+9 Spirit"],eq:[],src:"Quest · Mythology of the Titans (Ironforge)",roles:["heal","caster","tank"],sec:"acc",why:"An item level 40 neck from a short library quest in Ironforge. <b>Almost free.</b>"},
+{id:9538,n:"Talvash's Gold Ring",q:3,il:37,rl:28,bop:1,slot:"Finger",type:"",lines:[],st:["+10 Stamina","+4 Spirit"],eq:[],src:"Quest · Gnome Improvement",roles:["tank","melee","heal"],sec:"acc",why:"The Stamina ring of the bracket."},
+{id:6748,n:"Monkey Ring",q:3,il:32,rl:22,bop:1,slot:"Finger",type:"",lines:[],st:["+7 Agility","+7 Spirit"],eq:[],src:"Quest · Willix the Importer (RFK)",roles:["melee","hunter"],sec:"acc",why:"Item level 32 at level 22. Snake Hoop (+7 Int, +7 Spi) is the caster option."},
+{id:7731,n:"Ghostshard Talisman",q:3,il:35,rl:30,bop:1,slot:"Neck",type:"",lines:[],st:["+9 Stamina","+14 Attack Power"],eq:[],src:"Drop · Azshir the Sleepless, SM Graveyard",roles:["melee","hunter"],sec:"acc",why:"The best physical-damage neck here. Also a rare spawn."},
+{id:274749,n:"Souvenier Sea Shell",q:3,il:35,rl:30,bop:1,slot:"Neck",type:"",lines:[],st:["+13 Stamina","Restores +5 health per 5 sec."],eq:[],req:"Requires Booty Bay - Honored",src:"Vendor · Gezzy Gunkgear (Stranglethorn)",roles:["tank","pvp"],sec:"acc",why:"Forever-new. <b>+13 Stamina</b> on a neck."},
+{id:21119,n:"Talisman of Arathor",q:3,il:33,rl:28,bop:1,slot:"Trinket",type:"",lines:[],st:["+6 Stamina"],eq:["Use: Absorbs 308 physical damage. Lasts 15 sec. (3 Min Cooldown)"],req:"Requires The League of Arathor - Friendly",src:"Vendor · Samuel Hawke (Arathi Highlands)",roles:["pvp","tank","melee"],sec:"acc",why:"Only needs <b>Friendly</b> with Arathi Basin. A 308-damage shield every 3 minutes."},
+{id:271904,n:"Volunteer's Lucky Seal",q:3,il:33,rl:28,bop:1,slot:"Trinket",type:"",lines:[],st:["+6 Stamina","+8 to all Resistances"],eq:["Equip: Increases all Resistances by 3. Gain an additional 5 to all Resistances in Forest and Grassland areas."],req:"Requires Theramore Expeditionary Force - Friendly",src:"Vendor · Theramore Expeditionary Force",roles:["tank","pvp"],sec:"acc",why:"Forever-new faction. Up to <b>+16 all resistances</b>. The Enriched Seal is the mana-regen version."},
+{id:13084,n:"Kaleidoscope Chain",q:3,il:35,rl:30,bop:0,slot:"Neck",type:"",lines:[],st:["+4 Strength","+4 Agility","+4 Stamina","+4 Intellect","+4 Spirit"],eq:[],src:"Drop · world (BoE)",roles:["melee","caster","heal","tank"],sec:"acc",why:"20 stats spread across everything. Useful for any class and Bind on Equip."},
+{id:6757,n:"Jaina's Signet Ring",q:2,il:38,rl:28,bop:1,slot:"Finger",type:"",lines:[],st:["+3 Strength","+7 Stamina"],eq:[],src:"Quest · The Missing Diplomat",roles:["tank","melee"],sec:"acc",why:"The reward at the end of the long Missing Diplomat chain. Item level 38."},
+
+// ---------- utility ----------
+{id:211498,n:"Trainee's Sentinel Nightsaber",q:3,il:25,rl:25,bop:1,slot:"Mount",type:"Account-wide",lines:[],st:[],eq:["Use: Summons a Trainee's Sentinel Nightsaber. Only usable in Ashenvale."],src:"Vendor · Illiyana Moonblaze (Ashenvale)",roles:["util"],sec:"util",why:"<b>A mount at level 25.</b> It only works in Ashenvale, but that's a zone you'll spend a lot of time in."},
+{id:273817,n:"Graverobber's Shovel",q:3,il:28,rl:23,bop:1,slot:"Two-Hand",type:"Mace",lines:["68 - 102 Damage|Speed 3.70","(22.97 damage per second)"],st:["+10 Stamina"],eq:["Equip: +12 Attack Power, doubled against Undead targets.","Use: Dig up a grave. Usable at Raven Hill Cemetery and Scarlet Monastery Graveyard. (2 Min Cooldown)","20 Charges"],src:"Forever-new · source not listed",roles:["melee","util"],sec:"util",why:"Forever-new. <b>+24 Attack Power against Undead</b>, which is perfect for SM Graveyard. You can also dig up graves with it."},
+{id:273046,n:"Guardian's Dualblade",q:3,il:33,rl:28,bop:1,slot:"Two-Hand",type:"Axe",lines:["78 - 117 Damage|Speed 3.50","(27.86 damage per second)"],st:[],eq:["Equip: When damaged, has a chance to grant you 1080 armor for 12 sec. (Proc chance: 33%, 1m cooldown)"],src:"Forever-new · source not listed",roles:["melee","tank"],sec:"util",why:"Forever-new. Near-top DPS <b>plus a 1,080-armor proc</b> when you're hit."},
+{id:2942,n:"Iron Knuckles",q:3,il:28,rl:23,bop:1,slot:"One-Hand",type:"Fist Weapon",lines:["21 - 39 Damage|Speed 1.70","(17.65 damage per second)"],st:[],eq:["Chance on hit: Pummel the target for 25 damage and interrupt the spell being cast for 5 sec."],src:"Drop · Bruegal Ironknuckle, Stocks",roles:["melee","pvp"],sec:"util",why:"A <b>spell interrupt on a proc</b>. Rare spawn in the Stockade."},
+{id:273824,n:"Defias Jailbreakers",q:3,il:31,rl:26,bop:1,slot:"Hands",type:"Leather",lines:["65 Armor"],st:["+6 Agility","+7 Stamina"],eq:["Equip: Lockpicking +4."],src:"Forever-new · source not listed",roles:["melee","util"],sec:"util",why:"Forever-new. Decent rogue gloves that also boost Lockpicking."}
+];
+
+const SECS=[
+ ["top","The headliners","The eight items that stand furthest above everything else in the bracket."],
+ ["wep","Weapons","Top DPS by slot, and the procs worth farming for."],
+ ["arm","Armor","Quest rewards that skip levels, plus the dungeon pieces worth running for."],
+ ["acc","Rings, necks and trinkets","Several of these come from short quests or friendly-rep vendors."],
+ ["util","Utility","Items that do something beyond their stats."]
+];
+const ROLES=[["all","All"],["melee","Melee"],["hunter","Hunter"],["caster","Caster"],["heal","Healer"],["tank","Tank"],["pvp","PvP"],["util","Utility"]];
+const esc=s=>s.replace(/&/g,"&amp;").replace(/</g,"&lt;");
+function card(x){
+  const gap=x.il-(x.rl||1);
+  let h=`<article class="tt q${x.q}">`;
+  h+=`<a class="nm" href="${W}${x.id}" target="_blank" rel="noopener">${esc(x.n)}</a>`;
+  h+=`<div class="il">Item Level ${x.il}</div>`;
+  h+=`<div class="st">${x.bop?"Binds when picked up":"Binds when equipped"}</div>`;
+  if(x.slot) h+=`<div class="row st"><span>${x.slot}</span><span>${x.type}</span></div>`;
+  for(const l of x.lines){const [a,b]=l.split("|");h+=b?`<div class="row st"><span>${a}</span><span>${b}</span></div>`:`<div class="st">${a}</div>`}
+  for(const s of x.st){h+=`<div class="${/^\+\d+ (Str|Agi|Sta|Int|Spi)/.test(s)?"st":"eq"}">${/^(Restores|\+\d+ (Attack|Spell|Damage|Healing|Bonus|Hit|to all))/.test(s)?"Equip: ":""}${esc(s)}</div>`}
+  if(x.cls) h+=`<div class="st">Classes: ${x.cls}</div>`;
+  if(x.req) h+=`<div class="rq">${x.req}</div>`;
+  h+=`<div class="st">Requires Level ${x.rl}</div>`;
+  for(const e of x.eq) h+=`<div class="eq">${esc(e)}</div>`;
+  h+=`<div class="why">${x.why}</div>`;
+  h+=`<div class="src"><span class="tag src">${esc(x.src)}</span><span class="gap">${gap>0?"+"+gap:gap} ilvl</span></div>`;
+  return h+`</article>`;
+}
+
+let role="all";try{role=localStorage.getItem("f30role")||"all"}catch(e){}
+const chips=document.getElementById("chips"),out=document.getElementById("out"),q=document.getElementById("q"),count=document.getElementById("count");
+chips.innerHTML=ROLES.map(([k,l])=>`<button class="chip" id="r-${k}" data-r="${k}" aria-pressed="${k===role}">${l}</button>`).join("");
+chips.addEventListener("click",e=>{const b=e.target.closest(".chip");if(!b)return;role=b.dataset.r;try{localStorage.setItem("f30role",role)}catch(e){}chips.querySelectorAll(".chip").forEach(c=>c.setAttribute("aria-pressed",c.dataset.r===role));render()});
+q.addEventListener("input",render);
+function render(){
+  const t=q.value.trim().toLowerCase();
+  const hit=x=>(role==="all"||x.roles.includes(role))&&(!t||[x.n,x.src,x.type,x.slot,x.cls||"",...x.st,...x.eq,x.why].join(" ").toLowerCase().includes(t));
+  let n=0,h="";
+  for(const [k,title,sub] of SECS){
+    const xs=I.filter(x=>x.sec===k&&hit(x));n+=xs.length;
+    if(!xs.length)continue;
+    h+=`<section><h2>${title}</h2><p class="sub">${sub}</p><div class="grid">${xs.map(card).join("")}</div></section>`;
+  }
+  out.innerHTML=h||`<section><p class="empty">Nothing matches that filter. Try another role or clear the search.</p></section>`;
+  count.textContent=`${n} of ${I.length} items`;
+}
+render();
+</script>
+
+</body>
+</html>
