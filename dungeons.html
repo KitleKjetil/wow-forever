@@ -79,6 +79,7 @@ section.dg{padding-top:44px;scroll-margin-top:120px}
 .notes p{margin:0}
 .empty{color:var(--ink-faint);font-style:italic;padding-top:32px}
 @media (max-width:560px){#q{width:100%;margin-left:0}.bosses{grid-template-columns:1fr}}
+@media (max-width:720px){.bar{position:static}section.dg{scroll-margin-top:12px}}
 @media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
 </style>
 </head>
@@ -165,6 +166,8 @@ function render(){
 out.addEventListener("click",e=>{const b=e.target.closest(".toggle");if(!b)return;const d=document.getElementById(b.getAttribute("aria-controls"));const open=b.getAttribute("aria-expanded")==="true";b.setAttribute("aria-expanded",String(!open));d.hidden=open});
 q.addEventListener("input",render);
 render();
+// Sections are drawn by script, so honour a #DUNGEON link once they exist.
+if(location.hash){const el=document.getElementById(decodeURIComponent(location.hash.slice(1)));if(el)el.scrollIntoView();}
 </script>
 </body>
 </html>
