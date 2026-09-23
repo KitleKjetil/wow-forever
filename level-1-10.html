@@ -68,6 +68,22 @@ section>p.sub{margin:0 0 20px;color:var(--ink-dim);max-width:70ch}
 .chip[data-r][aria-pressed="true"]:not([data-r="all"]){background:var(--cc);border-color:var(--cc);color:#111}
 .chip[data-r][aria-pressed="true"]:not([data-r="all"])::before{background:#111}
 .tt .why b{color:var(--gold-soft);font-weight:500}
+.tt details.where{margin-top:8px;border-top:1px solid #1d2638;padding-top:7px}
+.tt details.where>summary{cursor:pointer;color:var(--gold-soft);font-size:13.5px;list-style:none}
+.tt details.where>summary::-webkit-details-marker{display:none}
+.tt details.where>summary::before{content:"▸ ";display:inline-block;transition:transform .12s}
+.tt details[open].where>summary::before{content:"▾ "}
+.where-line{font-size:13.5px;color:var(--ink-dim);margin-top:5px}
+.where-line b{color:var(--ink);font-weight:500}
+.where-line.dim{color:var(--ink-faint)}
+.where-none{font-size:13.5px;color:var(--ink-faint);margin-top:5px}
+.wmap{position:relative;height:74px;margin-top:7px;border:1px solid var(--tip-edge);border-radius:3px;background:repeating-linear-gradient(45deg,#0c1426 0,#0c1426 8px,#0a1120 8px,#0a1120 16px)}
+.wmap-z{position:absolute;left:6px;top:4px;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint)}
+.wmap i{position:absolute;width:9px;height:9px;margin:-5px 0 0 -5px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 3px rgba(255,209,0,.25)}
+.wway{display:flex;gap:8px;align-items:center;margin-top:5px}
+.wway code{font-family:var(--mono);font-size:12px;color:var(--ink);background:#0c1426;border:1px solid var(--tip-edge);border-radius:2px;padding:2px 6px;flex:1;overflow:auto;white-space:nowrap}
+.copyway{font:500 12px var(--body);color:var(--ink-dim);background:transparent;border:1px solid var(--tip-edge);border-radius:2px;padding:2px 8px;cursor:pointer}
+.copyway:hover{color:var(--ink);border-color:var(--tip-edge-hi)}
 .tt .src{margin-top:6px;display:flex;flex-wrap:wrap;gap:6px}
 .tag{font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--ink-dim);border:1px solid #273046;border-radius:2px;padding:1px 6px}
 .tag.src{color:#d7c9a0;border-color:#4a4127}
@@ -114,6 +130,9 @@ section>p.sub{margin:0 0 20px;color:var(--ink-dim);max-width:70ch}
 
 <script>
 const W="https://www.wowhead.com/forever/item=";
+const WHERE={"6084":"\u003cdiv class=\"where-line\">\u003cb>Quest:\u003c/b> \u003ca href=\"https://www.wowhead.com/forever/quest=176\" target=\"_blank\" rel=\"noopener\">Wanted: &quot;Hogger&quot;\u003c/a> (level 11)\u003c/div>","6215":"\u003cdiv class=\"where-line\">\u003cb>Quest:\u003c/b> \u003ca href=\"https://www.wowhead.com/forever/quest=176\" target=\"_blank\" rel=\"noopener\">Wanted: &quot;Hogger&quot;\u003c/a> (level 11)\u003c/div>","6966":"\u003cdiv class=\"where-line\">\u003cb>Quest:\u003c/b> \u003ca href=\"https://www.wowhead.com/forever/quest=1693\" target=\"_blank\" rel=\"noopener\">Weapons of Elunite\u003c/a> (level 10)\u003c/div>","7298":"\u003cdiv class=\"where-line\">\u003cb>Quest:\u003c/b> \u003ca href=\"https://www.wowhead.com/forever/quest=2206\" target=\"_blank\" rel=\"noopener\">Snatch and Grab\u003c/a> (level 10)\u003c/div>","11287":"\u003cdiv class=\"where-line\">\u003cb>Crafted.\u003c/b> The recipe and its materials are on \u003ca href=\"https://www.wowhead.com/forever/item=11287\" target=\"_blank\" rel=\"noopener\">Wowhead\u003c/a>.\u003c/div>","248005":"\u003cdiv class=\"where-line\">\u003cb>Quest:\u003c/b> \u003ca href=\"https://www.wowhead.com/forever/quest=91777\" target=\"_blank\" rel=\"noopener\">Rare Books\u003c/a> (level 7)\u003c/div>","248008":"\u003cdiv class=\"where-line\">\u003cb>Quest:\u003c/b> \u003ca href=\"https://www.wowhead.com/forever/quest=91777\" target=\"_blank\" rel=\"noopener\">Rare Books\u003c/a> (level 7)\u003c/div>","257342":"\u003cdiv class=\"where-line\">\u003cb>Quest:\u003c/b> \u003ca href=\"https://www.wowhead.com/forever/quest=92640\" target=\"_blank\" rel=\"noopener\">Desperate Times\u003c/a> (level 11)\u003c/div>","257345":"\u003cdiv class=\"where-line\">\u003cb>Quest:\u003c/b> \u003ca href=\"https://www.wowhead.com/forever/quest=92880\" target=\"_blank\" rel=\"noopener\">Return to Valanaar\u003c/a> (level 11)\u003c/div>","263330":"\u003cdiv class=\"where-line\">\u003cb>Quest:\u003c/b> \u003ca href=\"https://www.wowhead.com/forever/quest=92644\" target=\"_blank\" rel=\"noopener\">Unfortunate News\u003c/a> (level 11)\u003c/div>","263332":"\u003cdiv class=\"where-line\">\u003cb>Quest:\u003c/b> \u003ca href=\"https://www.wowhead.com/forever/quest=92644\" target=\"_blank\" rel=\"noopener\">Unfortunate News\u003c/a> (level 11)\u003c/div>","263333":"\u003cdiv class=\"where-line\">\u003cb>Quest:\u003c/b> \u003ca href=\"https://www.wowhead.com/forever/quest=92644\" target=\"_blank\" rel=\"noopener\">Unfortunate News\u003c/a> (level 11)\u003c/div>","263404":"\u003cdiv class=\"where-line\">\u003cb>Quest:\u003c/b> \u003ca href=\"https://www.wowhead.com/forever/quest=92840\" target=\"_blank\" rel=\"noopener\">Catching Wind\u003c/a> (level 11)\u003c/div>","263405":"\u003cdiv class=\"where-line\">\u003cb>Quest:\u003c/b> \u003ca href=\"https://www.wowhead.com/forever/quest=93835\" target=\"_blank\" rel=\"noopener\">Confront Lorthuna\u003c/a> (level 12)\u003c/div>","263406":"\u003cdiv class=\"where-line\">\u003cb>Quest:\u003c/b> \u003ca href=\"https://www.wowhead.com/forever/quest=93835\" target=\"_blank\" rel=\"noopener\">Confront Lorthuna\u003c/a> (level 12)\u003c/div>","263407":"\u003cdiv class=\"where-line\">\u003cb>Quest:\u003c/b> \u003ca href=\"https://www.wowhead.com/forever/quest=93835\" target=\"_blank\" rel=\"noopener\">Confront Lorthuna\u003c/a> (level 12)\u003c/div>","270000":"\u003cdiv class=\"where-line\">\u003cb>Quest:\u003c/b> \u003ca href=\"https://www.wowhead.com/forever/quest=176\" target=\"_blank\" rel=\"noopener\">Wanted: &quot;Hogger&quot;\u003c/a> (level 11)\u003c/div>","275290":"\u003cdiv class=\"where-line\">\u003cb>Quest:\u003c/b> \u003ca href=\"https://www.wowhead.com/forever/quest=94003\" target=\"_blank\" rel=\"noopener\">The Skybreaker Bulwark\u003c/a> (level 10)\u003c/div>","276685":"\u003cdiv class=\"where-line\">\u003cb>Quest:\u003c/b> \u003ca href=\"https://www.wowhead.com/forever/quest=91777\" target=\"_blank\" rel=\"noopener\">Rare Books\u003c/a> (level 7)\u003c/div>"};
+document.addEventListener("click",e=>{const b=e.target.closest(".copyway");if(!b)return;
+  navigator.clipboard?.writeText(b.dataset.way).then(()=>{const o=b.textContent;b.textContent="Copied";setTimeout(()=>b.textContent=o,1200)}).catch(()=>{});});
 /* q, il, rl, slot, type, lines[], stats[], eq[], src, tags[], roles[], why, sec */
 const I=[
 {"id":276685,"n":"Militia Bow","q":2,"il":14,"rl":1,"bop":1,"slot":"Ranged","type":"Bow","lines":["14 - 26 Damage|Speed 2.10","(9.52 damage per second)"],"st":["+1 Agility"],"eq":[],"src":"Quest · Rare Books","roles":["hunter"],"sec":"top","why":"An item level 14 bow with no level requirement, from a level 7 quest. The same quest offers Northshire Hammer and Apprentice's Spellstaff.","real":5,"how":"Rare Books, a level 7 Elwynn quest","classes":["Warrior","Hunter","Rogue"]},
@@ -162,6 +181,7 @@ function card(x){
   for(const e of x.eq) h+=`<div class="eq">${esc(e)}</div>`;
   h+=`<div class="why">${x.why}</div>`;
   h+=`<div class="fits">Good for: ${x.classes.length===9?"every class":x.classes.map(c=>`<span style="color:${CC[c]}">${c}</span>`).join(" · ")}</div>`;
+  h+=`<details class="where"><summary>Where to get it</summary>${WHERE[x.id]||""}</details>`;
   h+=`<div class="src"><span class="tag src">${esc(x.src)}</span><span class="gap">${gap>0?"+"+gap:gap} ilvl</span></div>`;
   return h+`</article>`;
 }
