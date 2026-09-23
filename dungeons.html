@@ -49,6 +49,10 @@ h1{font-family:var(--display);font-weight:400;font-size:clamp(34px,6vw,58px);lin
 .detail .fits span{font-weight:500}
 .chip:focus-visible,#q:focus-visible,.toggle:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
 #q{margin-left:auto;font:15px var(--body);color:var(--ink);background:var(--tip);border:1px solid var(--tip-edge);border-radius:3px;padding:6px 10px;width:240px;max-width:100%}
+.sugbox{position:absolute;z-index:20;margin:0;padding:4px;list-style:none;background:var(--tip);border:1px solid var(--tip-edge);border-radius:3px;box-shadow:0 10px 24px rgba(0,0,0,.5);max-height:320px;overflow:auto}
+.sugbox li{display:flex;justify-content:space-between;gap:12px;align-items:baseline;padding:6px 8px;border-radius:2px;cursor:pointer;font-size:14.5px;color:var(--ink)}
+.sugbox li[aria-selected="true"],.sugbox li:hover{background:#16203a}
+.sug-n{font-family:var(--mono);font-size:12px;color:var(--ink-faint)}
 #count{font-family:var(--mono);font-size:12px;color:var(--ink-faint)}
 
 section.dg{padding-top:44px;scroll-margin-top:180px}
@@ -97,7 +101,7 @@ section.unsourced{margin-top:40px;border-top:1px solid var(--tip-edge)}
 .notes p{margin:0}
 .empty{color:var(--ink-faint);font-style:italic;padding-top:32px}
 @media (max-width:560px){#q{width:100%;margin-left:0}.bosses{grid-template-columns:1fr}}
-@media (max-width:720px){.bar{position:static}section.dg,.nd{scroll-margin-top:12px}}
+@media (max-width:720px){.bar{position:relative}section.dg,.nd{scroll-margin-top:12px}}
 @media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
 </style>
 </head>
@@ -122,7 +126,7 @@ section.unsourced{margin-top:40px;border-top:1px solid var(--tip-edge)}
 
 <div class="notes">
   <h3>About the numbers</h3>
-  <p>Drop rates are Wowhead's recorded drops divided by recorded kills, pulled on 22 Sep 2026. They're estimates. For rare spawns with fewer kills, expect them to shift a little.</p>
+  <p>Drop rates are Wowhead's recorded drops divided by recorded kills, pulled on 23 Sep 2026. They're estimates. For rare spawns with fewer kills, expect them to shift a little.</p>
   <p>Some bosses have no loot of their own. In the Stockade, only Bruegal Ironknuckle (rare) and Kam Deepfury drop named items; the rest only drop random world items. Lorgus Jett, Baron Aquanis and Roogug are the same. Jimmied Handcuffs appears in Bruegal's drop history but has no Forever tooltip, so it's left out.</p>
   <p>Wowhead also lists Excavation Site: Wetlands, Manor Mistmantle and Half-Pint Tavern as dungeons, but has no quests, bosses or loot for them yet, so they are not shown.</p>
   <p>Blackfathom Deeps and Gnomeregan also exist as Season of Discovery raids on Wowhead. These tables are the normal 5-player dungeons.</p>
@@ -241,6 +245,74 @@ function render(){
 }
 out.addEventListener("click",e=>{const b=e.target.closest(".toggle");if(!b)return;const d=document.getElementById(b.getAttribute("aria-controls"));const open=b.getAttribute("aria-expanded")==="true";b.setAttribute("aria-expanded",String(!open));d.hidden=open});
 q.addEventListener("input",render);
+// Search suggestions. initSuggest(input, terms, onPick): terms is [{t:"Spell Power", n:16, kind:"stat"}].
+// Typing filters the list (matches that start with what you typed come first); click, Enter or
+// arrow keys pick one. Everything is plain text, so it works with the page's own search.
+function initSuggest(input, terms, onPick) {
+  const box = document.createElement("ul");
+  box.className = "sugbox"; box.id = "sugbox"; box.hidden = true; box.setAttribute("role", "listbox");
+  input.parentElement.appendChild(box);
+  input.setAttribute("role", "combobox"); input.setAttribute("aria-expanded", "false");
+  input.setAttribute("aria-controls", "sugbox"); input.setAttribute("autocomplete", "off");
+  let active = -1, shown = [];
+  const place = () => {
+    const b = input.getBoundingClientRect(), p = input.parentElement.getBoundingClientRect();
+    box.style.left = (b.left - p.left) + "px"; box.style.top = (b.bottom - p.top + 4) + "px"; box.style.width = b.width + "px";
+  };
+  const close = () => { box.hidden = true; input.setAttribute("aria-expanded", "false"); active = -1; };
+  const draw = () => {
+    const t = input.value.trim().toLowerCase();
+    if (!t) return close();
+    const starts = [], has = [];
+    for (const s of terms) {
+      const i = s.t.toLowerCase().indexOf(t);
+      if (i === 0) starts.push(s); else if (i > 0) has.push(s);
+      if (starts.length >= 8) break;
+    }
+    shown = [...starts, ...has].slice(0, 8).filter((s) => s.t.toLowerCase() !== t);
+    if (!shown.length) return close();
+    box.innerHTML = shown.map((s, i) => `<li role="option" id="sug-${i}" aria-selected="${i === active}" data-i="${i}"><span class="sug-t">${s.t}</span><span class="sug-n">${s.n}</span></li>`).join("");
+    place(); box.hidden = false; input.setAttribute("aria-expanded", "true");
+  };
+  const pick = (i) => { const s = shown[i]; if (!s) return; input.value = s.t; close(); onPick(); };
+  input.addEventListener("input", draw);
+  input.addEventListener("focus", draw);
+  input.addEventListener("blur", () => setTimeout(close, 120));
+  input.addEventListener("keydown", (e) => {
+    if (box.hidden) return;
+    if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+      e.preventDefault();
+      active = e.key === "ArrowDown" ? (active + 1) % shown.length : (active <= 0 ? shown.length - 1 : active - 1);
+      [...box.children].forEach((li, i) => li.setAttribute("aria-selected", i === active));
+      input.setAttribute("aria-activedescendant", "sug-" + active);
+    } else if (e.key === "Enter") { if (active >= 0) { e.preventDefault(); pick(active); } else close(); }
+    else if (e.key === "Escape") close();
+  });
+  box.addEventListener("mousedown", (e) => { const li = e.target.closest("li"); if (li) { e.preventDefault(); pick(+li.dataset.i); } });
+  addEventListener("resize", () => { if (!box.hidden) place(); });
+}
+// Turn item fields into search terms: stat names without their numbers, slots, armor types, classes.
+function itemTerms(items, add) {
+  const count = new Map();
+  const bump = (t, kind) => { if (!t || t.length < 3) return; const k = t.toLowerCase(); const e = count.get(k) || { t, n: 0, kind }; e.n++; count.set(k, e); };
+  for (const x of items) {
+    bump(x.n, "item");
+    if (x.slot) bump(x.slot, "slot");
+    if (x.type) bump(x.type, "type");
+    for (const c of x.classes || []) bump(c, "class");
+    for (const s of x.st || []) {
+      const clean = s.replace(/^\+?\d+\s*/, "").replace(/^to all /, "").replace(/^Restores \+?\d+ /, "").replace(/ per 5 sec\.?$/, " per 5 sec").trim();
+      bump(clean, "stat");
+    }
+    for (const e of x.eq || []) { if (/^Chance on hit/.test(e)) bump("Chance on hit", "effect"); else if (/^Use:/.test(e)) bump("Use effect", "effect"); }
+  }
+  for (const [t, kind] of add || []) bump(t, kind);
+  // Item names are unique, so rank the shared terms (stats, slots, classes) first.
+  return [...count.values()].sort((a, b) => (b.kind !== "item") - (a.kind !== "item") || b.n - a.n || a.t.localeCompare(b.t));
+}
+const allItems=[...D.flatMap(itemsOf),...U];
+const names=[...D.map(d=>[d.name,"dungeon"]),...D.flatMap(d=>(d.bosses||[]).map(b=>[b.n,"boss"])),...D.flatMap(d=>(d.quests||[]).map(x=>[x.n,"quest"]))];
+initSuggest(q, itemTerms(allItems, names), render);
 render();
 // Sections are drawn by script, so honour a #DUNGEON link once they exist (#NEW is the old name of the new-dungeon block).
 if(location.hash){const k=decodeURIComponent(location.hash.slice(1));const el=document.getElementById(k==="NEW"?D.find(d=>d.quests)?.key:k);if(el)el.scrollIntoView({behavior:"instant"});}
