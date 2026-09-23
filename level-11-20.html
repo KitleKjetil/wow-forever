@@ -239,7 +239,7 @@ function initSuggest(input, terms, onPick) {
     box.innerHTML = shown.map((s, i) => `<li role="option" id="sug-${i}" aria-selected="${i === active}" data-i="${i}"><span class="sug-t">${s.t}</span><span class="sug-n">${s.n}</span></li>`).join("");
     place(); box.hidden = false; input.setAttribute("aria-expanded", "true");
   };
-  const pick = (i) => { const s = shown[i]; if (!s) return; input.value = s.t; close(); onPick(); };
+  const pick = (i) => { const s = shown[i]; if (!s) return; input.value = s.t; close(); onPick(); const out = document.getElementById("out"); if (out && out.getBoundingClientRect().top < 0) out.scrollIntoView({ block: "start", behavior: "instant" }); };
   input.addEventListener("input", draw);
   input.addEventListener("focus", draw);
   input.addEventListener("blur", () => setTimeout(close, 120));
