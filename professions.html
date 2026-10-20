@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>*,*::before,*::after{box-sizing:border-box}body{margin:0}img{max-width:100%}[hidden]{display:none!important}.xlink{font-family:var(--mono);font-size:13px;color:var(--gold-soft)}.xlink a{color:var(--gold)}</style>
+<title>Forever Professions</title>
+<meta name="description" content="Where to find the profession recipes a WoW Forever character under 31 can use - vendor, drop or quest - for all eight professions.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus+SC&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --ground:#0b0f17; --panel:#111827; --tip:#070b16; --tip-edge:#3a4458; --tip-edge-hi:#5d6a84;
+  --ink:#e8e4d8; --ink-dim:#a9a596; --ink-faint:#6f6c63;
+  --gold:#ffd100; --gold-soft:#c9a64a;
+  --q2:#1eff00; --q3:#0070dd; --q3-text:#3d9bff; --q4:#a335ee;
+  --equip:#1eff00; --flavor:#ffd100;
+  --display:"Marcellus SC","Trajan Pro",Georgia,serif;
+  --body:"Alegreya Sans","Segoe UI",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+  color-scheme:dark;
+}
+html,body{background:var(--ground);color:var(--ink)}
+body{font-family:var(--body);font-size:16px;line-height:1.5;padding-inline:16px;padding-block:0 64px}
+.wrap{max-width:1180px;margin:0 auto}
+a{color:inherit}
+header{padding-block:44px 28px;border-bottom:1px solid var(--tip-edge);display:grid;gap:18px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-soft)}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(34px,6vw,58px);line-height:1.02;margin:0;color:var(--gold);text-wrap:balance;letter-spacing:.01em}
+.lede{max-width:68ch;color:var(--ink-dim);font-size:17px;margin:0}
+.lede b{color:var(--ink);font-weight:500}
+.facts{display:flex;flex-wrap:wrap;gap:8px 28px;font-family:var(--mono);font-size:13px;color:var(--ink-dim)}
+.facts span b{color:var(--ink);font-weight:500}
+.facts .q3{color:var(--q3-text)} .facts .q2{color:var(--q2)} .facts .q4{color:var(--q4)}
+
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--ground) 92%,transparent);backdrop-filter:blur(6px);padding-block:14px;border-bottom:1px solid #1c2433;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font:500 14px var(--body);color:var(--ink-dim);background:transparent;border:1px solid var(--tip-edge);border-radius:3px;padding:5px 11px;cursor:pointer}
+.chip:hover{color:var(--ink);border-color:var(--tip-edge-hi)}
+.chip[aria-pressed="true"]{color:#111;background:var(--gold);border-color:var(--gold)}
+.chip:focus-visible,#q:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+#q{margin-left:auto;font:15px var(--body);color:var(--ink);background:var(--tip);border:1px solid var(--tip-edge);border-radius:3px;padding:6px 10px;width:220px;max-width:100%}
+.sugbox{position:absolute;z-index:20;margin:0;padding:4px;list-style:none;background:var(--tip);border:1px solid var(--tip-edge);border-radius:3px;box-shadow:0 10px 24px rgba(0,0,0,.5);max-height:320px;overflow:auto}
+.sugbox li{display:flex;justify-content:space-between;gap:12px;align-items:baseline;padding:6px 8px;border-radius:2px;cursor:pointer;font-size:14.5px;color:var(--ink)}
+.sugbox li[aria-selected="true"],.sugbox li:hover{background:#16203a}
+.sug-n{font-family:var(--mono);font-size:12px;color:var(--ink-faint)}
+#count{font-family:var(--mono);font-size:12px;color:var(--ink-faint)}
+
+section{padding-top:40px}
+section>h2{font-family:var(--display);font-weight:400;font-size:26px;margin:0 0 4px;color:var(--ink);text-wrap:balance}
+section>p.sub{margin:0 0 20px;color:var(--ink-dim);max-width:70ch}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px;align-items:start}
+
+/* the in-game tooltip */
+.tt{background:linear-gradient(180deg,#0a1024 0%,var(--tip) 100%);border:1px solid var(--tip-edge);border-radius:4px;box-shadow:inset 0 0 0 1px #000,0 6px 18px rgba(0,0,0,.45);padding:12px 14px 13px;font-size:14.5px;line-height:1.38;display:grid;gap:1px}
+.tt .nm{font-weight:700;font-size:16.5px;text-decoration:none;line-height:1.25}
+.tt .nm:hover{text-decoration:underline}
+.q2 .nm{color:var(--q2)} .q3 .nm{color:var(--q3-text)} .q4 .nm{color:var(--q4)}
+.tt .il{color:var(--gold)}
+.tt .row{display:flex;justify-content:space-between;gap:12px}
+.tt .st{color:var(--ink)}
+.tt .eq{color:var(--equip)}
+.tt .rq{color:var(--ink-dim)}
+.tt .real{color:var(--gold-soft);font-size:13.5px;margin-top:2px}
+.tt .why{margin-top:9px;padding-top:9px;border-top:1px solid #1d2638;color:var(--ink-dim);font-size:14px}
+.tt .fits{margin-top:6px;font-size:13px;color:var(--ink-faint)}
+.tt .fits span{font-weight:500}
+.chip[data-r]:not([data-r="all"])::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--cc);margin-right:6px;vertical-align:1px}
+.chip[data-r][aria-pressed="true"]:not([data-r="all"]){background:var(--cc);border-color:var(--cc);color:#111}
+.chip[data-r][aria-pressed="true"]:not([data-r="all"])::before{background:#111}
+.tt .why b{color:var(--gold-soft);font-weight:500}
+.tt details.where{margin-top:8px;border-top:1px solid #1d2638;padding-top:7px}
+.tt details.where>summary{cursor:pointer;color:var(--gold-soft);font-size:13.5px;list-style:none}
+.tt details.where>summary::-webkit-details-marker{display:none}
+.tt details.where>summary::before{content:"▸ ";display:inline-block;transition:transform .12s}
+.tt details[open].where>summary::before{content:"▾ "}
+.where-line{font-size:13.5px;color:var(--ink-dim);margin-top:5px}
+.where-line b{color:var(--ink);font-weight:500}
+.where-line.dim{color:var(--ink-faint)}
+.where-none{font-size:13.5px;color:var(--ink-faint);margin-top:5px}
+.wmap{position:relative;height:74px;margin-top:7px;border:1px solid var(--tip-edge);border-radius:3px;background:repeating-linear-gradient(45deg,#0c1426 0,#0c1426 8px,#0a1120 8px,#0a1120 16px)}
+.wmap-z{position:absolute;left:6px;top:4px;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint)}
+.wmap i{position:absolute;width:9px;height:9px;margin:-5px 0 0 -5px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 3px rgba(255,209,0,.25)}
+.wway{display:flex;gap:8px;align-items:center;margin-top:5px}
+.wway code{font-family:var(--mono);font-size:12px;color:var(--ink);background:#0c1426;border:1px solid var(--tip-edge);border-radius:2px;padding:2px 6px;flex:1;overflow:auto;white-space:nowrap}
+.copyway{font:500 12px var(--body);color:var(--ink-dim);background:transparent;border:1px solid var(--tip-edge);border-radius:2px;padding:2px 8px;cursor:pointer}
+.copyway:hover{color:var(--ink);border-color:var(--tip-edge-hi)}
+.tt .src{margin-top:6px;display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--ink-dim);border:1px solid #273046;border-radius:2px;padding:1px 6px}
+.tag.src{color:#d7c9a0;border-color:#4a4127}
+.tag.star{color:#111;background:var(--gold);border-color:var(--gold)}
+.gap{font-family:var(--mono);font-size:12px;color:var(--gold-soft)}
+
+.notes{margin-top:48px;border-top:1px solid var(--tip-edge);padding-top:24px;color:var(--ink-dim);font-size:14.5px;display:grid;gap:10px;max-width:78ch}
+.notes h3{font-family:var(--display);font-weight:400;color:var(--ink);font-size:20px;margin:0}
+.notes p{margin:0}
+.empty{color:var(--ink-faint);font-style:italic}
+@media (max-width:560px){#q{width:100%;margin-left:0}.grid{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+</style>
+<style>
+.pcards{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+a.pcard{display:grid;gap:5px;text-decoration:none;background:linear-gradient(180deg,#0a1024 0%,var(--tip) 100%);border:1px solid var(--tip-edge);border-left:3px solid var(--gold-soft);border-radius:4px;box-shadow:inset 0 0 0 1px #000,0 6px 18px rgba(0,0,0,.45);padding:14px 16px}
+a.pcard:hover{border-color:var(--tip-edge-hi);border-left-color:var(--gold)}
+a.pcard:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+a.pcard h2{margin:0;font:400 22px var(--head);color:var(--gold)}
+a.pcard .meta{font:12px var(--mono);color:var(--gold-soft);letter-spacing:.04em}
+a.pcard p{margin:3px 0 0;color:var(--ink-dim);font-size:14.5px}
+a.pcard .go{margin-top:8px;font:13px var(--mono);color:var(--gold-soft)}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="eyebrow">WoW Forever · Alliance · Professions</div>
+  <div class="xlink"><a href="index.html">All brackets</a> · <a href="crafted.html">Crafted sets →</a> · <a href="guides.html">Class guides →</a> · <a href="dungeons.html">Dungeon loot →</a></div>
+  <h1>Professions</h1>
+  <p class="lede">Your trainer hands you most recipes without being asked. These pages cover the rest: the <b>743 recipes you have to go and find</b> across all eight professions, what each one makes, and where it comes from — bought, dropped or given for a quest.</p>
+  <p class="lede">Everything listed needs <b>skill 225 or less</b>, the ceiling before level 35. What a profession actually makes for you is on the <a href="crafted.html">crafted sets page</a>.</p>
+  <div class="facts">
+    <span><b>8</b> professions</span>
+    <span><b>743</b> recipes to find</span>
+    <span><b>221</b> with a named source</span>
+  </div>
+</header>
+<main>
+  <div class="pcards">
+  <a class="pcard" href="profession-blacksmithing.html">
+    <h2>Blacksmithing</h2>
+    <span class="meta">132 to find · 80 from the trainer · 53 named</span>
+    <p>Mail armour and weapons. Every mail set on the crafted page is blacksmithing, which makes it the backbone of a warrior's or paladin's armour before 40.</p>
+    <span class="go">Open the plans →</span>
+  </a><a class="pcard" href="profession-leatherworking.html">
+    <h2>Leatherworking</h2>
+    <span class="meta">173 to find · 73 from the trainer · 60 named</span>
+    <p>Leather armour for rogues, druids, hunters and shamans — the four classes that have nothing else to wear until 40 — plus armour kits.</p>
+    <span class="go">Open the patterns →</span>
+  </a><a class="pcard" href="profession-tailoring.html">
+    <h2>Tailoring</h2>
+    <span class="meta">177 to find · 86 from the trainer · 32 named</span>
+    <p>Cloth armour and bags. The school-specific sets (Silky for frost, Flame for fire, Shadow, Pearly, Shining) are all here.</p>
+    <span class="go">Open the patterns →</span>
+  </a><a class="pcard" href="profession-enchanting.html">
+    <h2>Enchanting</h2>
+    <span class="meta">63 to find · 53 from the trainer · 9 named</span>
+    <p>Enchants, and in Forever actual gear: staves, off-hand orbs and the three class relics. Those are the only relics you will see before the forties.</p>
+    <span class="go">Open the formulae →</span>
+  </a><a class="pcard" href="profession-engineering.html">
+    <h2>Engineering</h2>
+    <span class="meta">62 to find · 61 from the trainer · 14 named</span>
+    <p>Goggles, bombs, and gadgets. The goggles are strong but gated behind high skill rather than level, so most of them land after 30.</p>
+    <span class="go">Open the schematics →</span>
+  </a><a class="pcard" href="profession-alchemy.html">
+    <h2>Alchemy</h2>
+    <span class="meta">53 to find · 34 from the trainer · 11 named</span>
+    <p>Potions and elixirs. The cheapest way to cut downtime while leveling, and Forever adds a whole line of Mender's and Mageblood items.</p>
+    <span class="go">Open the recipes →</span>
+  </a><a class="pcard" href="profession-cooking.html">
+    <h2>Cooking</h2>
+    <span class="meta">77 to find · 9 from the trainer · 42 named</span>
+    <p>Food that restores health out of combat, and well-fed buffs. Secondary, so it costs you nothing to carry alongside two real professions.</p>
+    <span class="go">Open the recipes →</span>
+  </a><a class="pcard" href="profession-first-aid.html">
+    <h2>First Aid</h2>
+    <span class="meta">6 to find · 11 from the trainer · 0 named</span>
+    <p>Bandages. Secondary, and the one profession every class benefits from, because a bandage is a free heal on a separate cooldown from everything else.</p>
+    <span class="go">Open the manuals →</span>
+  </a>
+  </div>
+</main>
+<div class="notes">
+  <h3>How to read these</h3>
+  <p>Profession skill is capped by tier, not by your character level: 75 as Apprentice, 150 as Journeyman, 225 as Expert, which needs level 20. Nothing above 225 is reachable before 35, so these pages stop there.</p>
+  <p>Trainer recipes are counted but not listed — you get those by visiting the trainer, which needs no guide. What is worth a page is the rest: the vendor-only patterns, the ones that drop, and the ones a quest hands over.</p>
+  <p>Where Wowhead names the vendor or the mob, it is shown with its zone. A good share have a source type but no name yet, because the Forever database is still being filled in ahead of launch. Those rows say so rather than guessing.</p>
+</div>
+<footer class="foot">Recipe data from <a href="https://www.wowhead.com/forever">Wowhead</a>, pulled 20 Oct 2026.</footer>
+</div>
+</body>
+</html>

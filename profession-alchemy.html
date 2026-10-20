@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>*,*::before,*::after{box-sizing:border-box}body{margin:0}img{max-width:100%}[hidden]{display:none!important}.xlink{font-family:var(--mono);font-size:13px;color:var(--gold-soft)}.xlink a{color:var(--gold)}</style>
+<title>Forever Alchemy Recipes</title>
+<meta name="description" content="Where to find every Alchemy recipe in WoW Forever that a character under 31 can use: vendor, drop or quest, with the NPC named where Wowhead knows it.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus+SC&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --ground:#0b0f17; --panel:#111827; --tip:#070b16; --tip-edge:#3a4458; --tip-edge-hi:#5d6a84;
+  --ink:#e8e4d8; --ink-dim:#a9a596; --ink-faint:#6f6c63;
+  --gold:#ffd100; --gold-soft:#c9a64a;
+  --q2:#1eff00; --q3:#0070dd; --q3-text:#3d9bff; --q4:#a335ee;
+  --equip:#1eff00; --flavor:#ffd100;
+  --display:"Marcellus SC","Trajan Pro",Georgia,serif;
+  --body:"Alegreya Sans","Segoe UI",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+  color-scheme:dark;
+}
+html,body{background:var(--ground);color:var(--ink)}
+body{font-family:var(--body);font-size:16px;line-height:1.5;padding-inline:16px;padding-block:0 64px}
+.wrap{max-width:1180px;margin:0 auto}
+a{color:inherit}
+header{padding-block:44px 28px;border-bottom:1px solid var(--tip-edge);display:grid;gap:18px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-soft)}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(34px,6vw,58px);line-height:1.02;margin:0;color:var(--gold);text-wrap:balance;letter-spacing:.01em}
+.lede{max-width:68ch;color:var(--ink-dim);font-size:17px;margin:0}
+.lede b{color:var(--ink);font-weight:500}
+.facts{display:flex;flex-wrap:wrap;gap:8px 28px;font-family:var(--mono);font-size:13px;color:var(--ink-dim)}
+.facts span b{color:var(--ink);font-weight:500}
+.facts .q3{color:var(--q3-text)} .facts .q2{color:var(--q2)} .facts .q4{color:var(--q4)}
+
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--ground) 92%,transparent);backdrop-filter:blur(6px);padding-block:14px;border-bottom:1px solid #1c2433;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font:500 14px var(--body);color:var(--ink-dim);background:transparent;border:1px solid var(--tip-edge);border-radius:3px;padding:5px 11px;cursor:pointer}
+.chip:hover{color:var(--ink);border-color:var(--tip-edge-hi)}
+.chip[aria-pressed="true"]{color:#111;background:var(--gold);border-color:var(--gold)}
+.chip:focus-visible,#q:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+#q{margin-left:auto;font:15px var(--body);color:var(--ink);background:var(--tip);border:1px solid var(--tip-edge);border-radius:3px;padding:6px 10px;width:220px;max-width:100%}
+.sugbox{position:absolute;z-index:20;margin:0;padding:4px;list-style:none;background:var(--tip);border:1px solid var(--tip-edge);border-radius:3px;box-shadow:0 10px 24px rgba(0,0,0,.5);max-height:320px;overflow:auto}
+.sugbox li{display:flex;justify-content:space-between;gap:12px;align-items:baseline;padding:6px 8px;border-radius:2px;cursor:pointer;font-size:14.5px;color:var(--ink)}
+.sugbox li[aria-selected="true"],.sugbox li:hover{background:#16203a}
+.sug-n{font-family:var(--mono);font-size:12px;color:var(--ink-faint)}
+#count{font-family:var(--mono);font-size:12px;color:var(--ink-faint)}
+
+section{padding-top:40px}
+section>h2{font-family:var(--display);font-weight:400;font-size:26px;margin:0 0 4px;color:var(--ink);text-wrap:balance}
+section>p.sub{margin:0 0 20px;color:var(--ink-dim);max-width:70ch}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px;align-items:start}
+
+/* the in-game tooltip */
+.tt{background:linear-gradient(180deg,#0a1024 0%,var(--tip) 100%);border:1px solid var(--tip-edge);border-radius:4px;box-shadow:inset 0 0 0 1px #000,0 6px 18px rgba(0,0,0,.45);padding:12px 14px 13px;font-size:14.5px;line-height:1.38;display:grid;gap:1px}
+.tt .nm{font-weight:700;font-size:16.5px;text-decoration:none;line-height:1.25}
+.tt .nm:hover{text-decoration:underline}
+.q2 .nm{color:var(--q2)} .q3 .nm{color:var(--q3-text)} .q4 .nm{color:var(--q4)}
+.tt .il{color:var(--gold)}
+.tt .row{display:flex;justify-content:space-between;gap:12px}
+.tt .st{color:var(--ink)}
+.tt .eq{color:var(--equip)}
+.tt .rq{color:var(--ink-dim)}
+.tt .real{color:var(--gold-soft);font-size:13.5px;margin-top:2px}
+.tt .why{margin-top:9px;padding-top:9px;border-top:1px solid #1d2638;color:var(--ink-dim);font-size:14px}
+.tt .fits{margin-top:6px;font-size:13px;color:var(--ink-faint)}
+.tt .fits span{font-weight:500}
+.chip[data-r]:not([data-r="all"])::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--cc);margin-right:6px;vertical-align:1px}
+.chip[data-r][aria-pressed="true"]:not([data-r="all"]){background:var(--cc);border-color:var(--cc);color:#111}
+.chip[data-r][aria-pressed="true"]:not([data-r="all"])::before{background:#111}
+.tt .why b{color:var(--gold-soft);font-weight:500}
+.tt details.where{margin-top:8px;border-top:1px solid #1d2638;padding-top:7px}
+.tt details.where>summary{cursor:pointer;color:var(--gold-soft);font-size:13.5px;list-style:none}
+.tt details.where>summary::-webkit-details-marker{display:none}
+.tt details.where>summary::before{content:"▸ ";display:inline-block;transition:transform .12s}
+.tt details[open].where>summary::before{content:"▾ "}
+.where-line{font-size:13.5px;color:var(--ink-dim);margin-top:5px}
+.where-line b{color:var(--ink);font-weight:500}
+.where-line.dim{color:var(--ink-faint)}
+.where-none{font-size:13.5px;color:var(--ink-faint);margin-top:5px}
+.wmap{position:relative;height:74px;margin-top:7px;border:1px solid var(--tip-edge);border-radius:3px;background:repeating-linear-gradient(45deg,#0c1426 0,#0c1426 8px,#0a1120 8px,#0a1120 16px)}
+.wmap-z{position:absolute;left:6px;top:4px;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint)}
+.wmap i{position:absolute;width:9px;height:9px;margin:-5px 0 0 -5px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 3px rgba(255,209,0,.25)}
+.wway{display:flex;gap:8px;align-items:center;margin-top:5px}
+.wway code{font-family:var(--mono);font-size:12px;color:var(--ink);background:#0c1426;border:1px solid var(--tip-edge);border-radius:2px;padding:2px 6px;flex:1;overflow:auto;white-space:nowrap}
+.copyway{font:500 12px var(--body);color:var(--ink-dim);background:transparent;border:1px solid var(--tip-edge);border-radius:2px;padding:2px 8px;cursor:pointer}
+.copyway:hover{color:var(--ink);border-color:var(--tip-edge-hi)}
+.tt .src{margin-top:6px;display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--ink-dim);border:1px solid #273046;border-radius:2px;padding:1px 6px}
+.tag.src{color:#d7c9a0;border-color:#4a4127}
+.tag.star{color:#111;background:var(--gold);border-color:var(--gold)}
+.gap{font-family:var(--mono);font-size:12px;color:var(--gold-soft)}
+
+.notes{margin-top:48px;border-top:1px solid var(--tip-edge);padding-top:24px;color:var(--ink-dim);font-size:14.5px;display:grid;gap:10px;max-width:78ch}
+.notes h3{font-family:var(--display);font-weight:400;color:var(--ink);font-size:20px;margin:0}
+.notes p{margin:0}
+.empty{color:var(--ink-faint);font-style:italic}
+@media (max-width:560px){#q{width:100%;margin-left:0}.grid{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+</style>
+<style>
+.bands{display:grid;gap:18px}
+.band{background:linear-gradient(180deg,#0a1024 0%,var(--tip) 100%);border:1px solid var(--tip-edge);border-radius:4px;box-shadow:inset 0 0 0 1px #000,0 6px 18px rgba(0,0,0,.45);padding:13px 16px 9px}
+.band>h3{margin:0 0 1px;font:400 19px var(--head);color:var(--gold)}
+.band .sub2{margin:0 0 8px;font:12px var(--mono);color:var(--gold-soft)}
+table.rec{width:100%;border-collapse:collapse;font-size:14.5px}
+table.rec th{text-align:left;font:500 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);padding:0 10px 5px 0;border-bottom:1px solid #1d2638;white-space:nowrap}
+table.rec td{padding:6px 10px 6px 0;border-bottom:1px solid #141c2c;vertical-align:top}
+table.rec tr:last-child td{border-bottom:0}
+table.rec td.sk{font-family:var(--mono);font-size:13px;color:var(--gold-soft);white-space:nowrap}
+table.rec td.mk a{color:var(--q3);text-decoration:none;font-weight:500}
+table.rec td.mk a:hover{text-decoration:underline}
+table.rec td.mk .q2{color:var(--q2)}
+table.rec td.wh{color:var(--ink-dim)}
+table.rec td.wh b{color:var(--ink);font-weight:500}
+.star{font:500 9.5px var(--mono);letter-spacing:.08em;color:var(--gold);border:1px solid var(--gold-soft);border-radius:2px;padding:0 3px;margin-left:6px;vertical-align:1px}
+.srctag{font:500 10px var(--mono);letter-spacing:.06em;border:1px solid var(--tip-edge);border-radius:2px;padding:1px 4px;margin-right:5px;color:var(--ink-faint)}
+.srctag.Vendor{color:#9fd4a0;border-color:#2c4a2e}
+.srctag.Drop{color:#e0a07a;border-color:#56392a}
+.srctag.Quest{color:#9fc4f0;border-color:#2b4260}
+.pswitch{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 2px}
+.pswitch a,.pswitch span{font:500 13.5px var(--body);text-decoration:none;border:1px solid var(--tip-edge);border-radius:3px;padding:3px 9px;color:var(--ink-dim)}
+.pswitch a:hover{color:var(--ink);border-color:var(--tip-edge-hi)}
+.pswitch .on{background:var(--gold);border-color:var(--gold);color:#111}
+@media (max-width:620px){#q{width:100%;margin-left:0}table.rec th.hs,table.rec td.hs{display:none}}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto}}</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="eyebrow">WoW Forever · Professions · Alchemy</div>
+  <div class="xlink"><a href="index.html">All brackets</a> · <a href="professions.html">All professions</a> · <a href="crafted.html">Crafted sets →</a> · <a href="guides.html">Class guides →</a></div>
+  <h1>Alchemy Recipes</h1>
+  <div class="pswitch"><a href="profession-blacksmithing.html">Blacksmithing</a><a href="profession-leatherworking.html">Leatherworking</a><a href="profession-tailoring.html">Tailoring</a><a href="profession-enchanting.html">Enchanting</a><a href="profession-engineering.html">Engineering</a><span class="on">Alchemy</span><a href="profession-cooking.html">Cooking</a><a href="profession-first-aid.html">First Aid</a></div>
+  <p class="lede">Potions and elixirs. The cheapest way to cut downtime while leveling, and Forever adds a whole line of Mender's and Mageblood items.</p>
+  <p class="lede">This page lists the <b>53 recipes you have to go and find</b> — bought from a vendor, dropped by something, or given for a quest. The other <b>34 come from your trainer</b>, so they need no guide. Everything here needs skill <b>225 or less</b>, which is the ceiling a character can reach before level 35.</p>
+  <div class="facts">
+    <span><b>53</b> to find</span>
+    <span><b>34</b> from the trainer</span>
+    <span><b>11</b> with a named source</span>
+  </div>
+</header>
+
+<div class="bar" role="toolbar" aria-label="Filter recipes">
+  <div class="chips" id="chips"></div>
+  <input id="q" type="search" placeholder="Search recipe, vendor, item…" aria-label="Search recipes">
+  <span id="count" aria-live="polite"></span>
+</div>
+
+<main id="out"></main>
+
+<div class="notes">
+  <h3>Reading this</h3>
+  <p>A recipe's <b>skill</b> is what you need to learn it, not your character level. Profession skill is capped by tier: 75 as Apprentice, 150 as Journeyman, and 225 as Expert, which needs level 20. Nothing above 225 is reachable before 35, so this page stops there.</p>
+  <p><span class="srctag Vendor">Vendor</span> means a limited-supply or reputation vendor sells the recipe, <span class="srctag Drop">Drop</span> that something drops it, and <span class="srctag Quest">Quest</span> that a quest hands it over. Where Wowhead names the seller or the mob, it is shown; 42 of these 53 have a source type but no name yet, because the Forever database is still being filled in. The recipe name links to Wowhead, which will have the detail as it lands.</p>
+  <p>A <span class="star">PICK</span> tag means the item it makes is one the rest of this site singles out as worth having. 8 further recipes at this skill range have no source recorded at all and are left off.</p>
+</div>
+<footer class="foot">Recipe data from <a href="https://www.wowhead.com/forever">Wowhead</a>, pulled 20 Oct 2026.</footer>
+</div>
+
+<script>
+const R=[{"skill":15,"name":"Elixir of Minor Spirit","itemId":250344,"srcs":["Drop"],"npc":"","zone":0,"star":0,"slot":"","q":0},{"skill":25,"name":"Minor Mageblood Elixir","itemId":250339,"srcs":["Drop"],"npc":"","zone":0,"star":0,"slot":"","q":0},{"skill":30,"name":"Minor Mender's Potion","itemId":250944,"srcs":["Drop"],"npc":"","zone":0,"star":0,"slot":"","q":0},{"skill":35,"name":"Minor Spellblasting Potion","itemId":250932,"srcs":["Drop"],"npc":"","zone":0,"star":0,"slot":"","q":0},{"skill":40,"name":"Minor Frenzy Potion","itemId":250938,"srcs":["Drop"],"npc":"","zone":0,"star":0,"slot":"","q":0},{"skill":45,"name":"Minor Cleric's Elixir","itemId":250330,"srcs":["Drop"],"npc":"","zone":0,"star":0,"slot":"","q":0},{"skill":50,"name":"Elixir of Minor Agility","itemId":2457,"srcs":["Drop","Container","Disenchant"],"npc":"","zone":0,"star":0,"slot":"","q":0},{"skill":60,"name":"Swiftness Potion","itemId":2459,"srcs":["Drop","Container","Disenchant"],"npc":"","zone":0,"star":0,"slot":"","q":0},{"skill":60,"name":"Rage Potion","itemId":5631,"srcs":["Vendor"],"npc":"","zone":0,"star":0,"slot":"","q":0},{"skill":65,"name":"Elixir of Lesser Spirit","itemId":250345,"srcs":["Vendor"],"npc":"","zone":0,"star":0,"slot":"","q":0},{"skill":75,"name":"Lesser Mageblood Elixir","itemId":250340,"srcs":["Vendor"],"npc":"","zone":0,"star":0,"slot":"","q":0},{"skill":80,"name":"Lesser Mender's Potion","itemId":250945,"srcs":["Drop"],"npc":"","zone":0,"star":0,"slot":"","q":0},{"skill":85,"name":"Lesser Spellblasting Potion","itemId":250933,"srcs":["Drop"],"npc":"","zone":0,"star":0,"slot":"","q":0},{"skill":90,"name":"Elixir of Giant Growth","itemId":6662,"srcs":["Drop"],"npc":"","zone":0,"star":0,"slot":"","q":0},{"skill":90,"name":"Elixir of Coalesced Regret","itemId":210708,"srcs":["Vendor"],"npc":"","zone":0,"star":0,"slot":"","q":0},{"skill":90,"name":"Lesser Frenzy Potion","itemId":250939,"srcs":["Drop"],"npc":"Raging Rot Hide","zone":130,"star":0,"slot":"","q":0},{"skill":95,"name":"Elixir of Lesser Intellect","itemId":250353,"srcs":["Vendor"],"npc":"","zone":0,"star":0,"slot":"","q":0},{"skill":95,"name":"Lesser Cleric's Elixir","itemId":250331,"srcs":["Vendor"],"npc":"","zone":0,"star":0,"slot":"","q":0},{"skill":100,"name":"Holy Protection Potion","itemId":6051,"srcs":["Vendor"],"npc":"","zone":0,"star":0,"slot":"","q":0},{"skill":110,"name":"Minor Magic Resistance Potion","itemId":3384,"srcs":["Drop"],"npc":"","zone":0,"star":0,"slot":"","q":0},{"skill":115,"name":"Elixir of Spirit","itemId":250346,"srcs":["Drop"],"npc":"Bloodfury Harpy","zone":406,"star":0,"slot":"","q":0},{"skill":120,"name":"Lesser Arcane Elixir","itemId":250342,"srcs":["Vendor"],"npc":"","zone":0,"star":0,"slot":"","q":0},{"skill":120,"name":"Potion of Poison Cleansing","itemId":3386,"srcs":["Drop"],"npc":"","zone":0,"star":0,"slot":"","q":0},{"skill":130,"name":"Mender's Potion","itemId":250946,"srcs":["Vendor"],"npc":"","zone":0,"star":0,"slot":"","q":0},{"skill":135,"name":"Shadow Protection Potion","itemId":6048,"srcs":["Vendor"],"npc":"","zone":0,"star":0,"slot":"","q":0},{"skill":135,"name":"Spellblasting Potion","itemId":250934,"srcs":["Vendor"],"npc":"","zone":0,"star":0,"slot":"","q":0},{"skill":135,"name":"Elixir of Intellect","itemId":250354,"srcs":["Drop"],"npc":"Galak Mauler","zone":400,"star":0,"slot":"","q":0},{"skill":140,"name":"Fermenter","itemId":279970,"srcs":["Drop","Vendor"],"npc":"Rath'mael","zone":16611,"star":0,"slot":"","q":0},{"skill":140,"name":"Frenzy Potion","itemId":250940,"srcs":["Vendor"],"npc":"","zone":0,"star":0,"slot":"","q":0},{"skill":140,"name":"Elixir of Lesser Agility","itemId":3390,"srcs":["Drop","Container"],"npc":"","zone":0,"star":0,"slot":"","q":0},{"skill":145,"name":"Cleric's Elixir","itemId":250332,"srcs":["Drop"],"npc":"Xavian Hellcaller","zone":331,"star":0,"slot":"","q":0},{"skill":150,"name":"Free Action Potion","itemId":5634,"srcs":["Vendor"],"npc":"","zone":0,"star":0,"slot":"","q":0},{"skill":150,"name":"Elixir of Ogre Strength","itemId":3391,"srcs":["Drop"],"npc":"","zone":0,"star":0,"slot":"","q":0},{"skill":165,"name":"Shadow Oil","itemId":3824,"srcs":["Vendor"],"npc":"","zone":0,"star":0,"slot":"","q":0},{"skill":165,"name":"Elixir of Greater Spirit","itemId":250347,"srcs":["Vendor"],"npc":"","zone":0,"star":0,"slot":"","q":0},{"skill":165,"name":"Fire Protection Potion","itemId":6049,"srcs":["Vendor"],"npc":"","zone":0,"star":0,"slot":"","q":0},{"skill":175,"name":"Great Rage Potion","itemId":5633,"srcs":["Vendor"],"npc":"","zone":0,"star":0,"slot":"","q":0},{"skill":175,"name":"Greater Mageblood Elixir","itemId":250341,"srcs":["Vendor"],"npc":"","zone":0,"star":0,"slot":"","q":0},{"skill":180,"name":"Troll's Blood Elixir","itemId":3826,"srcs":["Drop"],"npc":"","zone":0,"star":0,"slot":"","q":0},{"skill":185,"name":"Greater Spellblasting Potion","itemId":250935,"srcs":["Quest","Vendor"],"npc":"A New Need for Shadow Protection","zone":0,"star":0,"slot":"","q":0},{"skill":190,"name":"Nature Protection Potion","itemId":6052,"srcs":["Vendor"],"npc":"","zone":0,"star":0,"slot":"","q":0},{"skill":190,"name":"Greater Frenzy Potion","itemId":250941,"srcs":["Quest","Vendor"],"npc":"A New Need for Shadow Protection","zone":0,"star":0,"slot":"","q":0},{"skill":190,"name":"Elixir of Frost Power","itemId":17708,"srcs":["Drop"],"npc":"","zone":0,"star":0,"slot":"","q":0},{"skill":190,"name":"Frost Protection Potion","itemId":6050,"srcs":["Vendor"],"npc":"","zone":0,"star":0,"slot":"","q":0},{"skill":195,"name":"Draught of Detect Lesser Invisibility","itemId":3828,"srcs":["Drop","Container"],"npc":"","zone":0,"star":0,"slot":"","q":0},{"skill":195,"name":"Greater Cleric's Elixir","itemId":250333,"srcs":["Vendor"],"npc":"","zone":0,"star":0,"slot":"","q":0},{"skill":200,"name":"Frost Oil","itemId":3829,"srcs":["Vendor"],"npc":"Bro'kin","zone":36,"star":0,"slot":"","q":0},{"skill":200,"name":"Elixir of Greater Fortitude","itemId":250335,"srcs":["Vendor"],"npc":"","zone":0,"star":0,"slot":"","q":0},{"skill":210,"name":"Goblin Rocket Fuel","itemId":9061,"srcs":["Crafted"],"npc":"Goblin Rocket Fuel Recipe","zone":0,"star":0,"slot":"","q":0},{"skill":210,"name":"Magic Resistance Potion","itemId":9036,"srcs":["Drop"],"npc":"","zone":0,"star":0,"slot":"","q":0},{"skill":215,"name":"Lesser Stoneshield Potion","itemId":4623,"srcs":["Quest"],"npc":"Liquid Stone","zone":0,"star":0,"slot":"","q":0},{"skill":225,"name":"Philosopher's Stone","itemId":9149,"srcs":["Vendor"],"npc":"Alchemist Pestlezugg","zone":440,"star":0,"slot":"","q":0},{"skill":225,"name":"Wildvine Potion","itemId":9144,"srcs":["Drop"],"npc":"","zone":0,"star":0,"slot":"","q":0}];
+const W="https://www.wowhead.com/forever/";
+const ZN={"1":"Dun Morogh","3":"Badlands","8":"Swamp of Sorrows","10":"Duskwood","11":"Wetlands","12":"Elwynn Forest","15":"Dustwallow Marsh","16":"Azshara","17":"The Barrens","33":"Stranglethorn Vale","36":"Alterac Mountains","38":"Loch Modan","40":"Westfall","44":"Redridge Mountains","45":"Arathi Highlands","51":"Searing Gorge","85":"Tirisfal Glades","130":"Silverpine Forest","139":"Eastern Plaguelands","141":"Teldrassil","148":"Darkshore","209":"Shadowfang Keep","215":"Mulgore","267":"Hillsbrad Foothills","331":"Ashenvale","357":"Feralas","400":"Thousand Needles","405":"Desolace","406":"Stonetalon Mountains","440":"Tanaris","490":"Un'Goro Crater","493":"Moonglade","618":"Winterspring","717":"The Stockade","718":"Wailing Caverns","719":"Blackfathom Deeps","721":"Gnomeregan","796":"Scarlet Monastery","1519":"Stormwind City","1581":"The Deadmines","1637":"Orgrimmar","16591":"Dalaran","16593":"Zephras Isle","16611":"Ruins of Lordaeron","16732":"Excavation Site: Wetlands"};
+const esc=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;");
+const BANDS=[[1,75,"Apprentice","skill 1–75"],[76,150,"Journeyman","skill 76–150, needs level 10"],[151,225,"Expert","skill 151–225, needs level 20"]];
+const KINDS=[["all","Everything"],["Vendor","Vendor"],["Drop","Drop"],["Quest","Quest"],["star","Worth making"]];
+let kind="all";
+try{kind=localStorage.getItem("profkind")||"all"}catch(e){}
+if(!KINDS.some(k=>k[0]===kind))kind="all";
+const chips=document.getElementById("chips"),out=document.getElementById("out"),q=document.getElementById("q"),count=document.getElementById("count");
+function drawChips(){chips.innerHTML=KINDS.map(([k,l])=>`<button class="chip" data-k="${k}" aria-pressed="${k===kind}">${l}</button>`).join("")}
+drawChips();
+chips.addEventListener("click",e=>{const b=e.target.closest(".chip");if(!b)return;kind=b.dataset.k;try{localStorage.setItem("profkind",kind)}catch(e){}drawChips();render()});
+q.addEventListener("input",render);
+const hay=r=>[r.name,r.npc,ZN[r.zone]||"",r.slot,...r.srcs].join(" ").toLowerCase();
+const keep=r=>(kind==="all"||(kind==="star"?r.star:r.srcs.includes(kind)));
+function row(r){
+  const where=r.srcs.map(s=>`<span class="srctag ${s}">${s}</span>`).join("")
+    +(r.npc?`<b>${esc(r.npc)}</b>${r.zone?" · "+esc(ZN[r.zone]||"zone "+r.zone):""}`:`<span style="color:var(--ink-faint)">name not recorded yet</span>`);
+  return `<tr><td class="sk">${r.skill}</td>`
+    +`<td class="mk"><a class="${r.q===2?"q2":""}" href="${W}${r.itemId?"item="+r.itemId:"spell=0"}" target="_blank" rel="noopener">${esc(r.name)}</a>${r.star?'<span class="star">PICK</span>':""}</td>`
+    +`<td class="wh hs">${esc(r.slot)}</td><td class="wh">${where}</td></tr>`;
+}
+function render(){
+  const t=q.value.trim().toLowerCase();
+  const hit=R.filter(r=>keep(r)&&(!t||hay(r).includes(t)));
+  let h="";
+  for(const [lo,hi,title,sub] of BANDS){
+    const xs=hit.filter(r=>r.skill>=lo&&r.skill<=hi);
+    if(!xs.length)continue;
+    h+=`<div class="band"><h3>${title}</h3><p class="sub2">${sub} · ${xs.length} recipe${xs.length>1?"s":""}</p>`
+      +`<table class="rec"><thead><tr><th>Skill</th><th>Recipe</th><th class="hs">Makes</th><th>Where to find it</th></tr></thead><tbody>${xs.map(row).join("")}</tbody></table></div>`;
+  }
+  out.innerHTML=h?`<div class="bands">${h}</div>`:`<section><p class="empty">Nothing matches. Try another filter or clear the search.</p></section>`;
+  count.textContent=`${hit.length} of ${R.length}`;
+}
+// Search suggestions. initSuggest(input, terms, onPick): terms is [{t:"Spell Power", n:16, kind:"stat"}].
+// Typing filters the list (matches that start with what you typed come first); click, Enter or
+// arrow keys pick one. Everything is plain text, so it works with the page's own search.
+function initSuggest(input, terms, onPick) {
+  const box = document.createElement("ul");
+  box.className = "sugbox"; box.id = "sugbox"; box.hidden = true; box.setAttribute("role", "listbox");
+  input.parentElement.appendChild(box);
+  input.setAttribute("role", "combobox"); input.setAttribute("aria-expanded", "false");
+  input.setAttribute("aria-controls", "sugbox"); input.setAttribute("autocomplete", "off");
+  let active = -1, shown = [];
+  const place = () => {
+    const b = input.getBoundingClientRect(), p = input.parentElement.getBoundingClientRect();
+    box.style.left = (b.left - p.left) + "px"; box.style.top = (b.bottom - p.top + 4) + "px"; box.style.width = b.width + "px";
+  };
+  const close = () => { box.hidden = true; input.setAttribute("aria-expanded", "false"); active = -1; };
+  const draw = () => {
+    const t = input.value.trim().toLowerCase();
+    if (!t) return close();
+    const starts = [], has = [];
+    for (const s of terms) {
+      const i = s.t.toLowerCase().indexOf(t);
+      if (i === 0) starts.push(s); else if (i > 0) has.push(s);
+      if (starts.length >= 8) break;
+    }
+    shown = [...starts, ...has].slice(0, 8).filter((s) => s.t.toLowerCase() !== t);
+    if (!shown.length) return close();
+    box.innerHTML = shown.map((s, i) => `<li role="option" id="sug-${i}" aria-selected="${i === active}" data-i="${i}"><span class="sug-t">${s.t}</span><span class="sug-n">${s.n}</span></li>`).join("");
+    place(); box.hidden = false; input.setAttribute("aria-expanded", "true");
+  };
+  const pick = (i) => { const s = shown[i]; if (!s) return; input.value = s.t; close(); onPick(); const out = document.getElementById("out"); if (out && out.getBoundingClientRect().top < 0) out.scrollIntoView({ block: "start", behavior: "instant" }); };
+  input.addEventListener("input", draw);
+  input.addEventListener("focus", draw);
+  input.addEventListener("blur", () => setTimeout(close, 120));
+  input.addEventListener("keydown", (e) => {
+    if (box.hidden) return;
+    if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+      e.preventDefault();
+      active = e.key === "ArrowDown" ? (active + 1) % shown.length : (active <= 0 ? shown.length - 1 : active - 1);
+      [...box.children].forEach((li, i) => li.setAttribute("aria-selected", i === active));
+      input.setAttribute("aria-activedescendant", "sug-" + active);
+    } else if (e.key === "Enter") { if (active >= 0) { e.preventDefault(); pick(active); } else close(); }
+    else if (e.key === "Escape") close();
+  });
+  box.addEventListener("mousedown", (e) => { const li = e.target.closest("li"); if (li) { e.preventDefault(); pick(+li.dataset.i); } });
+  addEventListener("resize", () => { if (!box.hidden) place(); });
+}
+// Turn item fields into search terms: stat names without their numbers, slots, armor types, classes.
+function itemTerms(items, add) {
+  const count = new Map();
+  const bump = (t, kind) => { if (!t || t.length < 3) return; const k = t.toLowerCase(); const e = count.get(k) || { t, n: 0, kind }; e.n++; count.set(k, e); };
+  for (const x of items) {
+    bump(x.n, "item");
+    if (x.slot) bump(x.slot, "slot");
+    if (x.type) bump(x.type, "type");
+    for (const c of x.classes || []) bump(c, "class");
+    for (const s of x.st || []) {
+      const clean = s.replace(/^\+?\d+\s*/, "").replace(/^to all /, "").replace(/^Restores \+?\d+ /, "").replace(/ per 5 sec\.?$/, " per 5 sec").trim();
+      bump(clean, "stat");
+    }
+    for (const e of x.eq || []) { if (/^Chance on hit/.test(e)) bump("Chance on hit", "effect"); else if (/^Use:/.test(e)) bump("Use effect", "effect"); }
+  }
+  for (const [t, kind] of add || []) bump(t, kind);
+  // Item names are unique, so rank the shared terms (stats, slots, classes) first.
+  return [...count.values()].sort((a, b) => (b.kind !== "item") - (a.kind !== "item") || b.n - a.n || a.t.localeCompare(b.t));
+}
+
+initSuggest(q, itemTerms(R.map(r=>({n:r.name,st:[],classes:[],slot:r.slot,type:""})), R.filter(r=>r.npc).map(r=>[r.npc,"source"])), render);
+render();
+</script>
+</body>
+</html>
