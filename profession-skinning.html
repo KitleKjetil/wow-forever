@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>*,*::before,*::after{box-sizing:border-box}body{margin:0}img{max-width:100%}[hidden]{display:none!important}.xlink{font-family:var(--mono);font-size:13px;color:var(--gold-soft)}.xlink a{color:var(--gold)}</style>
+<title>Forever Skinning</title>
+<meta name="description" content="Skinning in WoW Forever: what you can gather at each skill level and the zones to find it in, up to the skill a character under 35 can reach.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus+SC&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --ground:#0b0f17; --panel:#111827; --tip:#070b16; --tip-edge:#3a4458; --tip-edge-hi:#5d6a84;
+  --ink:#e8e4d8; --ink-dim:#a9a596; --ink-faint:#6f6c63;
+  --gold:#ffd100; --gold-soft:#c9a64a;
+  --q2:#1eff00; --q3:#0070dd; --q3-text:#3d9bff; --q4:#a335ee;
+  --equip:#1eff00; --flavor:#ffd100;
+  --display:"Marcellus SC","Trajan Pro",Georgia,serif;
+  --body:"Alegreya Sans","Segoe UI",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+  color-scheme:dark;
+}
+html,body{background:var(--ground);color:var(--ink)}
+body{font-family:var(--body);font-size:16px;line-height:1.5;padding-inline:16px;padding-block:0 64px}
+.wrap{max-width:1180px;margin:0 auto}
+a{color:inherit}
+header{padding-block:44px 28px;border-bottom:1px solid var(--tip-edge);display:grid;gap:18px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-soft)}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(34px,6vw,58px);line-height:1.02;margin:0;color:var(--gold);text-wrap:balance;letter-spacing:.01em}
+.lede{max-width:68ch;color:var(--ink-dim);font-size:17px;margin:0}
+.lede b{color:var(--ink);font-weight:500}
+.facts{display:flex;flex-wrap:wrap;gap:8px 28px;font-family:var(--mono);font-size:13px;color:var(--ink-dim)}
+.facts span b{color:var(--ink);font-weight:500}
+.facts .q3{color:var(--q3-text)} .facts .q2{color:var(--q2)} .facts .q4{color:var(--q4)}
+
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--ground) 92%,transparent);backdrop-filter:blur(6px);padding-block:14px;border-bottom:1px solid #1c2433;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font:500 14px var(--body);color:var(--ink-dim);background:transparent;border:1px solid var(--tip-edge);border-radius:3px;padding:5px 11px;cursor:pointer}
+.chip:hover{color:var(--ink);border-color:var(--tip-edge-hi)}
+.chip[aria-pressed="true"]{color:#111;background:var(--gold);border-color:var(--gold)}
+.chip:focus-visible,#q:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+#q{margin-left:auto;font:15px var(--body);color:var(--ink);background:var(--tip);border:1px solid var(--tip-edge);border-radius:3px;padding:6px 10px;width:220px;max-width:100%}
+.sugbox{position:absolute;z-index:20;margin:0;padding:4px;list-style:none;background:var(--tip);border:1px solid var(--tip-edge);border-radius:3px;box-shadow:0 10px 24px rgba(0,0,0,.5);max-height:320px;overflow:auto}
+.sugbox li{display:flex;justify-content:space-between;gap:12px;align-items:baseline;padding:6px 8px;border-radius:2px;cursor:pointer;font-size:14.5px;color:var(--ink)}
+.sugbox li[aria-selected="true"],.sugbox li:hover{background:#16203a}
+.sug-n{font-family:var(--mono);font-size:12px;color:var(--ink-faint)}
+#count{font-family:var(--mono);font-size:12px;color:var(--ink-faint)}
+
+section{padding-top:40px}
+section>h2{font-family:var(--display);font-weight:400;font-size:26px;margin:0 0 4px;color:var(--ink);text-wrap:balance}
+section>p.sub{margin:0 0 20px;color:var(--ink-dim);max-width:70ch}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px;align-items:start}
+
+/* the in-game tooltip */
+.tt{background:linear-gradient(180deg,#0a1024 0%,var(--tip) 100%);border:1px solid var(--tip-edge);border-radius:4px;box-shadow:inset 0 0 0 1px #000,0 6px 18px rgba(0,0,0,.45);padding:12px 14px 13px;font-size:14.5px;line-height:1.38;display:grid;gap:1px}
+.tt .nm{font-weight:700;font-size:16.5px;text-decoration:none;line-height:1.25}
+.tt .nm:hover{text-decoration:underline}
+.q2 .nm{color:var(--q2)} .q3 .nm{color:var(--q3-text)} .q4 .nm{color:var(--q4)}
+.tt .il{color:var(--gold)}
+.tt .row{display:flex;justify-content:space-between;gap:12px}
+.tt .st{color:var(--ink)}
+.tt .eq{color:var(--equip)}
+.tt .rq{color:var(--ink-dim)}
+.tt .real{color:var(--gold-soft);font-size:13.5px;margin-top:2px}
+.tt .why{margin-top:9px;padding-top:9px;border-top:1px solid #1d2638;color:var(--ink-dim);font-size:14px}
+.tt .fits{margin-top:6px;font-size:13px;color:var(--ink-faint)}
+.tt .fits span{font-weight:500}
+.chip[data-r]:not([data-r="all"])::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--cc);margin-right:6px;vertical-align:1px}
+.chip[data-r][aria-pressed="true"]:not([data-r="all"]){background:var(--cc);border-color:var(--cc);color:#111}
+.chip[data-r][aria-pressed="true"]:not([data-r="all"])::before{background:#111}
+.tt .why b{color:var(--gold-soft);font-weight:500}
+.tt details.where{margin-top:8px;border-top:1px solid #1d2638;padding-top:7px}
+.tt details.where>summary{cursor:pointer;color:var(--gold-soft);font-size:13.5px;list-style:none}
+.tt details.where>summary::-webkit-details-marker{display:none}
+.tt details.where>summary::before{content:"▸ ";display:inline-block;transition:transform .12s}
+.tt details[open].where>summary::before{content:"▾ "}
+.where-line{font-size:13.5px;color:var(--ink-dim);margin-top:5px}
+.where-line b{color:var(--ink);font-weight:500}
+.where-line.dim{color:var(--ink-faint)}
+.where-none{font-size:13.5px;color:var(--ink-faint);margin-top:5px}
+.wmap{position:relative;height:74px;margin-top:7px;border:1px solid var(--tip-edge);border-radius:3px;background:repeating-linear-gradient(45deg,#0c1426 0,#0c1426 8px,#0a1120 8px,#0a1120 16px)}
+.wmap-z{position:absolute;left:6px;top:4px;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint)}
+.wmap i{position:absolute;width:9px;height:9px;margin:-5px 0 0 -5px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 3px rgba(255,209,0,.25)}
+.wway{display:flex;gap:8px;align-items:center;margin-top:5px}
+.wway code{font-family:var(--mono);font-size:12px;color:var(--ink);background:#0c1426;border:1px solid var(--tip-edge);border-radius:2px;padding:2px 6px;flex:1;overflow:auto;white-space:nowrap}
+.copyway{font:500 12px var(--body);color:var(--ink-dim);background:transparent;border:1px solid var(--tip-edge);border-radius:2px;padding:2px 8px;cursor:pointer}
+.copyway:hover{color:var(--ink);border-color:var(--tip-edge-hi)}
+.tt .src{margin-top:6px;display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--ink-dim);border:1px solid #273046;border-radius:2px;padding:1px 6px}
+.tag.src{color:#d7c9a0;border-color:#4a4127}
+.tag.star{color:#111;background:var(--gold);border-color:var(--gold)}
+.gap{font-family:var(--mono);font-size:12px;color:var(--gold-soft)}
+
+.notes{margin-top:48px;border-top:1px solid var(--tip-edge);padding-top:24px;color:var(--ink-dim);font-size:14.5px;display:grid;gap:10px;max-width:78ch}
+.notes h3{font-family:var(--display);font-weight:400;color:var(--ink);font-size:20px;margin:0}
+.notes p{margin:0}
+.empty{color:var(--ink-faint);font-style:italic}
+@media (max-width:560px){#q{width:100%;margin-left:0}.grid{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+</style>
+<style>
+.bands{display:grid;gap:18px}
+.band{background:linear-gradient(180deg,#0a1024 0%,var(--tip) 100%);border:1px solid var(--tip-edge);border-radius:4px;box-shadow:inset 0 0 0 1px #000,0 6px 18px rgba(0,0,0,.45);padding:13px 16px 9px}
+.band>h3{margin:0 0 1px;font:400 19px var(--head);color:var(--gold)}
+.band .sub2{margin:0 0 8px;font:12px var(--mono);color:var(--gold-soft)}
+table.rec{width:100%;border-collapse:collapse;font-size:14.5px}
+table.rec th{text-align:left;font:500 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);padding:0 10px 5px 0;border-bottom:1px solid #1d2638;white-space:nowrap}
+table.rec td{padding:6px 10px 6px 0;border-bottom:1px solid #141c2c;vertical-align:top}
+table.rec tr:last-child td{border-bottom:0}
+table.rec td.sk{font-family:var(--mono);font-size:13px;color:var(--gold-soft);white-space:nowrap}
+table.rec td.mk a{color:var(--q3);text-decoration:none;font-weight:500}
+table.rec td.mk a:hover{text-decoration:underline}
+table.rec td.mk .q2{color:var(--q2)}
+table.rec td.wh{color:var(--ink-dim)}
+table.rec td.wh b{color:var(--ink);font-weight:500}
+.star{font:500 9.5px var(--mono);letter-spacing:.08em;color:var(--gold);border:1px solid var(--gold-soft);border-radius:2px;padding:0 3px;margin-left:6px;vertical-align:1px}
+.srctag{font:500 10px var(--mono);letter-spacing:.06em;border:1px solid var(--tip-edge);border-radius:2px;padding:1px 4px;margin-right:5px;color:var(--ink-faint)}
+.srctag.Vendor{color:#9fd4a0;border-color:#2c4a2e}
+.srctag.Drop{color:#e0a07a;border-color:#56392a}
+.srctag.Quest{color:#9fc4f0;border-color:#2b4260}
+.pswitch{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 2px}
+.pswitch a,.pswitch span{font:500 13.5px var(--body);text-decoration:none;border:1px solid var(--tip-edge);border-radius:3px;padding:3px 9px;color:var(--ink-dim)}
+.pswitch a:hover{color:var(--ink);border-color:var(--tip-edge-hi)}
+.pswitch .on{background:var(--gold);border-color:var(--gold);color:#111}
+@media (max-width:620px){#q{width:100%;margin-left:0}table.rec th.hs,table.rec td.hs{display:none}}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto}}</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="eyebrow">WoW Forever · Professions · Skinning</div>
+  <div class="xlink"><a href="index.html">All brackets</a> · <a href="professions.html">All professions</a> · <a href="crafted.html">Crafted sets →</a> · <a href="guides.html">Class guides →</a></div>
+  <h1>Skinning</h1>
+  <div class="pswitch"><a href="profession-blacksmithing.html">Blacksmithing</a><a href="profession-leatherworking.html">Leatherworking</a><a href="profession-tailoring.html">Tailoring</a><a href="profession-enchanting.html">Enchanting</a><a href="profession-engineering.html">Engineering</a><a href="profession-alchemy.html">Alchemy</a><a href="profession-cooking.html">Cooking</a><a href="profession-first-aid.html">First Aid</a><a href="profession-mining.html">Mining</a><a href="profession-herbalism.html">Herbalism</a><span class="on">Skinning</span><a href="profession-fishing.html">Fishing</a></div>
+  <p class="lede">Leather for leatherworking. No nodes and no recipes to chase: you skin what you kill, and the mob's level decides whether you can.</p>
+  
+  <p class="lede">Skinning has no nodes to find and almost nothing to learn: you skin a corpse, and whether you can is decided by the mob's level rather than by any recipe. The whole profession is five entries, three of which are the skill ranks themselves.</p>
+  <div class="facts">
+    
+    <span><b>5</b> things to learn</span>
+    
+    <span>skill <b>1–225</b></span>
+  </div>
+</header>
+
+<main>
+
+<section><h2>What you learn</h2><p class="sub">The whole list.</p><div class="bands"><div class="band"><table class="rec"><thead><tr><th>Skill</th><th>Name</th><th>From</th></tr></thead><tbody><tr><td class="sk">20</td><td class="mk">Camp Chair</td><td class="wh"><span class="srctag Quest">Quest</span><span class="srctag Trainer">Trainer</span></td></tr><tr><td class="sk">50</td><td class="mk">Skinning (Journeyman)</td><td class="wh"><span class="srctag Trainer">Trainer</span></td></tr><tr><td class="sk">125</td><td class="mk">Skinning (Expert)</td><td class="wh"><span class="srctag Trainer">Trainer</span></td></tr><tr><td class="sk">140</td><td class="mk">Field Guide</td><td class="wh"><span class="srctag Drop">Drop</span><span class="srctag Vendor">Vendor</span></td></tr><tr><td class="sk">200</td><td class="mk">Skinning (Artisan)</td><td class="wh"><span class="srctag Trainer">Trainer</span></td></tr></tbody></table></div></div></section>
+
+</main>
+
+<div class="notes">
+  <h3>Reading this</h3>
+  <p>Gathering skill is capped by tier rather than by your character level: 75 as Apprentice, 150 as Journeyman, and 225 as Expert, which needs level 20. Nothing past 225 is reachable before 35.</p>
+  <p>Skinning feeds leatherworking — see <a href="profession-leatherworking.html">where to find the leatherworking patterns</a>.</p>
+</div>
+<footer class="foot">Node and recipe data from <a href="https://www.wowhead.com/forever">Wowhead</a>, pulled 20 Oct 2026.</footer>
+</div>
+</body>
+</html>
