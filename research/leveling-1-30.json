@@ -1,0 +1,54 @@
+{
+  "gathered": "2026-10-20",
+  "context": {
+    "launch": "2026-11-04",
+    "beta": "2026-09-17 to 2026-10-22, level cap 30",
+    "maxLevel": 60,
+    "note": "No live server exists yet, so no /played or armory data. The beta is the only population that has levelled 1-30."
+  },
+  "classMetrics": {
+    "_header": ["trainerAbilities1_30", "runes", "firstPet", "firstSelfHeal", "firstAoE", "firstSpeedTool", "abilitiesBy10", "abilitiesBy20"],
+    "Druid":   [43, 37, null, 1, 20, 26, 16, 33],
+    "Hunter":  [62, 37, 10, null, 18, 20, 32, 52],
+    "Mage":    [39, 36, null, null, 14, 20, 12, 27],
+    "Paladin": [39, 36, null, 1, 20, null, 22, 29],
+    "Priest":  [44, 35, null, 1, 28, null, 18, 35],
+    "Rogue":   [27, 35, null, null, null, 10, 13, 19],
+    "Shaman":  [43, 40, null, 1, 12, 20, 14, 26],
+    "Warlock": [43, 34, 1, 14, 20, null, 20, 32],
+    "Warrior": [42, 36, null, null, 6, null, 23, 35]
+  },
+  "allianceRaces": {
+    "Human": ["Warrior", "Paladin", "Hunter", "Rogue", "Priest", "Mage", "Warlock"],
+    "Dwarf": ["Warrior", "Paladin", "Hunter", "Rogue", "Priest", "Shaman"],
+    "Night Elf": ["Warrior", "Hunter", "Rogue", "Priest", "Druid"],
+    "Gnome": ["Warrior", "Rogue", "Priest", "Mage", "Warlock"],
+    "High Order Skyborne": ["Warrior", "Hunter", "Rogue", "Mage", "Druid"]
+  },
+  "hordeRaces": {
+    "Orc": ["Warrior", "Hunter", "Rogue", "Shaman", "Mage", "Warlock"],
+    "Undead": ["Warrior", "Paladin", "Rogue", "Priest", "Mage", "Warlock"],
+    "Tauren": ["Warrior", "Hunter", "Shaman", "Druid"],
+    "Troll": ["Warrior", "Hunter", "Rogue", "Priest", "Shaman", "Mage", "Warlock"],
+    "Windshaper Skyborne": ["Warrior", "Hunter", "Rogue", "Shaman", "Druid"]
+  },
+  "racials": {
+    "High Order Skyborne": ["Read Ley Line: +100% Health and Mana regeneration", "Wind Blessed (passive): +3% melee, ranged and spellcasting haste", "Walk on Air: glide for 10s, 1.5m CD", "Elemental Insight (passive): +5% damage to Elementals"],
+    "Night Elf": ["Quickness: +1% dodge, +2% movement speed", "Wisp Spirit: +75% movement speed as a ghost", "Elune's Light: +10% crit for 15s", "Shadowmeld"],
+    "Dwarf": ["Earth Fury: +2% crit with all spells and attacks", "Stoneform: clears bleeds/poisons/diseases, -10% physical damage 8s", "Big Game Hunter: +5% damage to Beasts", "Find Treasure"],
+    "Human": ["Ruthless: +2% spell and ability crit", "The Human Spirit: +5% Spirit", "Perception", "Will to Survive"],
+    "Gnome": ["Eureka!: reduced cost and +10% damage for 8s", "Expansive Mind: increased maximum resource", "Escape Artist", "Engineering Specialization"],
+    "Troll": ["Regeneration: +20% health regen, 20% continues in combat", "Rapid Regeneration: regenerate 50% of maximum health over time", "Berserking: +10% casting and attack speed 10s", "Beast Slaying: +5% damage to Beasts"],
+    "Tauren": ["Endurance: +5% health and +2% hit chance", "Plainsrunning: movement speed grows while moving, +3% mounted", "War Stomp: stuns up to 5 enemies 2s", "Cultivation"],
+    "Undead": ["Touch of the Grave: 20% chance to drain up to 5% of max health", "Cannibalize: 7% health and mana every 2s for 10s", "Will of the Forsaken", "Underwater Breathing"],
+    "Orc": ["Blood Fury: +10% Attack Power and Spell Power 15s", "Savage: +1% crit with all spells and abilities", "Hardiness: -20% stun duration", "Shatter Curse"],
+    "Windshaper Skyborne": ["Skysight: +10% run speed", "Wind Blessed (passive): +3% melee, ranged and spellcasting haste", "Walk on Air", "Elemental Insight (passive): +5% damage to Elementals"]
+  },
+  "thirdPartyBetaTierLists": {
+    "_caveat": "All measure level-30 combat DPS in sims or dungeon logs, not levelling speed, and they disagree.",
+    "MythicSim via kami-labs (7 Oct)": "Fury Warrior 862 DPS, Survival Hunter 819 DPS",
+    "Leprestore (beta data)": "Hunter, Warlock, Enhancement Shaman top",
+    "Mobalytics Crix (11 Oct)": "ranked on dungeon performance, 'absolutely subject to change'",
+    "ExitLag": "Mage most consistently strong"
+  }
+}

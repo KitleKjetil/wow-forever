@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>*,*::before,*::after{box-sizing:border-box}body{margin:0}img{max-width:100%}[hidden]{display:none!important}.xlink{font-family:var(--mono);font-size:13px;color:var(--gold-soft)}.xlink a{color:var(--gold)}</style>
+<title>Forever Priest Gearing</title>
+<meta name="description" content="A slot-by-slot gearing guide for leveling a Priest from 1 to 30 in WoW Forever: which upgrade to chase at each level and where it comes from.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus+SC&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --ground:#0b0f17; --panel:#111827; --tip:#070b16; --tip-edge:#3a4458; --tip-edge-hi:#5d6a84;
+  --ink:#e8e4d8; --ink-dim:#a9a596; --ink-faint:#6f6c63;
+  --gold:#ffd100; --gold-soft:#c9a64a;
+  --q2:#1eff00; --q3:#0070dd; --q3-text:#3d9bff; --q4:#a335ee;
+  --equip:#1eff00; --flavor:#ffd100;
+  --display:"Marcellus SC","Trajan Pro",Georgia,serif;
+  --body:"Alegreya Sans","Segoe UI",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+  color-scheme:dark;
+}
+html,body{background:var(--ground);color:var(--ink)}
+body{font-family:var(--body);font-size:16px;line-height:1.5;padding-inline:16px;padding-block:0 64px}
+.wrap{max-width:1180px;margin:0 auto}
+a{color:inherit}
+header{padding-block:44px 28px;border-bottom:1px solid var(--tip-edge);display:grid;gap:18px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-soft)}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(34px,6vw,58px);line-height:1.02;margin:0;color:var(--gold);text-wrap:balance;letter-spacing:.01em}
+.lede{max-width:68ch;color:var(--ink-dim);font-size:17px;margin:0}
+.lede b{color:var(--ink);font-weight:500}
+.facts{display:flex;flex-wrap:wrap;gap:8px 28px;font-family:var(--mono);font-size:13px;color:var(--ink-dim)}
+.facts span b{color:var(--ink);font-weight:500}
+.facts .q3{color:var(--q3-text)} .facts .q2{color:var(--q2)} .facts .q4{color:var(--q4)}
+
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--ground) 92%,transparent);backdrop-filter:blur(6px);padding-block:14px;border-bottom:1px solid #1c2433;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font:500 14px var(--body);color:var(--ink-dim);background:transparent;border:1px solid var(--tip-edge);border-radius:3px;padding:5px 11px;cursor:pointer}
+.chip:hover{color:var(--ink);border-color:var(--tip-edge-hi)}
+.chip[aria-pressed="true"]{color:#111;background:var(--gold);border-color:var(--gold)}
+.chip:focus-visible,#q:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+#q{margin-left:auto;font:15px var(--body);color:var(--ink);background:var(--tip);border:1px solid var(--tip-edge);border-radius:3px;padding:6px 10px;width:220px;max-width:100%}
+.sugbox{position:absolute;z-index:20;margin:0;padding:4px;list-style:none;background:var(--tip);border:1px solid var(--tip-edge);border-radius:3px;box-shadow:0 10px 24px rgba(0,0,0,.5);max-height:320px;overflow:auto}
+.sugbox li{display:flex;justify-content:space-between;gap:12px;align-items:baseline;padding:6px 8px;border-radius:2px;cursor:pointer;font-size:14.5px;color:var(--ink)}
+.sugbox li[aria-selected="true"],.sugbox li:hover{background:#16203a}
+.sug-n{font-family:var(--mono);font-size:12px;color:var(--ink-faint)}
+#count{font-family:var(--mono);font-size:12px;color:var(--ink-faint)}
+
+section{padding-top:40px}
+section>h2{font-family:var(--display);font-weight:400;font-size:26px;margin:0 0 4px;color:var(--ink);text-wrap:balance}
+section>p.sub{margin:0 0 20px;color:var(--ink-dim);max-width:70ch}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px;align-items:start}
+
+/* the in-game tooltip */
+.tt{background:linear-gradient(180deg,#0a1024 0%,var(--tip) 100%);border:1px solid var(--tip-edge);border-radius:4px;box-shadow:inset 0 0 0 1px #000,0 6px 18px rgba(0,0,0,.45);padding:12px 14px 13px;font-size:14.5px;line-height:1.38;display:grid;gap:1px}
+.tt .nm{font-weight:700;font-size:16.5px;text-decoration:none;line-height:1.25}
+.tt .nm:hover{text-decoration:underline}
+.q2 .nm{color:var(--q2)} .q3 .nm{color:var(--q3-text)} .q4 .nm{color:var(--q4)}
+.tt .il{color:var(--gold)}
+.tt .row{display:flex;justify-content:space-between;gap:12px}
+.tt .st{color:var(--ink)}
+.tt .eq{color:var(--equip)}
+.tt .rq{color:var(--ink-dim)}
+.tt .real{color:var(--gold-soft);font-size:13.5px;margin-top:2px}
+.tt .why{margin-top:9px;padding-top:9px;border-top:1px solid #1d2638;color:var(--ink-dim);font-size:14px}
+.tt .fits{margin-top:6px;font-size:13px;color:var(--ink-faint)}
+.tt .fits span{font-weight:500}
+.chip[data-r]:not([data-r="all"])::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--cc);margin-right:6px;vertical-align:1px}
+.chip[data-r][aria-pressed="true"]:not([data-r="all"]){background:var(--cc);border-color:var(--cc);color:#111}
+.chip[data-r][aria-pressed="true"]:not([data-r="all"])::before{background:#111}
+.tt .why b{color:var(--gold-soft);font-weight:500}
+.tt details.where{margin-top:8px;border-top:1px solid #1d2638;padding-top:7px}
+.tt details.where>summary{cursor:pointer;color:var(--gold-soft);font-size:13.5px;list-style:none}
+.tt details.where>summary::-webkit-details-marker{display:none}
+.tt details.where>summary::before{content:"▸ ";display:inline-block;transition:transform .12s}
+.tt details[open].where>summary::before{content:"▾ "}
+.where-line{font-size:13.5px;color:var(--ink-dim);margin-top:5px}
+.where-line b{color:var(--ink);font-weight:500}
+.where-line.dim{color:var(--ink-faint)}
+.where-none{font-size:13.5px;color:var(--ink-faint);margin-top:5px}
+.wmap{position:relative;height:74px;margin-top:7px;border:1px solid var(--tip-edge);border-radius:3px;background:repeating-linear-gradient(45deg,#0c1426 0,#0c1426 8px,#0a1120 8px,#0a1120 16px)}
+.wmap-z{position:absolute;left:6px;top:4px;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint)}
+.wmap i{position:absolute;width:9px;height:9px;margin:-5px 0 0 -5px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 3px rgba(255,209,0,.25)}
+.wway{display:flex;gap:8px;align-items:center;margin-top:5px}
+.wway code{font-family:var(--mono);font-size:12px;color:var(--ink);background:#0c1426;border:1px solid var(--tip-edge);border-radius:2px;padding:2px 6px;flex:1;overflow:auto;white-space:nowrap}
+.copyway{font:500 12px var(--body);color:var(--ink-dim);background:transparent;border:1px solid var(--tip-edge);border-radius:2px;padding:2px 8px;cursor:pointer}
+.copyway:hover{color:var(--ink);border-color:var(--tip-edge-hi)}
+.tt .src{margin-top:6px;display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--ink-dim);border:1px solid #273046;border-radius:2px;padding:1px 6px}
+.tag.src{color:#d7c9a0;border-color:#4a4127}
+.tag.star{color:#111;background:var(--gold);border-color:var(--gold)}
+.gap{font-family:var(--mono);font-size:12px;color:var(--gold-soft)}
+
+.notes{margin-top:48px;border-top:1px solid var(--tip-edge);padding-top:24px;color:var(--ink-dim);font-size:14.5px;display:grid;gap:10px;max-width:78ch}
+.notes h3{font-family:var(--display);font-weight:400;color:var(--ink);font-size:20px;margin:0}
+.notes p{margin:0}
+.empty{color:var(--ink-faint);font-style:italic}
+@media (max-width:560px){#q{width:100%;margin-left:0}.grid{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+</style>
+<style>
+.gset{display:grid;gap:20px}
+.slotbox{background:linear-gradient(180deg,#0a1024 0%,var(--tip) 100%);border:1px solid var(--tip-edge);border-radius:4px;box-shadow:inset 0 0 0 1px #000,0 6px 18px rgba(0,0,0,.45);padding:13px 16px 10px}
+.slotbox>h3{margin:0 0 2px;font:400 19px var(--head);color:var(--gold)}
+.slotbox .none{margin:4px 0 6px;color:var(--ink-faint);font-style:italic;font-size:14px}
+ol.chain{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:0}
+ol.chain li{display:grid;grid-template-columns:52px 1fr;gap:12px;padding:7px 0;border-top:1px solid #141c2c}
+ol.chain li:first-child{border-top:0}
+.lv{font:500 13px var(--mono);color:var(--gold-soft);padding-top:2px;white-space:nowrap}
+.lv b{color:var(--gold);font-size:15px;font-weight:500}
+.it a{color:var(--q3);text-decoration:none;font-weight:500}
+.it.q2 a{color:var(--q2)}
+.it a:hover{text-decoration:underline}
+.it .meta{display:block;font-size:13px;color:var(--ink-faint);margin-top:1px}
+.it .stats{display:block;font-size:13.5px;color:var(--ink-dim);margin-top:1px}
+.tag{font:500 10px var(--mono);letter-spacing:.06em;border:1px solid var(--tip-edge);border-radius:2px;padding:1px 4px;margin-left:6px;vertical-align:1px;color:var(--ink-faint)}
+.tag.tank{color:#8fb8ff;border-color:#2b3c5c}
+.tag.heal{color:#8fe0b8;border-color:#245042}
+.tag.craft{color:var(--q2);border-color:#1f3a1f}
+details.alts{margin-top:7px;border-top:1px solid #1d2638;padding-top:6px}
+details.alts>summary{cursor:pointer;color:var(--gold-soft);font-size:13px;list-style:none}
+details.alts>summary::-webkit-details-marker{display:none}
+details.alts>summary::before{content:"▸ "}
+details[open].alts>summary::before{content:"▾ "}
+details.alts ul{list-style:none;margin:6px 0 0;padding:0;display:grid;gap:4px;font-size:13.5px;color:var(--ink-dim)}
+.switch{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 2px}
+.switch a,.switch span{font:500 13.5px var(--body);text-decoration:none;border:1px solid var(--tip-edge);border-radius:3px;padding:3px 9px;color:var(--cc)}
+.switch a:hover{border-color:var(--cc)}
+.switch .on{background:var(--cc);border-color:var(--cc);color:#111}
+.plan{background:linear-gradient(180deg,#141024 0%,var(--tip) 100%);border:1px solid #4a3a5c;border-left:3px solid var(--gold);border-radius:4px;box-shadow:inset 0 0 0 1px #000,0 6px 18px rgba(0,0,0,.45);padding:14px 17px}
+.plan h3{margin:0 0 7px;font:400 20px var(--head);color:var(--gold)}
+.plan .planlv{font:500 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--gold-soft);margin-left:8px;vertical-align:2px}
+.plan p{margin:0;color:var(--ink-dim);font-size:15px;max-width:74ch}
+.plan .planlinks{margin-top:10px;font:13px var(--mono)}
+.plan .planlinks a{color:var(--q3);text-decoration:none}
+.plan .planlinks a:hover{text-decoration:underline}
+.band{margin:0 0 14px}
+.band h3{margin:0 0 2px;font:400 19px var(--head);color:var(--q3)}
+.band p{margin:0 0 6px;color:var(--ink-dim);font-size:14.5px}
+.band ul{margin:0;padding-left:18px;color:var(--ink-dim);font-size:14.5px;display:grid;gap:3px}
+.band ul b{color:var(--ink);font-weight:500}
+@media (max-width:560px){#q{width:100%;margin-left:0}ol.chain li{grid-template-columns:46px 1fr;gap:9px}}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+<header>
+  <div class="eyebrow">WoW Forever · Alliance · Priest gearing</div>
+  <div class="xlink"><a href="index.html">All brackets</a> · <a href="level-1-10.html">1–10</a> · <a href="level-11-20.html">11–20</a> · <a href="level-21-30.html">21–30</a> · <a href="dungeons.html">Dungeon loot →</a> · <a href="crafted.html">Crafted sets →</a> · <a href="guides.html">All class guides</a></div>
+  <h1>Leveling a Priest</h1>
+  <div class="switch"><a href="guide-warrior.html" style="--cc:#C69B6D">Warrior</a><a href="guide-paladin.html" style="--cc:#F48CBA">Paladin</a><a href="guide-hunter.html" style="--cc:#AAD372">Hunter</a><a href="guide-rogue.html" style="--cc:#FFF468">Rogue</a><span class="on" style="--cc:#FFFFFF">Priest</span><a href="guide-shaman.html" style="--cc:#0070DD">Shaman</a><a href="guide-mage.html" style="--cc:#3FC7EB">Mage</a><a href="guide-warlock.html" style="--cc:#8788EE">Warlock</a><a href="guide-druid.html" style="--cc:#FF7C0A">Druid</a></div>
+  <p class="lede">Priests level in shadow and heal in groups, and the gear for the two jobs barely overlaps, so both are tracked here. Spell power and Intellect for damage; healing and Spirit for the other. Cloth all the way.</p>
+  <p class="lede">Each slot below is a <b>chain of upgrades</b>: the level you can realistically get the piece, what it is, and where it comes from. Anything that isn't actually better than what you already have is tucked into "other options" rather than cluttering the line.</p>
+  <div class="facts">
+    <span><b>163</b> pieces a priest can use</span>
+    <span><span id="chaincount"></span> of them are actual upgrades</span>
+    <span>levels <b>1–30</b></span>
+  </div>
+</header>
+
+<div class="bar" role="toolbar" aria-label="Filter the guide">
+  <div class="chips" id="chips"></div>
+  <input id="q" type="search" placeholder="Search item, dungeon, quest…" aria-label="Search the guide">
+  <span id="count" aria-live="polite"></span>
+</div>
+
+<main id="out"></main>
+
+
+
+<section>
+  <h2>Your route, level by level</h2>
+  <p class="sub">The same chain read the other way round: what is worth going out of your way for at each stage.</p>
+  <div id="route"></div>
+</section>
+
+<div class="notes">
+  <h3>How to read this</h3>
+  <p><b>Wands matter more for a priest than for anyone else</b> at these levels: they cost no mana and carry you between casts. Treat the ranged slot as a real upgrade path, not an afterthought.</p>
+  <p>Forever's school-specific cloth sets are the thing to know. The Shadow set is a shadow priest's biggest single jump; Pristine is the healing one.</p>
+  <p>Levels are the <b>realistic</b> ones used across this site: a quest reward sits two levels under the quest, a dungeon drop about three under the boss, and anything you can buy sits at its required level. Crafted pieces are listed at their required level with the profession skill they need — most bind on pickup, so you need the profession yourself.</p>
+  <p>A chain only shows a piece when it beats the item level of everything before it. Sidegrades, and pieces that are better for the other job, are under "other options".</p>
+</div>
+<footer class="foot">Built from the item data on this site, last pulled from <a href="https://www.wowhead.com/forever">Wowhead</a> 20 Oct 2026.</footer>
+</div>
+
+<script>
+const W="https://www.wowhead.com/forever/item=";
+const I=[{"id":248008,"n":"Apprentice's Spellstaff","q":2,"il":12,"lv":5,"slot":"Two-Hand","type":"Staff","dps":8.18,"st":["+2 Intellect"],"where":"Rare Books, a level 7 Elwynn quest","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":0,"minor":0},{"id":11287,"n":"Lesser Magic Wand","q":2,"il":15,"lv":5,"slot":"Ranged","type":"Wand","dps":7.67,"st":["+1 Spell Power"],"where":"crafted by enchanters, Bind on Equip","j_tank":0,"j_heal":0,"j_dps":1,"j_any":0,"craft":0,"minor":0},{"id":277011,"n":"Cloudy Stormsewn Cuffs","q":2,"il":10,"lv":5,"slot":"Wrist","type":"Cloth","dps":0,"st":["+1 Intellect"],"where":"Tailoring 55","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":1,"minor":1},{"id":277013,"n":"Cloudy Stormsewn Cord","q":2,"il":10,"lv":5,"slot":"Waist","type":"Cloth","dps":0,"st":["+1 Stamina"],"where":"Tailoring 55","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":1,"minor":1},{"id":277035,"n":"Azure Stormsewn Cuffs","q":2,"il":10,"lv":5,"slot":"Wrist","type":"Cloth","dps":0,"st":["+1 Intellect"],"where":"Tailoring 55","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":1,"minor":1},{"id":277037,"n":"Azure Stormsewn Cord","q":2,"il":10,"lv":5,"slot":"Waist","type":"Cloth","dps":0,"st":["+1 Stamina"],"where":"Tailoring 55","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":1,"minor":1},{"id":277012,"n":"Cloudy Stormsewn Handwraps","q":2,"il":11,"lv":6,"slot":"Hands","type":"Cloth","dps":0,"st":["+1 Spirit"],"where":"Tailoring 60","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":1,"minor":1},{"id":277015,"n":"Cloudy Stormsewn Shoes","q":2,"il":11,"lv":6,"slot":"Feet","type":"Cloth","dps":0,"st":["+1 Spirit"],"where":"Tailoring 60","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":1,"minor":1},{"id":277036,"n":"Azure Stormsewn Handwraps","q":2,"il":11,"lv":6,"slot":"Hands","type":"Cloth","dps":0,"st":["+1 Spirit"],"where":"Tailoring 60","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":1,"minor":1},{"id":277039,"n":"Azure Stormsewn Shoes","q":2,"il":11,"lv":6,"slot":"Feet","type":"Cloth","dps":0,"st":["+1 Spirit"],"where":"Tailoring 60","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":1,"minor":1},{"id":277010,"n":"Cloudy Stormsewn Vest","q":2,"il":12,"lv":7,"slot":"Chest","type":"Cloth","dps":0,"st":["+2 Intellect"],"where":"Tailoring 65","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":1,"minor":1},{"id":277014,"n":"Cloudy Stormsewn Leggings","q":2,"il":12,"lv":7,"slot":"Legs","type":"Cloth","dps":0,"st":["+2 Stamina"],"where":"Tailoring 65","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":1,"minor":1},{"id":277034,"n":"Azure Stormsewn Vest","q":2,"il":12,"lv":7,"slot":"Chest","type":"Cloth","dps":0,"st":["+2 Intellect"],"where":"Tailoring 65","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":1,"minor":1},{"id":277038,"n":"Azure Stormsewn Leggings","q":2,"il":12,"lv":7,"slot":"Legs","type":"Cloth","dps":0,"st":["+2 Stamina"],"where":"Tailoring 65","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":1,"minor":1},{"id":270000,"n":"Apprentice Wizard's Gown","q":2,"il":13,"lv":9,"slot":"Chest","type":"Cloth","dps":0,"st":["+2 Intellect","+2 Spell Power"],"where":"WANTED: \"Hogger\", a level 11 quest","j_tank":0,"j_heal":0,"j_dps":1,"j_any":0,"craft":0,"minor":0},{"id":263332,"n":"Elder's Tunic","q":2,"il":13,"lv":9,"slot":"Chest","type":"Cloth","dps":0,"st":["+4 Intellect"],"where":"Unfortunate News, a level 11 Zephras Isle quest","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":0,"minor":0},{"id":263406,"n":"Empyrean Shoes","q":2,"il":15,"lv":10,"slot":"Feet","type":"Cloth","dps":0,"st":["+2 Spirit","+2 Spell Power"],"where":"Confront Lorthuna, a level 12 Zephras Isle quest","j_tank":0,"j_heal":0,"j_dps":1,"j_any":0,"craft":0,"minor":0},{"id":253885,"n":"Novice Arcanist's Sash","q":3,"il":15,"lv":10,"slot":"Waist","type":"Cloth","dps":0,"st":["+3 Stamina","+3 Intellect","+4 Spell Power"],"where":"Tailoring 55, bind on pickup","j_tank":0,"j_heal":0,"j_dps":1,"j_any":0,"craft":1,"minor":0},{"id":253887,"n":"Novice Ardent's Sash","q":3,"il":15,"lv":10,"slot":"Waist","type":"Cloth","dps":0,"st":["+3 Intellect","+3 Spirit","+1 Damage Done","+6 Healing Done"],"where":"Tailoring 55, bind on pickup","j_tank":0,"j_heal":1,"j_dps":1,"j_any":0,"craft":1,"minor":0},{"id":286427,"n":"Cloak of the Honored Guest","q":2,"il":15,"lv":11,"slot":"Back","type":"","dps":0,"st":["+1 Stamina"],"where":"Exploring the Alliance, a level 13 quest","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":0,"minor":1},{"id":253889,"n":"Pristine Boots","q":3,"il":17,"lv":12,"slot":"Feet","type":"Cloth","dps":0,"st":["+4 Stamina","+3 Intellect","+3 Damage Done","+8 Healing Done"],"where":"Tailoring 85, bind on pickup","j_tank":0,"j_heal":1,"j_dps":1,"j_any":0,"craft":1,"minor":0},{"id":253891,"n":"Silky Boots","q":3,"il":17,"lv":12,"slot":"Feet","type":"Cloth","dps":0,"st":["+4 Stamina","+3 Intellect","Increases damage done by Frost spells and effects by up to 6."],"where":"Tailoring 85, bind on pickup","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":1,"minor":0},{"id":253893,"n":"Flame Boots","q":3,"il":17,"lv":12,"slot":"Feet","type":"Cloth","dps":0,"st":["+4 Stamina","+3 Intellect","Increases damage done by Fire spells and effects by up to 6."],"where":"Tailoring 85, bind on pickup","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":1,"minor":0},{"id":253895,"n":"Shadow Boots","q":3,"il":17,"lv":12,"slot":"Feet","type":"Cloth","dps":0,"st":["+4 Stamina","+3 Intellect","Increases damage done by Shadow spells and effects by up to 6."],"where":"Tailoring 85, bind on pickup","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":1,"minor":0},{"id":253897,"n":"Pearly Boots","q":3,"il":17,"lv":12,"slot":"Feet","type":"Cloth","dps":0,"st":["+4 Stamina","+3 Intellect","Increases damage done by Arcane spells and effects by up to 6."],"where":"Tailoring 85, bind on pickup","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":1,"minor":0},{"id":253899,"n":"Shining Boots","q":3,"il":17,"lv":12,"slot":"Feet","type":"Cloth","dps":0,"st":["+4 Stamina","+3 Intellect","Increases damage done by Holy spells and effects by up to 6."],"where":"Tailoring 85, bind on pickup","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":1,"minor":0},{"id":280096,"n":"Tomb Robber's Gloves","q":3,"il":17,"lv":13,"slot":"Hands","type":"Cloth","dps":0,"st":["+3 Stamina","+6 Intellect"],"where":"Important Heirlooms, a level 15 Hall of Thanes quest","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":0,"minor":0},{"id":279896,"n":"Deepblaze","q":3,"il":18,"lv":14,"slot":"Ranged","type":"Wand","dps":12.06,"st":["+3 Intellect"],"where":"Old Ironforge Incursion, a level 16 Hall of Thanes quest","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":0,"minor":0},{"id":281925,"n":"Whelpfire Wand","q":2,"il":20,"lv":15,"slot":"Ranged","type":"Wand","dps":15.26,"st":[],"where":"Bind on Equip, so buy it","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":0,"minor":0},{"id":12977,"n":"Magefist Gloves","q":3,"il":20,"lv":15,"slot":"Hands","type":"Cloth","dps":0,"st":["+3 Stamina","+5 Intellect","+4 Spirit"],"where":"world drop, Bind on Equip","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":0,"minor":0},{"id":7509,"n":"Manaweave Robe","q":2,"il":20,"lv":15,"slot":"Chest","type":"Cloth","dps":0,"st":["+6 Intellect"],"where":"Manaweave Robe, a level 15 quest","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":0,"minor":0},{"id":253901,"n":"Filigreed Pristine Gown","q":3,"il":20,"lv":15,"slot":"Chest","type":"Cloth","dps":0,"st":["+4 Stamina","+5 Intellect","+3 Spirit","+4 Damage Done","+12 Healing Done"],"where":"Tailoring 80, bind on pickup","j_tank":0,"j_heal":1,"j_dps":1,"j_any":0,"craft":1,"minor":0},{"id":253903,"n":"Filigreed Silky Gown","q":3,"il":20,"lv":15,"slot":"Chest","type":"Cloth","dps":0,"st":["+4 Stamina","+5 Intellect","+3 Spirit","Increases damage done by Frost spells and effects by up to 9."],"where":"Tailoring 80, bind on pickup","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":1,"minor":0},{"id":253905,"n":"Filigreed Flame Gown","q":3,"il":20,"lv":15,"slot":"Chest","type":"Cloth","dps":0,"st":["+4 Stamina","+5 Intellect","+3 Spirit","Increases damage done by Fire spells and effects by up to 9."],"where":"Tailoring 80, bind on pickup","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":1,"minor":0},{"id":253907,"n":"Filigreed Shadow Gown","q":3,"il":20,"lv":15,"slot":"Chest","type":"Cloth","dps":0,"st":["+4 Stamina","+5 Intellect","+3 Spirit","Increases damage done by Shadow spells and effects by up to 9."],"where":"Tailoring 80, bind on pickup","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":1,"minor":0},{"id":253909,"n":"Filigreed Pearly Gown","q":3,"il":20,"lv":15,"slot":"Chest","type":"Cloth","dps":0,"st":["+4 Stamina","+5 Intellect","+3 Spirit","Increases damage done by Arcane spells and effects by up to 9."],"where":"Tailoring 80, bind on pickup","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":1,"minor":0},{"id":253911,"n":"Filigreed Shining Gown","q":3,"il":20,"lv":15,"slot":"Chest","type":"Cloth","dps":0,"st":["+4 Stamina","+5 Intellect","+3 Spirit","Increases damage done by Holy spells and effects by up to 9."],"where":"Tailoring 80, bind on pickup","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":1,"minor":0},{"id":253913,"n":"Pristine Gloves","q":3,"il":20,"lv":15,"slot":"Hands","type":"Cloth","dps":0,"st":["+4 Stamina","+3 Intellect","+4 Damage Done","+11 Healing Done"],"where":"Tailoring 100, bind on pickup","j_tank":0,"j_heal":1,"j_dps":1,"j_any":0,"craft":1,"minor":0},{"id":253915,"n":"Silky Gloves","q":3,"il":20,"lv":15,"slot":"Hands","type":"Cloth","dps":0,"st":["+4 Stamina","+3 Intellect","Increases damage done by Frost spells and effects by up to 7."],"where":"Tailoring 100, bind on pickup","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":1,"minor":0},{"id":253917,"n":"Flame Gloves","q":3,"il":20,"lv":15,"slot":"Hands","type":"Cloth","dps":0,"st":["+4 Stamina","+3 Intellect","Increases damage done by Fire spells and effects by up to 7."],"where":"Tailoring 100, bind on pickup","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":1,"minor":0},{"id":253919,"n":"Shadow Gloves","q":3,"il":20,"lv":15,"slot":"Hands","type":"Cloth","dps":0,"st":["+4 Stamina","+3 Intellect","Increases damage done by Shadow spells and effects by up to 7."],"where":"Tailoring 100, bind on pickup","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":1,"minor":0},{"id":253921,"n":"Pearly Gloves","q":3,"il":20,"lv":15,"slot":"Hands","type":"Cloth","dps":0,"st":["+4 Stamina","+3 Intellect","Increases damage done by Arcane spells and effects by up to 7."],"where":"Tailoring 100, bind on pickup","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":1,"minor":0},{"id":253923,"n":"Shining Gloves","q":3,"il":20,"lv":15,"slot":"Hands","type":"Cloth","dps":0,"st":["+4 Stamina","+3 Intellect","Increases damage done by Holy spells and effects by up to 7."],"where":"Tailoring 100, bind on pickup","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":1,"minor":0},{"id":273089,"n":"Slither Cord","q":3,"il":22,"lv":17,"slot":"Waist","type":"Cloth","dps":0,"st":["Restores +3 mana per 5 sec."],"where":"source not on Wowhead yet","j_tank":0,"j_heal":1,"j_dps":0,"j_any":0,"craft":0,"minor":0},{"id":273137,"n":"Skum's Bucket","q":3,"il":22,"lv":17,"slot":"Off Hand","type":"Held In Off-hand","dps":0,"st":["+3 Stamina","+3 Damage Done","+10 Healing Done"],"where":"source not on Wowhead yet","j_tank":0,"j_heal":1,"j_dps":1,"j_any":0,"craft":0,"minor":0},{"id":253925,"n":"Pristine Sash","q":3,"il":22,"lv":17,"slot":"Waist","type":"Cloth","dps":0,"st":["+5 Stamina","+4 Intellect","+3 Damage Done","+10 Healing Done"],"where":"Tailoring 110, bind on pickup","j_tank":0,"j_heal":1,"j_dps":1,"j_any":0,"craft":1,"minor":0},{"id":253927,"n":"Silky Sash","q":3,"il":22,"lv":17,"slot":"Waist","type":"Cloth","dps":0,"st":["+5 Stamina","+4 Intellect","Increases damage done by Frost spells and effects by up to 7."],"where":"Tailoring 110, bind on pickup","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":1,"minor":0},{"id":253929,"n":"Flame Sash","q":3,"il":22,"lv":17,"slot":"Waist","type":"Cloth","dps":0,"st":["+5 Stamina","+4 Intellect","Increases damage done by Fire spells and effects by up to 7."],"where":"Tailoring 110, bind on pickup","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":1,"minor":0},{"id":253931,"n":"Shadow Sash","q":3,"il":22,"lv":17,"slot":"Waist","type":"Cloth","dps":0,"st":["+5 Stamina","+4 Intellect","Increases damage done by Shadow spells and effects by up to 7."],"where":"Tailoring 110, bind on pickup","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":1,"minor":0},{"id":253933,"n":"Pearly Sash","q":3,"il":22,"lv":17,"slot":"Waist","type":"Cloth","dps":0,"st":["+5 Stamina","+4 Intellect","Increases damage done by Arcane spells and effects by up to 7."],"where":"Tailoring 110, bind on pickup","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":1,"minor":0},{"id":253935,"n":"Shining Sash","q":3,"il":22,"lv":17,"slot":"Waist","type":"Cloth","dps":0,"st":["+5 Stamina","+4 Intellect","Increases damage done by Holy spells and effects by up to 7."],"where":"Tailoring 110, bind on pickup","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":1,"minor":0},{"id":7607,"n":"Sable Wand","q":2,"il":22,"lv":18,"slot":"Ranged","type":"Wand","dps":16.94,"st":["+2 Spirit"],"where":"Underground Assault, a level 20 quest","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":0,"minor":0},{"id":5240,"n":"Torchlight Wand","q":2,"il":21,"lv":18,"slot":"Ranged","type":"Wand","dps":15.77,"st":["+2 Spell Power"],"where":"The Coastal Menace, a level 20 quest","j_tank":0,"j_heal":0,"j_dps":1,"j_any":0,"craft":0,"minor":0},{"id":277203,"n":"Scholarly Pendant","q":3,"il":25,"lv":18,"slot":"Neck","type":"","dps":0,"st":["+6 Stamina","+4 Spirit"],"where":"Friend of the Library, a level 20 quest","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":0,"minor":0},{"id":20431,"n":"Lorekeeper's Ring","q":3,"il":23,"lv":18,"slot":"Finger","type":"","dps":0,"st":["+2 Stamina","Restores +2 mana per 5 sec.","+5 Spell Power"],"where":"Silverwing Sentinels vendor, Ashenvale","j_tank":0,"j_heal":1,"j_dps":1,"j_any":0,"craft":0,"minor":0},{"id":1974,"n":"Mindthrust Bracers","q":3,"il":22,"lv":18,"slot":"Wrist","type":"Cloth","dps":0,"st":["+1 Stamina","+5 Intellect","Restores +3 mana per 5 sec."],"where":"Shadowfang Keep","j_tank":0,"j_heal":1,"j_dps":0,"j_any":0,"craft":0,"minor":0},{"id":1172,"n":"Grayson's Torch","q":2,"il":21,"lv":18,"slot":"Held In Off-hand","type":"","dps":0,"st":["+4 Spirit"],"where":"The Coastal Menace, a level 20 quest","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":0,"minor":0},{"id":281291,"n":"Mathystra Channeling Orb","q":3,"il":21,"lv":19,"slot":"Held In Off-hand","type":"","dps":0,"st":["+3 Stamina","+5 Intellect"],"where":"Baron Marinous, a level 21 Darkshore quest","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":0,"minor":0},{"id":2042,"n":"Staff of Westfall","q":3,"il":24,"lv":20,"slot":"Two-Hand","type":"Staff","dps":20.5,"st":["+5 Intellect","+6 Spirit"],"where":"The Defias Brotherhood, a level 22 Deadmines chain","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":0,"minor":0},{"id":2271,"n":"Staff of the Blessed Seer","q":3,"il":25,"lv":20,"slot":"Two-Hand","type":"Staff","dps":15.67,"st":["+9 Stamina","+10 Spirit","+28 Spell Power"],"where":"a drop Wowhead doesn't name","j_tank":0,"j_heal":0,"j_dps":1,"j_any":0,"craft":0,"minor":0},{"id":2567,"n":"Evocator's Blade","q":3,"il":25,"lv":20,"slot":"Main Hand","type":"Dagger","dps":10.94,"st":["+2 Intellect","+5 Spirit","+28 Spell Power"],"where":"a drop Wowhead doesn't name","j_tank":0,"j_heal":0,"j_dps":1,"j_any":0,"craft":0,"minor":0},{"id":10726,"n":"Gnomish Mind Control Cap","q":2,"il":47,"lv":20,"slot":"Head","type":"Cloth","dps":0,"st":["+14 Spirit"],"where":"needs Engineering 215, trainable from level 20","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":0,"minor":0},{"id":10724,"n":"Gnomish Rocket Boots","q":2,"il":45,"lv":20,"slot":"Feet","type":"Cloth","dps":0,"st":[],"where":"needs Engineering 225, trainable from level 20","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":0,"minor":1},{"id":10502,"n":"Spellpower Goggles Xtreme","q":2,"il":43,"lv":20,"slot":"Head","type":"Cloth","dps":0,"st":["+21 Spell Power"],"where":"needs Engineering 215, trainable from level 20","j_tank":0,"j_heal":0,"j_dps":1,"j_any":0,"craft":0,"minor":0},{"id":277213,"n":"Dro'zem's Tunic","q":3,"il":25,"lv":20,"slot":"Chest","type":"Cloth","dps":0,"st":["+9 Intellect","+10 Spell Power"],"where":"source not on Wowhead yet","j_tank":0,"j_heal":0,"j_dps":1,"j_any":0,"craft":0,"minor":0},{"id":4320,"n":"Spidersilk Boots","q":3,"il":25,"lv":20,"slot":"Feet","type":"Cloth","dps":0,"st":["+4 Stamina","+4 Intellect","+7 Spell Power"],"where":"crafted, Bind on Equip","j_tank":0,"j_heal":0,"j_dps":1,"j_any":0,"craft":0,"minor":0},{"id":12998,"n":"Magician's Mantle","q":3,"il":25,"lv":20,"slot":"Shoulder","type":"Cloth","dps":0,"st":["+9 Intellect","+5 Spell Power"],"where":"a drop Wowhead doesn't name","j_tank":0,"j_heal":0,"j_dps":1,"j_any":0,"craft":0,"minor":0},{"id":21568,"n":"Rune of Duty","q":3,"il":25,"lv":20,"slot":"Trinket","type":"","dps":0,"st":["+4 Stamina","+6 to all Resistances"],"where":"Silverwing Sentinels vendor, Ashenvale","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":0,"minor":0},{"id":285331,"n":"Mark of the Pack Leader","q":3,"il":25,"lv":20,"slot":"Neck","type":"","dps":0,"st":["+5 Strength","+5 Intellect"],"where":"source not on Wowhead yet","j_tank":0,"j_heal":0,"j_dps":1,"j_any":0,"craft":0,"minor":0},{"id":253937,"n":"Filigreed Pristine Leggings","q":3,"il":25,"lv":20,"slot":"Legs","type":"Cloth","dps":0,"st":["+5 Stamina","+6 Intellect","+4 Spirit","+6 Damage Done","+17 Healing Done"],"where":"Tailoring 105, bind on pickup","j_tank":0,"j_heal":1,"j_dps":1,"j_any":0,"craft":1,"minor":0},{"id":253939,"n":"Filigreed Silky Leggings","q":3,"il":25,"lv":20,"slot":"Legs","type":"Cloth","dps":0,"st":["+5 Stamina","+6 Intellect","+4 Spirit","Increases damage done by Frost spells and effects by up to 11."],"where":"Tailoring 105, bind on pickup","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":1,"minor":0},{"id":253941,"n":"Filigreed Flame Leggings","q":3,"il":25,"lv":20,"slot":"Legs","type":"Cloth","dps":0,"st":["+5 Stamina","+6 Intellect","+4 Spirit","Increases damage done by Fire spells and effects by up to 11."],"where":"Tailoring 105, bind on pickup","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":1,"minor":0},{"id":253943,"n":"Filigreed Shadow Leggings","q":3,"il":25,"lv":20,"slot":"Legs","type":"Cloth","dps":0,"st":["+5 Stamina","+6 Intellect","+4 Spirit","Increases damage done by Shadow spells and effects by up to 11."],"where":"Tailoring 105, bind on pickup","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":1,"minor":0},{"id":253945,"n":"Filigreed Pearly Leggings","q":3,"il":25,"lv":20,"slot":"Legs","type":"Cloth","dps":0,"st":["+5 Stamina","+6 Intellect","+4 Spirit","Increases damage done by Arcane spells and effects by up to 11."],"where":"Tailoring 105, bind on pickup","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":1,"minor":0},{"id":253947,"n":"Filigreed Shining Leggings","q":3,"il":25,"lv":20,"slot":"Legs","type":"Cloth","dps":0,"st":["+5 Stamina","+6 Intellect","+4 Spirit","Increases damage done by Holy spells and effects by up to 11."],"where":"Tailoring 105, bind on pickup","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":1,"minor":0},{"id":253949,"n":"Pristine Circlet","q":3,"il":25,"lv":20,"slot":"Head","type":"Cloth","dps":0,"st":["+10 Stamina","+6 Damage Done","+17 Healing Done"],"where":"Tailoring 125, bind on pickup","j_tank":0,"j_heal":1,"j_dps":1,"j_any":0,"craft":1,"minor":0},{"id":253951,"n":"Silky Circlet","q":3,"il":25,"lv":20,"slot":"Head","type":"Cloth","dps":0,"st":["+10 Stamina","Increases damage done by Frost spells and effects by up to 11."],"where":"Tailoring 125, bind on pickup","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":1,"minor":0},{"id":253953,"n":"Flame Circlet","q":3,"il":25,"lv":20,"slot":"Head","type":"Cloth","dps":0,"st":["+10 Stamina","Increases damage done by Fire spells and effects by up to 11."],"where":"Tailoring 125, bind on pickup","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":1,"minor":0},{"id":253955,"n":"Shadow Circlet","q":3,"il":25,"lv":20,"slot":"Head","type":"Cloth","dps":0,"st":["+10 Stamina","Increases damage done by Shadow spells and effects by up to 11."],"where":"Tailoring 125, bind on pickup","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":1,"minor":0},{"id":253957,"n":"Pearly Circlet","q":3,"il":25,"lv":20,"slot":"Head","type":"Cloth","dps":0,"st":["+10 Stamina","Increases damage done by Arcane spells and effects by up to 11."],"where":"Tailoring 125, bind on pickup","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":1,"minor":0},{"id":253959,"n":"Shining Circlet","q":3,"il":25,"lv":20,"slot":"Head","type":"Cloth","dps":0,"st":["+10 Stamina","Increases damage done by Holy spells and effects by up to 11."],"where":"Tailoring 125, bind on pickup","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":1,"minor":0},{"id":6226,"n":"Bloody Apron","q":3,"il":24,"lv":20,"slot":"Chest","type":"Cloth","dps":0,"st":["+9 Stamina","+4 Damage Done","+13 Healing Done","Restores +7 health per 5 sec."],"where":"Razorclaw the Butcher, level 22 SFK boss","j_tank":0,"j_heal":1,"j_dps":1,"j_any":0,"craft":0,"minor":0},{"id":6743,"n":"Sustaining Ring","q":3,"il":25,"lv":21,"slot":"Finger","type":"","dps":0,"st":["+6 Stamina","Restores +6 health per 5 sec."],"where":"Knowledge in the Deeps, a level 23 BFD quest","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":0,"minor":0},{"id":253961,"n":"Pristine Gown","q":3,"il":27,"lv":22,"slot":"Chest","type":"Cloth","dps":0,"st":["+6 Stamina","+7 Intellect","+4 Spirit","+7 Damage Done","+19 Healing Done"],"where":"Tailoring 130, bind on pickup","j_tank":0,"j_heal":1,"j_dps":1,"j_any":0,"craft":1,"minor":0},{"id":253963,"n":"Silky Gown","q":3,"il":27,"lv":22,"slot":"Chest","type":"Cloth","dps":0,"st":["+6 Stamina","+7 Intellect","+4 Spirit","Increases damage done by Frost spells and effects by up to 13."],"where":"Tailoring 130, bind on pickup","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":1,"minor":0},{"id":253965,"n":"Flame Gown","q":3,"il":27,"lv":22,"slot":"Chest","type":"Cloth","dps":0,"st":["+6 Stamina","+7 Intellect","+4 Spirit","Increases damage done by Fire spells and effects by up to 13."],"where":"Tailoring 130, bind on pickup","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":1,"minor":0},{"id":253967,"n":"Shadow Gown","q":3,"il":27,"lv":22,"slot":"Chest","type":"Cloth","dps":0,"st":["+6 Stamina","+7 Intellect","+4 Spirit","Increases damage done by Shadow spells and effects by up to 13."],"where":"Tailoring 130, bind on pickup","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":1,"minor":0},{"id":253969,"n":"Pearly Gown","q":3,"il":27,"lv":22,"slot":"Chest","type":"Cloth","dps":0,"st":["+6 Stamina","+7 Intellect","+4 Spirit","Increases damage done by Arcane spells and effects by up to 13."],"where":"Tailoring 130, bind on pickup","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":1,"minor":0},{"id":253971,"n":"Shining Gown","q":3,"il":27,"lv":22,"slot":"Chest","type":"Cloth","dps":0,"st":["+6 Stamina","+7 Intellect","+4 Spirit","Increases damage done by Holy spells and effects by up to 13."],"where":"Tailoring 130, bind on pickup","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":1,"minor":0},{"id":23173,"n":"Abomination Skin Leggings","q":3,"il":25,"lv":22,"slot":"Legs","type":"Cloth","dps":0,"st":["+7 Stamina","+8 Intellect","+9 Spell Power"],"where":"Sever, level 25 SFK rare","j_tank":0,"j_heal":0,"j_dps":1,"j_any":0,"craft":0,"minor":0},{"id":10657,"n":"Talbar Mantle","q":3,"il":26,"lv":23,"slot":"Shoulder","type":"Cloth","dps":0,"st":["+3 Stamina","+6 Intellect","Restores +2 mana per 5 sec."],"where":"In Nightmares, a level 25 Barrens quest","j_tank":0,"j_heal":1,"j_dps":0,"j_any":0,"craft":0,"minor":0},{"id":6898,"n":"Orb of Soran'ruk","q":3,"il":25,"lv":23,"slot":"Held In Off-hand","type":"","dps":0,"st":[],"where":"The Orb of Soran'ruk, a level 25 quest","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":0,"minor":1},{"id":6677,"n":"Spellcrafter Wand","q":2,"il":26,"lv":24,"slot":"Ranged","type":"Wand","dps":20.29,"st":["+4 Spell Power"],"where":"Retrieval for Mauren, a level 26 quest","j_tank":0,"j_heal":0,"j_dps":1,"j_any":0,"craft":0,"minor":0},{"id":6903,"n":"Gaze Dreamer Pants","q":3,"il":28,"lv":24,"slot":"Legs","type":"Cloth","dps":0,"st":["+9 Spirit","+12 Spell Power"],"where":"Twilight Lord Kelris, level 27 BFD boss","j_tank":0,"j_heal":0,"j_dps":1,"j_any":0,"craft":0,"minor":0},{"id":282721,"n":"Gnoll Shaman's Staff","q":2,"il":30,"lv":25,"slot":"Two-Hand","type":"Staff","dps":20.28,"st":["+7 Strength","Restores +3 mana per 5 sec."],"where":"Bind on Equip, so buy it","j_tank":0,"j_heal":1,"j_dps":1,"j_any":0,"craft":0,"minor":0},{"id":249392,"n":"Glimmering Staff","q":3,"il":30,"lv":25,"slot":"Two-Hand","type":"Staff","dps":18.41,"st":["+11 Stamina","+11 Intellect","+34 Spell Power"],"where":"Enchanting 140, and it binds on pickup","j_tank":0,"j_heal":0,"j_dps":1,"j_any":0,"craft":0,"minor":0},{"id":249392,"n":"Glimmering Staff","q":3,"il":30,"lv":25,"slot":"Two-Hand","type":"Staff","dps":18.41,"st":["+11 Stamina","+11 Intellect","+34 Spell Power"],"where":"Crafted, bind on pickup","j_tank":0,"j_heal":0,"j_dps":1,"j_any":0,"craft":1,"minor":0},{"id":249393,"n":"Soulstaff","q":3,"il":30,"lv":25,"slot":"Two-Hand","type":"Staff","dps":18.33,"st":["+11 Stamina","+11 Spirit","+34 Spell Power"],"where":"Enchanting 140, and it binds on pickup","j_tank":0,"j_heal":0,"j_dps":1,"j_any":0,"craft":0,"minor":0},{"id":249393,"n":"Soulstaff","q":3,"il":30,"lv":25,"slot":"Two-Hand","type":"Staff","dps":18.33,"st":["+11 Stamina","+11 Spirit","+34 Spell Power"],"where":"Crafted, bind on pickup","j_tank":0,"j_heal":0,"j_dps":1,"j_any":0,"craft":1,"minor":0},{"id":7001,"n":"Gravestone Scepter","q":3,"il":29,"lv":25,"slot":"Ranged","type":"Wand","dps":18.33,"st":["+3 Spirit","+4 Shadow Resistance"],"where":"Blackfathom Villainy, a level 27 BFD quest","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":0,"minor":0},{"id":249394,"n":"Orb of Mystic Insight","q":3,"il":30,"lv":25,"slot":"Held In Off-hand","type":"","dps":0,"st":["+6 Intellect","+7 Spell Power"],"where":"Enchanting 140, and it binds on pickup","j_tank":0,"j_heal":0,"j_dps":1,"j_any":0,"craft":0,"minor":0},{"id":249395,"n":"Orb of Souls","q":3,"il":30,"lv":25,"slot":"Held In Off-hand","type":"","dps":0,"st":["+6 Spirit","+4 Damage Done","+13 Healing Done"],"where":"Enchanting 140, and it binds on pickup","j_tank":0,"j_heal":1,"j_dps":1,"j_any":0,"craft":0,"minor":0},{"id":274152,"n":"Roogug's Severed Head","q":3,"il":30,"lv":25,"slot":"Trinket","type":"","dps":0,"st":["+6 Spirit"],"where":"source not on Wowhead yet","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":0,"minor":0},{"id":253975,"n":"Filigreed Pristine Circlet","q":3,"il":30,"lv":25,"slot":"Head","type":"Cloth","dps":0,"st":["+12 Stamina","+8 Damage Done","+21 Healing Done"],"where":"Tailoring 130, bind on pickup","j_tank":0,"j_heal":1,"j_dps":1,"j_any":0,"craft":1,"minor":0},{"id":253977,"n":"Filigreed Silky Circlet","q":3,"il":30,"lv":25,"slot":"Head","type":"Cloth","dps":0,"st":["+12 Stamina","Increases damage done by Frost spells and effects by up to 14."],"where":"Tailoring 130, bind on pickup","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":1,"minor":0},{"id":253979,"n":"Filigreed Flame Circlet","q":3,"il":30,"lv":25,"slot":"Head","type":"Cloth","dps":0,"st":["+12 Stamina","Increases damage done by Fire spells and effects by up to 14."],"where":"Tailoring 130, bind on pickup","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":1,"minor":0},{"id":253981,"n":"Filigreed Shadow Circlet","q":3,"il":30,"lv":25,"slot":"Head","type":"Cloth","dps":0,"st":["+12 Stamina","Increases damage done by Shadow spells and effects by up to 14."],"where":"Tailoring 130, bind on pickup","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":1,"minor":0},{"id":253983,"n":"Filigreed Pearly Circlet","q":3,"il":30,"lv":25,"slot":"Head","type":"Cloth","dps":0,"st":["+12 Stamina","Increases damage done by Arcane spells and effects by up to 14."],"where":"Tailoring 130, bind on pickup","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":1,"minor":0},{"id":253985,"n":"Filigreed Shining Circlet","q":3,"il":30,"lv":25,"slot":"Head","type":"Cloth","dps":0,"st":["+12 Stamina","Increases damage done by Holy spells and effects by up to 14."],"where":"Tailoring 130, bind on pickup","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":1,"minor":0},{"id":253987,"n":"Pristine Leggings","q":3,"il":30,"lv":25,"slot":"Legs","type":"Cloth","dps":0,"st":["+7 Stamina","+7 Intellect","+5 Spirit","+6 Damage Done","+21 Healing Done"],"where":"Tailoring 145, bind on pickup","j_tank":0,"j_heal":1,"j_dps":1,"j_any":0,"craft":1,"minor":0},{"id":253989,"n":"Silky Leggings","q":3,"il":30,"lv":25,"slot":"Legs","type":"Cloth","dps":0,"st":["+7 Stamina","+7 Intellect","+5 Spirit","Increases damage done by Frost spells and effects by up to 14."],"where":"Tailoring 145, bind on pickup","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":1,"minor":0},{"id":253991,"n":"Flame Leggings","q":3,"il":30,"lv":25,"slot":"Legs","type":"Cloth","dps":0,"st":["+7 Stamina","+7 Intellect","+5 Spirit","Increases damage done by Fire spells and effects by up to 14."],"where":"Tailoring 145, bind on pickup","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":1,"minor":0},{"id":253993,"n":"Shadow Leggings","q":3,"il":30,"lv":25,"slot":"Legs","type":"Cloth","dps":0,"st":["+7 Stamina","+7 Intellect","+5 Spirit","Increases damage done by Shadow spells and effects by up to 14."],"where":"Tailoring 145, bind on pickup","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":1,"minor":0},{"id":253995,"n":"Pearly Leggings","q":3,"il":30,"lv":25,"slot":"Legs","type":"Cloth","dps":0,"st":["+7 Stamina","+7 Intellect","+5 Spirit","Increases damage done by Arcane spells and effects by up to 14."],"where":"Tailoring 145, bind on pickup","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":1,"minor":0},{"id":253997,"n":"Shining Leggings","q":3,"il":30,"lv":25,"slot":"Legs","type":"Cloth","dps":0,"st":["+7 Stamina","+7 Intellect","+5 Spirit","Increases damage done by Holy spells and effects by up to 14."],"where":"Tailoring 145, bind on pickup","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":1,"minor":0},{"id":249394,"n":"Orb of Mystic Insight","q":3,"il":30,"lv":25,"slot":"Held In Off-hand","type":"","dps":0,"st":["+6 Intellect","+7 Spell Power"],"where":"Crafted, bind on pickup","j_tank":0,"j_heal":0,"j_dps":1,"j_any":0,"craft":1,"minor":0},{"id":249395,"n":"Orb of Souls","q":3,"il":30,"lv":25,"slot":"Held In Off-hand","type":"","dps":0,"st":["+6 Spirit","+4 Damage Done","+13 Healing Done"],"where":"Crafted, bind on pickup","j_tank":0,"j_heal":1,"j_dps":1,"j_any":0,"craft":1,"minor":0},{"id":270035,"n":"Reclaimer's Robes","q":2,"il":27,"lv":25,"slot":"Chest","type":"Cloth","dps":0,"st":["+5 Stamina","+8 Intellect"],"where":"Reclaiming the Charred Vale, a level 27 Stonetalon quest","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":0,"minor":0},{"id":211498,"n":"Trainee's Sentinel Nightsaber","q":3,"il":25,"lv":25,"slot":"Mount","type":"Account-wide","dps":0,"st":[],"where":"Silverwing Sentinels vendor, Ashenvale","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":0,"minor":1},{"id":274158,"n":"Death Prophet Spine","q":3,"il":31,"lv":26,"slot":"Two-Hand","type":"Staff","dps":18.93,"st":["+11 Stamina","+34 Spell Power"],"where":"source not on Wowhead yet","j_tank":0,"j_heal":0,"j_dps":1,"j_any":0,"craft":0,"minor":0},{"id":2721,"n":"Holy Shroud","q":3,"il":32,"lv":27,"slot":"Head","type":"Cloth","dps":0,"st":["+6 Spirit","+11 Damage Done","+33 Healing Done"],"where":"world drop, Bind on Equip","j_tank":0,"j_heal":1,"j_dps":1,"j_any":0,"craft":0,"minor":0},{"id":273032,"n":"Bonebinder's Signet","q":3,"il":31,"lv":27,"slot":"Finger","type":"","dps":0,"st":["+5 Strength","+6 Spirit","+40 Armor"],"where":"Atrexis the Grave Knight, an elite in Alterac Mountains","j_tank":0,"j_heal":0,"j_dps":1,"j_any":0,"craft":0,"minor":0},{"id":273043,"n":"Wand of Mana Concentration","q":3,"il":32,"lv":28,"slot":"Ranged","type":"Wand","dps":31.18,"st":["+4 Intellect","Restores +2 mana per 5 sec."],"where":"Arcanic Enigma in Alterac Mountains","j_tank":0,"j_heal":1,"j_dps":0,"j_any":0,"craft":0,"minor":0},{"id":2816,"n":"Death Speaker Scepter","q":3,"il":33,"lv":28,"slot":"Main Hand","type":"Mace","dps":21.43,"st":["+68 Healing Done","Restores +12 health per 5 sec."],"where":"Death Speaker Jargba, level 30 RFK boss","j_tank":0,"j_heal":1,"j_dps":0,"j_any":0,"craft":0,"minor":0},{"id":286987,"n":"Violet Sorcerer's Sandals","q":3,"il":33,"lv":28,"slot":"Feet","type":"Cloth","dps":0,"st":["+7 Stamina","+11 Intellect"],"where":"drops in Alterac Mountains","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":0,"minor":0},{"id":286989,"n":"Violet Sorcerer's Wraps","q":3,"il":33,"lv":28,"slot":"Hands","type":"Cloth","dps":0,"st":["+9 Intellect"],"where":"drops in Alterac Mountains","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":0,"minor":0},{"id":21119,"n":"Talisman of Arathor","q":3,"il":33,"lv":28,"slot":"Trinket","type":"","dps":0,"st":["+6 Stamina"],"where":"League of Arathor vendor, Friendly","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":0,"minor":0},{"id":271904,"n":"Volunteer's Lucky Seal","q":3,"il":33,"lv":28,"slot":"Trinket","type":"","dps":0,"st":["+6 Stamina","+8 to all Resistances"],"where":"Theramore Expeditionary Force vendor, Friendly","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":0,"minor":0},{"id":286994,"n":"Tattered Kirin Tor Cloak","q":3,"il":33,"lv":28,"slot":"Back","type":"","dps":0,"st":["+8 Intellect"],"where":"Seeking Remnant in Alterac Mountains","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":0,"minor":0},{"id":286995,"n":"Guardian's Emblem","q":3,"il":33,"lv":28,"slot":"Neck","type":"","dps":0,"st":["+8 Stamina","+6 Spell Power"],"where":"source not on Wowhead yet","j_tank":0,"j_heal":0,"j_dps":1,"j_any":0,"craft":0,"minor":0},{"id":9609,"n":"Shilly Mitts","q":3,"il":32,"lv":28,"slot":"Hands","type":"Cloth","dps":0,"st":["+9 Spirit","+7 Spell Power","+60 Bonus Armor"],"where":"Gyrodrillmatic Excavationators, a level 30 Gnomeregan quest","j_tank":1,"j_heal":0,"j_dps":1,"j_any":0,"craft":0,"minor":0},{"id":273034,"n":"Ephemeral Grips","q":3,"il":32,"lv":28,"slot":"Hands","type":"Cloth","dps":0,"st":["+7 Stamina","+7 Intellect"],"where":"Arcane Anomaly, an elite in Alterac Mountains","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":0,"minor":0},{"id":273031,"n":"Runemender's Seal","q":3,"il":32,"lv":28,"slot":"Finger","type":"","dps":0,"st":["+4 Stamina","+7 Spirit","+3 Damage Done","+9 Healing Done"],"where":"Arcane Anomaly, an elite in Alterac Mountains","j_tank":0,"j_heal":1,"j_dps":1,"j_any":0,"craft":0,"minor":0},{"id":6750,"n":"Snake Hoop","q":2,"il":32,"lv":28,"slot":"Finger","type":"","dps":0,"st":["+5 Intellect","+6 Spell Power"],"where":"Willix the Importer, a level 30 quest","j_tank":0,"j_heal":0,"j_dps":1,"j_any":0,"craft":0,"minor":0},{"id":273024,"n":"Glinteye Slippers","q":3,"il":31,"lv":28,"slot":"Feet","type":"Cloth","dps":0,"st":["+9 Stamina","+6 Spirit","+7 Spell Power"],"where":"Saltspine in Excavation Site: Wetlands","j_tank":0,"j_heal":0,"j_dps":1,"j_any":0,"craft":0,"minor":0},{"id":273027,"n":"Raptor's Gaze","q":3,"il":31,"lv":28,"slot":"Held In Off-hand","type":"","dps":0,"st":["+4 Stamina","+4 Intellect","+8 Spell Power"],"where":"Shadetooth in Excavation Site: Wetlands","j_tank":0,"j_heal":0,"j_dps":1,"j_any":0,"craft":0,"minor":0},{"id":271767,"n":"Healer's Staff","q":3,"il":33,"lv":29,"slot":"Two-Hand","type":"Staff","dps":20.77,"st":["+12 Stamina","Restores +5 mana per 5 sec.","+22 Damage Done","+67 Healing Done"],"where":"a quest inside Excavation Site: Wetlands","j_tank":0,"j_heal":1,"j_dps":1,"j_any":0,"craft":0,"minor":0},{"id":273040,"n":"Spine of the Devourer","q":3,"il":33,"lv":29,"slot":"Two-Hand","type":"Staff","dps":20.69,"st":["+14 Stamina","+3 Spell Penetration","+36 Spell Power"],"where":"Mana Devourer, an elite in Alterac Mountains","j_tank":0,"j_heal":0,"j_dps":1,"j_any":0,"craft":0,"minor":0},{"id":273053,"n":"Tendonscraper Dagger","q":3,"il":33,"lv":29,"slot":"Main Hand","type":"Dagger","dps":14.38,"st":["+5 Stamina","Restores +8 health per 5 sec.","+36 Spell Power"],"where":"Lyn the Ignored, a rare spawn in Alterac Mountains","j_tank":0,"j_heal":0,"j_dps":1,"j_any":0,"craft":0,"minor":0},{"id":286988,"n":"Violet Sorcerer's Leggings","q":3,"il":34,"lv":29,"slot":"Legs","type":"Cloth","dps":0,"st":["+13 Intellect","+5 Spirit","+12 Spell Power"],"where":"drops in Alterac Mountains","j_tank":0,"j_heal":0,"j_dps":1,"j_any":0,"craft":0,"minor":0},{"id":274068,"n":"Thermaplugg Medal of Honor","q":3,"il":34,"lv":29,"slot":"Neck","type":"","dps":0,"st":["+6 Stamina","+6 Spirit","+10 Attack Power"],"where":"source not on Wowhead yet","j_tank":0,"j_heal":0,"j_dps":1,"j_any":0,"craft":0,"minor":0},{"id":271716,"n":"Explorer's League Dustcover","q":3,"il":33,"lv":29,"slot":"Back","type":"","dps":0,"st":["+5 Agility","+5 Intellect","+5 Spirit"],"where":"the quest Prehistoric Prism","j_tank":0,"j_heal":0,"j_dps":1,"j_any":0,"craft":0,"minor":0},{"id":273030,"n":"Ring of Power Regulation","q":3,"il":33,"lv":29,"slot":"Finger","type":"","dps":0,"st":["Restores +3 mana per 5 sec.","+6 Spell Power"],"where":"Relic Guardian in Excavation Site: Wetlands","j_tank":0,"j_heal":1,"j_dps":1,"j_any":0,"craft":0,"minor":0},{"id":2933,"n":"Seal of Wrynn","q":3,"il":31,"lv":29,"slot":"Finger","type":"","dps":0,"st":["+3 Strength","+3 Agility","+4 Stamina","+4 Intellect","+3 Spirit"],"where":"An Audience with the King, a level 31 chain","j_tank":0,"j_heal":0,"j_dps":1,"j_any":0,"craft":0,"minor":0},{"id":2277,"n":"Necromancer Leggings","q":3,"il":35,"lv":30,"slot":"Legs","type":"Cloth","dps":0,"st":["+12 Stamina","+11 Intellect"],"where":"a drop Wowhead doesn't name","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":0,"minor":0},{"id":273051,"n":"Violet Sorcerer's Mantle","q":3,"il":35,"lv":30,"slot":"Shoulder","type":"Cloth","dps":0,"st":["+9 Intellect","+4 Spell Penetration"],"where":"Shade of the Archmage, an elite in Alterac Mountains","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":0,"minor":0},{"id":13084,"n":"Kaleidoscope Chain","q":3,"il":35,"lv":30,"slot":"Neck","type":"","dps":0,"st":["+4 Strength","+4 Agility","+4 Stamina","+4 Intellect","+4 Spirit"],"where":"world drop, Bind on Equip","j_tank":0,"j_heal":0,"j_dps":1,"j_any":0,"craft":0,"minor":0},{"id":274749,"n":"Souvenier Sea Shell","q":3,"il":35,"lv":30,"slot":"Neck","type":"","dps":0,"st":["+13 Stamina","Restores +5 health per 5 sec."],"where":"Booty Bay vendor, Honored","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":0,"minor":0},{"id":274746,"n":"Sea Giant's Toe Ring","q":2,"il":35,"lv":30,"slot":"Finger","type":"","dps":0,"st":["+5 Damage Done","+17 Healing Done"],"where":"Booty Bay vendor, Honored","j_tank":0,"j_heal":1,"j_dps":1,"j_any":0,"craft":0,"minor":0},{"id":23169,"n":"Scorn's Icy Choker","q":3,"il":35,"lv":30,"slot":"Neck","type":"","dps":0,"st":["+5 Stamina","+6 Intellect","+7 Spell Power"],"where":"Scorn in Scarlet Monastery","j_tank":0,"j_heal":0,"j_dps":1,"j_any":0,"craft":0,"minor":0},{"id":273049,"n":"Archmagister's Faceted Pendant","q":3,"il":35,"lv":30,"slot":"Neck","type":"","dps":0,"st":["+6 Intellect"],"where":"Shade of the Archmage, an elite in Alterac Mountains","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":0,"minor":0},{"id":253999,"n":"Earthen Leggings","q":2,"il":35,"lv":30,"slot":"Legs","type":"Cloth","dps":0,"st":["+11 Spirit","+4 Damage Done","+14 Healing Done"],"where":"Tailoring 160","j_tank":0,"j_heal":1,"j_dps":1,"j_any":0,"craft":1,"minor":0},{"id":254001,"n":"Gilded Slippers","q":3,"il":35,"lv":30,"slot":"Feet","type":"Cloth","dps":0,"st":["+6 Stamina","+7 Intellect","+4 Spirit","+7 Damage Done","+19 Healing Done"],"where":"Tailoring 145, bind on pickup","j_tank":0,"j_heal":1,"j_dps":1,"j_any":0,"craft":1,"minor":0},{"id":254003,"n":"Frothing Slippers","q":3,"il":35,"lv":30,"slot":"Feet","type":"Cloth","dps":0,"st":["+6 Stamina","+7 Intellect","+4 Spirit","Increases damage done by Frost spells and effects by up to 13."],"where":"Tailoring 145, bind on pickup","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":1,"minor":0},{"id":254005,"n":"Fiery Slippers","q":3,"il":35,"lv":30,"slot":"Feet","type":"Cloth","dps":0,"st":["+6 Stamina","+7 Intellect","+4 Spirit","Increases damage done by Fire spells and effects by up to 13."],"where":"Tailoring 145, bind on pickup","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":1,"minor":0},{"id":254007,"n":"Black Slippers","q":3,"il":35,"lv":30,"slot":"Feet","type":"Cloth","dps":0,"st":["+6 Stamina","+7 Intellect","+4 Spirit","Increases damage done by Shadow spells and effects by up to 13."],"where":"Tailoring 145, bind on pickup","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":1,"minor":0},{"id":254009,"n":"Golden Slippers","q":3,"il":35,"lv":30,"slot":"Feet","type":"Cloth","dps":0,"st":["+6 Stamina","+7 Intellect","+4 Spirit","Increases damage done by Arcane spells and effects by up to 13."],"where":"Tailoring 145, bind on pickup","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":1,"minor":0},{"id":254011,"n":"Radiant Slippers","q":3,"il":35,"lv":30,"slot":"Feet","type":"Cloth","dps":0,"st":["+6 Stamina","+7 Intellect","+4 Spirit","Increases damage done by Holy spells and effects by up to 13."],"where":"Tailoring 145, bind on pickup","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":1,"minor":0},{"id":277046,"n":"Cloudy Stormsewn Cowl","q":2,"il":35,"lv":30,"slot":"Head","type":"Cloth","dps":0,"st":["+9 Stamina","+9 Intellect"],"where":"Tailoring 185","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":1,"minor":0},{"id":277047,"n":"Cloudy Stormsewn Epaulets","q":2,"il":35,"lv":30,"slot":"Shoulder","type":"Cloth","dps":0,"st":["+7 Stamina","+7 Spirit"],"where":"Tailoring 185","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":1,"minor":0},{"id":277054,"n":"Azure Stormsewn Cowl","q":2,"il":35,"lv":30,"slot":"Head","type":"Cloth","dps":0,"st":["+9 Stamina","+9 Intellect"],"where":"Tailoring 185","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":1,"minor":0},{"id":277055,"n":"Azure Stormsewn Epaulets","q":2,"il":35,"lv":30,"slot":"Shoulder","type":"Cloth","dps":0,"st":["+7 Stamina","+7 Spirit"],"where":"Tailoring 185","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":1,"minor":0},{"id":280306,"n":"Whimsical Waistwrap","q":2,"il":35,"lv":30,"slot":"Waist","type":"Cloth","dps":0,"st":[],"where":"Engineering 180, bind on pickup","j_tank":0,"j_heal":0,"j_dps":0,"j_any":1,"craft":1,"minor":1}];
+const GROUPS=[["Two-handed weapons",["Two-Hand"],"Everything you hold in both hands, staves and polearms included."],["One-handers, shields and off-hands",["One-Hand","Main Hand","Off Hand","Held In Off-hand"],"Off Hand is shields; Held In Off-hand is the caster's orbs and tomes."],["Ranged and thrown",["Ranged","Thrown"],"Bows, guns, wands and thrown weapons."],["Relics",["Relic"],"Idols, librams and totems. They sit in their own slot, so one costs you nothing to carry."],["Head, shoulders, back",["Head","Shoulder","Back"],""],["Chest, wrists, hands",["Chest","Wrist","Hands"],""],["Waist, legs, feet",["Waist","Legs","Feet"],""],["Neck, rings, trinkets",["Neck","Finger","Trinket"],""]];
+const CC={"Warrior":"#C69B6D","Paladin":"#F48CBA","Shaman":"#0070DD","Hunter":"#AAD372","Rogue":"#FFF468","Priest":"#FFFFFF","Mage":"#3FC7EB","Warlock":"#8788EE","Druid":"#FF7C0A"};
+const esc=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;");
+const MODES=[["all","Everything"],["dps","Shadow (damage)"],["heal","Healing"]];
+let mode="all",craft=1;
+try{mode=localStorage.getItem("cg-mode")||"all";craft=+(localStorage.getItem("cg-craft")??1)}catch(e){}
+if(!MODES.some(m=>m[0]===mode))mode="all";
+
+const chips=document.getElementById("chips"),out=document.getElementById("out"),route=document.getElementById("route"),q=document.getElementById("q"),count=document.getElementById("count");
+function drawChips(){
+  chips.innerHTML=MODES.map(([k,l])=>`<button class="chip" data-m="${k}" aria-pressed="${k===mode}">${l}</button>`).join("")
+    +`<button class="chip" data-c="1" aria-pressed="${craft?"true":"false"}">Include crafted</button>`;
+}
+drawChips();
+chips.addEventListener("click",e=>{const b=e.target.closest(".chip");if(!b)return;
+  if(b.dataset.m)mode=b.dataset.m; else craft=craft?0:1;
+  try{localStorage.setItem("cg-mode",mode);localStorage.setItem("cg-craft",craft)}catch(e){}
+  drawChips();render();});
+q.addEventListener("input",render);
+
+const keep=x=>(craft||!x.craft)&&(mode==="all"||x.j_any||x["j_"+mode]);
+const hay=x=>[x.n,x.slot,x.type,x.where,...x.st].join(" ").toLowerCase();
+// An upgrade only earns a line when it beats everything before it: damage per second for a
+// weapon, item level for armour.
+const score=x=>x.dps?x.dps:x.il;
+function chain(list){
+  const out=[];let best=0;
+  for(const x of list){ if(x.minor) continue; const v=score(x); if(v>best){out.push(x);best=v;} }
+  return out;
+}
+function line(x){
+  return `<li><span class="lv"><b>${x.lv}</b></span><span class="it q${x.q}">`
+    +`<a href="${W}${x.id}" target="_blank" rel="noopener">${esc(x.n)}</a>`
+    +(x.j_tank&&!x.j_dps?`<span class="tag tank">tank</span>`:"")+(x.j_heal&&!x.j_dps?`<span class="tag heal">heal</span>`:"")
+    +(x.craft?`<span class="tag craft">crafted</span>`:"")
+    +`<span class="meta">${x.dps?x.dps.toFixed(1)+" DPS · ":""}item level ${x.il} · ${esc(x.where)}</span>`
+    +(x.st.length?`<span class="stats">${esc(x.st.join(", "))}</span>`:"")
+    +`</span></li>`;
+}
+function render(){
+  const t=q.value.trim().toLowerCase();
+  let shown=0,h="";
+  for(const [title,slots,blurb] of GROUPS){
+    let inner="";
+    for(const slot of slots){
+      const all=I.filter(x=>x.slot===slot&&keep(x));
+      const hit=t?all.filter(x=>hay(x).includes(t)):all;
+      if(!hit.length) continue;
+      const ch=chain(t?hit:all);
+      const show=t?hit:ch;
+      const alts=t?[]:all.filter(x=>!ch.includes(x));
+      shown+=show.length;
+      inner+=`<div class="slotbox"><h3>${esc(slot==="Off Hand"?"Shields":slot)}</h3>`;
+      inner+=`<ol class="chain">${show.map(line).join("")}</ol>`;
+      if(alts.length) inner+=`<details class="alts"><summary>${alts.length} other option${alts.length>1?"s":""} in this slot</summary><ul>${alts.map(x=>`<li><b style="color:var(--ink)">${x.lv}</b> · <a href="${W}${x.id}" target="_blank" rel="noopener" style="color:var(--${x.q===2?"q2":"q3"})">${esc(x.n)}</a> — ${x.dps?x.dps.toFixed(1)+" DPS, ":""}ilvl ${x.il}, ${esc(x.where)}</li>`).join("")}</ul></details>`;
+      inner+=`</div>`;
+    }
+    if(inner) h+=`<section><h2>${title}</h2>${blurb?`<p class="sub">${blurb}</p>`:""}<div class="gset">${inner}</div></section>`;
+  }
+  out.innerHTML=h||`<section><p class="empty">Nothing matches that. Try another filter or clear the search.</p></section>`;
+  count.textContent=`${shown} shown`;
+  const cc=document.getElementById("chaincount"); if(cc) cc.innerHTML=`<b>${shown}</b>`;
+  drawRoute();
+}
+const BANDS=[[1,9,"The first ten levels"],[10,14,"Levels 10–14"],[15,19,"Levels 15–19"],[20,24,"Levels 20–24"],[25,30,"Levels 25–30"]];
+function drawRoute(){
+  const picked=[];
+  for(const [,slots] of GROUPS) for(const slot of slots) picked.push(...chain(I.filter(x=>x.slot===slot&&keep(x))));
+  let h="";
+  for(const [lo,hi,title] of BANDS){
+    const xs=picked.filter(x=>x.lv>=lo&&x.lv<=hi);
+    if(!xs.length) continue;
+    const byWhere=new Map();
+    for(const x of xs){ const k=x.where; if(!byWhere.has(k))byWhere.set(k,[]); byWhere.get(k).push(x); }
+    const rows=[...byWhere.entries()].sort((a,b)=>b[1].length-a[1].length)
+      .map(([w,xs])=>`<li><b>${esc(w)}</b> — ${xs.map(x=>esc(x.n)+" ("+x.lv+")").join(", ")}</li>`).join("");
+    h+=`<div class="band"><h3>${title}</h3><p>${xs.length} upgrade${xs.length>1?"s":""} worth chasing.</p><ul>${rows}</ul></div>`;
+  }
+  route.innerHTML=h;
+}
+// Search suggestions. initSuggest(input, terms, onPick): terms is [{t:"Spell Power", n:16, kind:"stat"}].
+// Typing filters the list (matches that start with what you typed come first); click, Enter or
+// arrow keys pick one. Everything is plain text, so it works with the page's own search.
+function initSuggest(input, terms, onPick) {
+  const box = document.createElement("ul");
+  box.className = "sugbox"; box.id = "sugbox"; box.hidden = true; box.setAttribute("role", "listbox");
+  input.parentElement.appendChild(box);
+  input.setAttribute("role", "combobox"); input.setAttribute("aria-expanded", "false");
+  input.setAttribute("aria-controls", "sugbox"); input.setAttribute("autocomplete", "off");
+  let active = -1, shown = [];
+  const place = () => {
+    const b = input.getBoundingClientRect(), p = input.parentElement.getBoundingClientRect();
+    box.style.left = (b.left - p.left) + "px"; box.style.top = (b.bottom - p.top + 4) + "px"; box.style.width = b.width + "px";
+  };
+  const close = () => { box.hidden = true; input.setAttribute("aria-expanded", "false"); active = -1; };
+  const draw = () => {
+    const t = input.value.trim().toLowerCase();
+    if (!t) return close();
+    const starts = [], has = [];
+    for (const s of terms) {
+      const i = s.t.toLowerCase().indexOf(t);
+      if (i === 0) starts.push(s); else if (i > 0) has.push(s);
+      if (starts.length >= 8) break;
+    }
+    shown = [...starts, ...has].slice(0, 8).filter((s) => s.t.toLowerCase() !== t);
+    if (!shown.length) return close();
+    box.innerHTML = shown.map((s, i) => `<li role="option" id="sug-${i}" aria-selected="${i === active}" data-i="${i}"><span class="sug-t">${s.t}</span><span class="sug-n">${s.n}</span></li>`).join("");
+    place(); box.hidden = false; input.setAttribute("aria-expanded", "true");
+  };
+  const pick = (i) => { const s = shown[i]; if (!s) return; input.value = s.t; close(); onPick(); const out = document.getElementById("out"); if (out && out.getBoundingClientRect().top < 0) out.scrollIntoView({ block: "start", behavior: "instant" }); };
+  input.addEventListener("input", draw);
+  input.addEventListener("focus", draw);
+  input.addEventListener("blur", () => setTimeout(close, 120));
+  input.addEventListener("keydown", (e) => {
+    if (box.hidden) return;
+    if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+      e.preventDefault();
+      active = e.key === "ArrowDown" ? (active + 1) % shown.length : (active <= 0 ? shown.length - 1 : active - 1);
+      [...box.children].forEach((li, i) => li.setAttribute("aria-selected", i === active));
+      input.setAttribute("aria-activedescendant", "sug-" + active);
+    } else if (e.key === "Enter") { if (active >= 0) { e.preventDefault(); pick(active); } else close(); }
+    else if (e.key === "Escape") close();
+  });
+  box.addEventListener("mousedown", (e) => { const li = e.target.closest("li"); if (li) { e.preventDefault(); pick(+li.dataset.i); } });
+  addEventListener("resize", () => { if (!box.hidden) place(); });
+}
+// Turn item fields into search terms: stat names without their numbers, slots, armor types, classes.
+function itemTerms(items, add) {
+  const count = new Map();
+  const bump = (t, kind) => { if (!t || t.length < 3) return; const k = t.toLowerCase(); const e = count.get(k) || { t, n: 0, kind }; e.n++; count.set(k, e); };
+  for (const x of items) {
+    bump(x.n, "item");
+    if (x.slot) bump(x.slot, "slot");
+    if (x.type) bump(x.type, "type");
+    for (const c of x.classes || []) bump(c, "class");
+    for (const s of x.st || []) {
+      const clean = s.replace(/^\+?\d+\s*/, "").replace(/^to all /, "").replace(/^Restores \+?\d+ /, "").replace(/ per 5 sec\.?$/, " per 5 sec").trim();
+      bump(clean, "stat");
+    }
+    for (const e of x.eq || []) { if (/^Chance on hit/.test(e)) bump("Chance on hit", "effect"); else if (/^Use:/.test(e)) bump("Use effect", "effect"); }
+  }
+  for (const [t, kind] of add || []) bump(t, kind);
+  // Item names are unique, so rank the shared terms (stats, slots, classes) first.
+  return [...count.values()].sort((a, b) => (b.kind !== "item") - (a.kind !== "item") || b.n - a.n || a.t.localeCompare(b.t));
+}
+
+initSuggest(q, itemTerms(I, I.map(x=>[x.where,"source"]).concat(I.map(x=>[x.slot,"slot"]))), render);
+render();
+</script>
+</body>
+</html>
