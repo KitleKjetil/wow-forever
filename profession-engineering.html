@@ -119,12 +119,15 @@ table.rec td.wh b{color:var(--ink);font-weight:500}
 .srctag.Drop{color:#e0a07a;border-color:#56392a}
 .srctag.Quest{color:#9fc4f0;border-color:#2b4260}
 .favor{color:var(--gold-soft);font-size:13px}
+.noitem{color:var(--ink)}
 .pswitch{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 2px}
 .pswitch a,.pswitch span{font:500 13.5px var(--body);text-decoration:none;border:1px solid var(--tip-edge);border-radius:3px;padding:3px 9px;color:var(--ink-dim)}
 .pswitch a:hover{color:var(--ink);border-color:var(--tip-edge-hi)}
 .pswitch .on{background:var(--gold);border-color:var(--gold);color:#111}
 @media (max-width:620px){#q{width:100%;margin-left:0}table.rec th.hs,table.rec td.hs{display:none}}
 @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto}}</style>
+<script>const whTooltips={colorLinks:false,iconizeLinks:false,renameLinks:false,hide:{droppedby:true}};</script>
+<script defer src="https://wow.zamimg.com/widgets/power.js"></script>
 </head>
 <body>
 <div class="wrap">
@@ -181,7 +184,7 @@ function row(r){
   const where=r.srcs.map(s=>`<span class="srctag ${s}">${s}</span>`).join("")
     +(r.npc?`<b>${esc(r.npc)}</b>${r.zone?" · "+esc(ZN[r.zone]||"zone "+r.zone):""}${r.aca?` · <span class="favor">${r.aca} Merchant's Favor</span>`:""}`:`<span style="color:var(--ink-faint)">name not recorded yet</span>`);
   return `<tr><td class="sk">${r.skill}</td>`
-    +`<td class="mk"><a class="${r.q===2?"q2":""}" href="${W}${r.itemId?"item="+r.itemId:"spell=0"}" target="_blank" rel="noopener">${esc(r.name)}</a>${r.star?'<span class="star">PICK</span>':""}</td>`
+    +`<td class="mk">${r.itemId?`<a class="${r.q===2?"q2":""}" href="${W}item=${r.itemId}" target="_blank" rel="noopener">${esc(r.name)}</a>`:`<span class="noitem">${esc(r.name)}</span>`}${r.star?'<span class="star">PICK</span>':""}</td>`
     +`<td class="wh hs">${esc(r.slot)}</td><td class="wh">${where}</td></tr>`;
 }
 function render(){
