@@ -118,6 +118,7 @@ table.rec td.wh b{color:var(--ink);font-weight:500}
 .srctag.Vendor{color:#9fd4a0;border-color:#2c4a2e}
 .srctag.Drop{color:#e0a07a;border-color:#56392a}
 .srctag.Quest{color:#9fc4f0;border-color:#2b4260}
+.favor{color:var(--gold-soft);font-size:13px}
 .pswitch{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 2px}
 .pswitch a,.pswitch span{font:500 13.5px var(--body);text-decoration:none;border:1px solid var(--tip-edge);border-radius:3px;padding:3px 9px;color:var(--ink-dim)}
 .pswitch a:hover{color:var(--ink);border-color:var(--tip-edge-hi)}
@@ -131,8 +132,9 @@ table.rec td.wh b{color:var(--ink);font-weight:500}
   <div class="eyebrow">WoW Forever · Professions · First Aid</div>
   <div class="xlink"><a href="index.html">All brackets</a> · <a href="professions.html">All professions</a> · <a href="crafted.html">Crafted sets →</a> · <a href="guides.html">Class guides →</a></div>
   <h1>First Aid Recipes</h1>
-  <div class="pswitch"><a href="profession-blacksmithing.html">Blacksmithing</a><a href="profession-leatherworking.html">Leatherworking</a><a href="profession-tailoring.html">Tailoring</a><a href="profession-enchanting.html">Enchanting</a><a href="profession-engineering.html">Engineering</a><a href="profession-alchemy.html">Alchemy</a><a href="profession-cooking.html">Cooking</a><span class="on">First Aid</span><a href="profession-mining.html">Mining</a><a href="profession-herbalism.html">Herbalism</a><a href="profession-skinning.html">Skinning</a><a href="profession-fishing.html">Fishing</a><a href="camping.html">Camping</a></div>
+  <div class="pswitch"><a href="profession-blacksmithing.html">Blacksmithing</a><a href="profession-leatherworking.html">Leatherworking</a><a href="profession-tailoring.html">Tailoring</a><a href="profession-enchanting.html">Enchanting</a><a href="profession-engineering.html">Engineering</a><a href="profession-alchemy.html">Alchemy</a><a href="profession-cooking.html">Cooking</a><span class="on">First Aid</span><a href="profession-mining.html">Mining</a><a href="profession-herbalism.html">Herbalism</a><a href="profession-skinning.html">Skinning</a><a href="profession-fishing.html">Fishing</a><a href="camping.html">Camping</a><a href="commerce-authority.html">Commerce Authority</a></div>
   <p class="lede">Bandages. Secondary, and the one profession every class benefits from, because a bandage is a free heal on a separate cooldown from everything else.</p>
+  
   <p class="lede">This page lists the <b>6 recipes you have to go and find</b> — bought from a vendor, dropped by something, or given for a quest. The other <b>11 come from your trainer</b>, so they need no guide. Everything here needs skill <b>225 or less</b>, which is the ceiling a character can reach before level 35.</p>
   <div class="facts">
     <span><b>6</b> to find</span>
@@ -159,7 +161,7 @@ table.rec td.wh b{color:var(--ink);font-weight:500}
 </div>
 
 <script>
-const R=[{"skill":130,"name":"Strong Anti-Venom","itemId":6453,"srcs":["Drop"],"npc":"","zone":0,"star":0,"slot":"","q":0},{"skill":140,"name":"Toxin Study","itemId":279940,"srcs":["Drop","Vendor"],"npc":"","zone":0,"star":0,"slot":"","q":0},{"skill":160,"name":"Clever Poultice","itemId":255717,"srcs":["Drop"],"npc":"","zone":0,"star":0,"slot":"","q":0},{"skill":175,"name":"Greater Healing Potion","itemId":1710,"srcs":["Drop"],"npc":"","zone":0,"star":0,"slot":"","q":0},{"skill":180,"name":"Heavy Silk Bandage","itemId":6451,"srcs":["Vendor"],"npc":"","zone":0,"star":0,"slot":"","q":0},{"skill":210,"name":"Mageweave Bandage","itemId":8544,"srcs":["Vendor"],"npc":"","zone":0,"star":0,"slot":"","q":0}];
+const R=[{"skill":130,"name":"Strong Anti-Venom","itemId":6453,"srcs":["Drop"],"npc":"","zone":0,"aca":0,"star":0,"slot":"","q":0},{"skill":140,"name":"Toxin Study","itemId":279940,"srcs":["Drop","Vendor"],"npc":"","zone":0,"aca":0,"star":0,"slot":"","q":0},{"skill":160,"name":"Clever Poultice","itemId":255717,"srcs":["Drop"],"npc":"","zone":0,"aca":0,"star":0,"slot":"","q":0},{"skill":175,"name":"Greater Healing Potion","itemId":1710,"srcs":["Drop"],"npc":"","zone":0,"aca":0,"star":0,"slot":"","q":0},{"skill":180,"name":"Heavy Silk Bandage","itemId":6451,"srcs":["Vendor"],"npc":"","zone":0,"aca":0,"star":0,"slot":"","q":0},{"skill":210,"name":"Mageweave Bandage","itemId":8544,"srcs":["Vendor"],"npc":"","zone":0,"aca":0,"star":0,"slot":"","q":0}];
 const W="https://www.wowhead.com/forever/";
 const ZN={"1":"Dun Morogh","3":"Badlands","4":"Blasted Lands","8":"Swamp of Sorrows","10":"Duskwood","11":"Wetlands","12":"Elwynn Forest","14":"Durotar","15":"Dustwallow Marsh","16":"Azshara","17":"The Barrens","28":"Western Plaguelands","33":"Stranglethorn Vale","36":"Alterac Mountains","38":"Loch Modan","40":"Westfall","44":"Redridge Mountains","45":"Arathi Highlands","47":"The Hinterlands","51":"Searing Gorge","85":"Tirisfal Glades","130":"Silverpine Forest","139":"Eastern Plaguelands","141":"Teldrassil","148":"Darkshore","209":"Shadowfang Keep","215":"Mulgore","267":"Hillsbrad Foothills","331":"Ashenvale","357":"Feralas","361":"Felwood","400":"Thousand Needles","405":"Desolace","406":"Stonetalon Mountains","440":"Tanaris","490":"Un'Goro Crater","493":"Moonglade","618":"Winterspring","717":"The Stockade","718":"Wailing Caverns","719":"Blackfathom Deeps","721":"Gnomeregan","796":"Scarlet Monastery","1337":"Uldaman","1519":"Stormwind City","1581":"The Deadmines","1637":"Orgrimmar","16591":"Dalaran","16593":"Zephras Isle","16611":"Ruins of Lordaeron","16732":"Excavation Site: Wetlands"};
 const esc=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;");
@@ -177,7 +179,7 @@ const hay=r=>[r.name,r.npc,ZN[r.zone]||"",r.slot,...r.srcs].join(" ").toLowerCas
 const keep=r=>(kind==="all"||(kind==="star"?r.star:r.srcs.includes(kind)));
 function row(r){
   const where=r.srcs.map(s=>`<span class="srctag ${s}">${s}</span>`).join("")
-    +(r.npc?`<b>${esc(r.npc)}</b>${r.zone?" · "+esc(ZN[r.zone]||"zone "+r.zone):""}`:`<span style="color:var(--ink-faint)">name not recorded yet</span>`);
+    +(r.npc?`<b>${esc(r.npc)}</b>${r.zone?" · "+esc(ZN[r.zone]||"zone "+r.zone):""}${r.aca?` · <span class="favor">${r.aca} Merchant's Favor</span>`:""}`:`<span style="color:var(--ink-faint)">name not recorded yet</span>`);
   return `<tr><td class="sk">${r.skill}</td>`
     +`<td class="mk"><a class="${r.q===2?"q2":""}" href="${W}${r.itemId?"item="+r.itemId:"spell=0"}" target="_blank" rel="noopener">${esc(r.name)}</a>${r.star?'<span class="star">PICK</span>':""}</td>`
     +`<td class="wh hs">${esc(r.slot)}</td><td class="wh">${where}</td></tr>`;
