@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>*,*::before,*::after{box-sizing:border-box}body{margin:0}img{max-width:100%}[hidden]{display:none!important}.xlink{font-family:var(--mono);font-size:13px;color:var(--gold-soft)}.xlink a{color:var(--gold)}</style>
+<title>Forever Camping</title>
+<meta name="description" content="Forever's camping system: every profession's three camp objects, the buff each one gives, the skill it needs and whether you can reach it before level 35.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus+SC&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --ground:#0b0f17; --panel:#111827; --tip:#070b16; --tip-edge:#3a4458; --tip-edge-hi:#5d6a84;
+  --ink:#e8e4d8; --ink-dim:#a9a596; --ink-faint:#6f6c63;
+  --gold:#ffd100; --gold-soft:#c9a64a;
+  --q2:#1eff00; --q3:#0070dd; --q3-text:#3d9bff; --q4:#a335ee;
+  --equip:#1eff00; --flavor:#ffd100;
+  --display:"Marcellus SC","Trajan Pro",Georgia,serif;
+  --body:"Alegreya Sans","Segoe UI",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+  color-scheme:dark;
+}
+html,body{background:var(--ground);color:var(--ink)}
+body{font-family:var(--body);font-size:16px;line-height:1.5;padding-inline:16px;padding-block:0 64px}
+.wrap{max-width:1180px;margin:0 auto}
+a{color:inherit}
+header{padding-block:44px 28px;border-bottom:1px solid var(--tip-edge);display:grid;gap:18px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-soft)}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(34px,6vw,58px);line-height:1.02;margin:0;color:var(--gold);text-wrap:balance;letter-spacing:.01em}
+.lede{max-width:68ch;color:var(--ink-dim);font-size:17px;margin:0}
+.lede b{color:var(--ink);font-weight:500}
+.facts{display:flex;flex-wrap:wrap;gap:8px 28px;font-family:var(--mono);font-size:13px;color:var(--ink-dim)}
+.facts span b{color:var(--ink);font-weight:500}
+.facts .q3{color:var(--q3-text)} .facts .q2{color:var(--q2)} .facts .q4{color:var(--q4)}
+
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--ground) 92%,transparent);backdrop-filter:blur(6px);padding-block:14px;border-bottom:1px solid #1c2433;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font:500 14px var(--body);color:var(--ink-dim);background:transparent;border:1px solid var(--tip-edge);border-radius:3px;padding:5px 11px;cursor:pointer}
+.chip:hover{color:var(--ink);border-color:var(--tip-edge-hi)}
+.chip[aria-pressed="true"]{color:#111;background:var(--gold);border-color:var(--gold)}
+.chip:focus-visible,#q:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+#q{margin-left:auto;font:15px var(--body);color:var(--ink);background:var(--tip);border:1px solid var(--tip-edge);border-radius:3px;padding:6px 10px;width:220px;max-width:100%}
+.sugbox{position:absolute;z-index:20;margin:0;padding:4px;list-style:none;background:var(--tip);border:1px solid var(--tip-edge);border-radius:3px;box-shadow:0 10px 24px rgba(0,0,0,.5);max-height:320px;overflow:auto}
+.sugbox li{display:flex;justify-content:space-between;gap:12px;align-items:baseline;padding:6px 8px;border-radius:2px;cursor:pointer;font-size:14.5px;color:var(--ink)}
+.sugbox li[aria-selected="true"],.sugbox li:hover{background:#16203a}
+.sug-n{font-family:var(--mono);font-size:12px;color:var(--ink-faint)}
+#count{font-family:var(--mono);font-size:12px;color:var(--ink-faint)}
+
+section{padding-top:40px}
+section>h2{font-family:var(--display);font-weight:400;font-size:26px;margin:0 0 4px;color:var(--ink);text-wrap:balance}
+section>p.sub{margin:0 0 20px;color:var(--ink-dim);max-width:70ch}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px;align-items:start}
+
+/* the in-game tooltip */
+.tt{background:linear-gradient(180deg,#0a1024 0%,var(--tip) 100%);border:1px solid var(--tip-edge);border-radius:4px;box-shadow:inset 0 0 0 1px #000,0 6px 18px rgba(0,0,0,.45);padding:12px 14px 13px;font-size:14.5px;line-height:1.38;display:grid;gap:1px}
+.tt .nm{font-weight:700;font-size:16.5px;text-decoration:none;line-height:1.25}
+.tt .nm:hover{text-decoration:underline}
+.q2 .nm{color:var(--q2)} .q3 .nm{color:var(--q3-text)} .q4 .nm{color:var(--q4)}
+.tt .il{color:var(--gold)}
+.tt .row{display:flex;justify-content:space-between;gap:12px}
+.tt .st{color:var(--ink)}
+.tt .eq{color:var(--equip)}
+.tt .rq{color:var(--ink-dim)}
+.tt .real{color:var(--gold-soft);font-size:13.5px;margin-top:2px}
+.tt .why{margin-top:9px;padding-top:9px;border-top:1px solid #1d2638;color:var(--ink-dim);font-size:14px}
+.tt .fits{margin-top:6px;font-size:13px;color:var(--ink-faint)}
+.tt .fits span{font-weight:500}
+.chip.side-A[aria-pressed="true"]{background:#2f6fd0;border-color:#2f6fd0;color:#fff}
+.chip.side-H[aria-pressed="true"]{background:#a8312f;border-color:#a8312f;color:#fff}
+.facwarn{font:12px var(--mono);color:var(--ink-faint)}
+.hordenote{background:linear-gradient(180deg,#1d1012 0%,var(--tip) 100%);border:1px solid #5c2b2b;border-left:3px solid #a8312f;border-radius:4px;padding:11px 14px;margin-bottom:22px;color:var(--ink-dim);font-size:14.5px;max-width:74ch}
+.hordenote b{color:var(--ink);font-weight:500}
+.tt .faconly{margin-top:4px;font-size:12.5px;color:#7aa7e0}
+.chip[data-r]:not([data-r="all"])::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--cc);margin-right:6px;vertical-align:1px}
+.chip[data-r][aria-pressed="true"]:not([data-r="all"]){background:var(--cc);border-color:var(--cc);color:#111}
+.chip[data-r][aria-pressed="true"]:not([data-r="all"])::before{background:#111}
+.tt .why b{color:var(--gold-soft);font-weight:500}
+.tt details.where{margin-top:8px;border-top:1px solid #1d2638;padding-top:7px}
+.tt details.where>summary{cursor:pointer;color:var(--gold-soft);font-size:13.5px;list-style:none}
+.tt details.where>summary::-webkit-details-marker{display:none}
+.tt details.where>summary::before{content:"▸ ";display:inline-block;transition:transform .12s}
+.tt details[open].where>summary::before{content:"▾ "}
+.where-line{font-size:13.5px;color:var(--ink-dim);margin-top:5px}
+.where-line b{color:var(--ink);font-weight:500}
+.where-line.dim{color:var(--ink-faint)}
+.where-none{font-size:13.5px;color:var(--ink-faint);margin-top:5px}
+.wmap{position:relative;height:74px;margin-top:7px;border:1px solid var(--tip-edge);border-radius:3px;background:repeating-linear-gradient(45deg,#0c1426 0,#0c1426 8px,#0a1120 8px,#0a1120 16px)}
+.wmap-z{position:absolute;left:6px;top:4px;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint)}
+.wmap i{position:absolute;width:9px;height:9px;margin:-5px 0 0 -5px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 3px rgba(255,209,0,.25)}
+.wway{display:flex;gap:8px;align-items:center;margin-top:5px}
+.wway code{font-family:var(--mono);font-size:12px;color:var(--ink);background:#0c1426;border:1px solid var(--tip-edge);border-radius:2px;padding:2px 6px;flex:1;overflow:auto;white-space:nowrap}
+.copyway{font:500 12px var(--body);color:var(--ink-dim);background:transparent;border:1px solid var(--tip-edge);border-radius:2px;padding:2px 8px;cursor:pointer}
+.copyway:hover{color:var(--ink);border-color:var(--tip-edge-hi)}
+.tt .src{margin-top:6px;display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--ink-dim);border:1px solid #273046;border-radius:2px;padding:1px 6px}
+.tag.src{color:#d7c9a0;border-color:#4a4127}
+.tag.star{color:#111;background:var(--gold);border-color:var(--gold)}
+.gap{font-family:var(--mono);font-size:12px;color:var(--gold-soft)}
+
+.notes{margin-top:48px;border-top:1px solid var(--tip-edge);padding-top:24px;color:var(--ink-dim);font-size:14.5px;display:grid;gap:10px;max-width:78ch}
+<style>
+.bands{display:grid;gap:18px}
+.band{background:linear-gradient(180deg,#0a1024 0%,var(--tip) 100%);border:1px solid var(--tip-edge);border-radius:4px;box-shadow:inset 0 0 0 1px #000,0 6px 18px rgba(0,0,0,.45);padding:13px 16px 9px}
+.band>h3{margin:0 0 1px;font:400 19px var(--head);color:var(--gold)}
+.band .sub2{margin:0 0 8px;font:12px var(--mono);color:var(--gold-soft)}
+table.rec{width:100%;border-collapse:collapse;font-size:14.5px}
+table.rec th{text-align:left;font:500 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);padding:0 10px 5px 0;border-bottom:1px solid #1d2638;white-space:nowrap}
+table.rec td{padding:6px 10px 6px 0;border-bottom:1px solid #141c2c;vertical-align:top}
+table.rec tr:last-child td{border-bottom:0}
+table.rec td.sk{font-family:var(--mono);font-size:13px;color:var(--gold-soft);white-space:nowrap}
+table.rec td.mk a{color:var(--q3);text-decoration:none;font-weight:500}
+table.rec td.mk a:hover{text-decoration:underline}
+table.rec td.mk .q2{color:var(--q2)}
+table.rec td.wh{color:var(--ink-dim)}
+table.rec td.wh b{color:var(--ink);font-weight:500}
+.star{font:500 9.5px var(--mono);letter-spacing:.08em;color:var(--gold);border:1px solid var(--gold-soft);border-radius:2px;padding:0 3px;margin-left:6px;vertical-align:1px}
+.srctag{font:500 10px var(--mono);letter-spacing:.06em;border:1px solid var(--tip-edge);border-radius:2px;padding:1px 4px;margin-right:5px;color:var(--ink-faint)}
+.srctag.Vendor{color:#9fd4a0;border-color:#2c4a2e}
+.srctag.Drop{color:#e0a07a;border-color:#56392a}
+.srctag.Quest{color:#9fc4f0;border-color:#2b4260}
+.pswitch{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 2px}
+.pswitch a,.pswitch span{font:500 13.5px var(--body);text-decoration:none;border:1px solid var(--tip-edge);border-radius:3px;padding:3px 9px;color:var(--ink-dim)}
+.pswitch a:hover{color:var(--ink);border-color:var(--tip-edge-hi)}
+.pswitch .on{background:var(--gold);border-color:var(--gold);color:#111}
+@media (max-width:620px){#q{width:100%;margin-left:0}table.rec th.hs,table.rec td.hs{display:none}}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+table.camp{width:100%;border-collapse:collapse;font-size:14px}
+table.camp th{text-align:left;font:500 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);padding:0 10px 6px 0;border-bottom:1px solid #1d2638}
+table.camp td{padding:9px 10px 9px 0;border-bottom:1px solid #141c2c;vertical-align:top;width:26%}
+table.camp td.pf{width:16%}
+table.camp td.pf a{color:var(--gold);text-decoration:none;font-weight:500}
+table.camp td.pf a:hover{text-decoration:underline}
+table.camp td b{display:block;color:var(--q3);font-weight:500}
+table.camp td .sk{display:block;font:11.5px var(--mono);color:var(--gold-soft);margin-top:1px}
+table.camp td .eff{display:block;color:var(--ink-dim);font-size:13.5px;margin-top:3px}
+table.camp td.oor b{color:var(--ink-faint)}
+table.camp td.oor .eff{color:#5c5a52}
+.pick{background:linear-gradient(180deg,#0f1a24 0%,var(--tip) 100%);border:1px solid #2b4a5c;border-left:3px solid var(--q3);border-radius:4px;padding:13px 16px;margin-bottom:20px}
+.pick h3{margin:0 0 6px;font:400 19px var(--head);color:var(--q3)}
+.pick p{margin:0 0 6px;color:var(--ink-dim);font-size:14.5px;max-width:74ch}
+.pick b{color:var(--ink);font-weight:500}
+@media (max-width:760px){table.camp,table.camp tbody,table.camp tr,table.camp td{display:block;width:auto}table.camp thead{display:none}table.camp tr{border-bottom:1px solid #1d2638;padding-bottom:8px;margin-bottom:8px}table.camp td{border:0;padding:4px 0}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="eyebrow">WoW Forever · Professions · Camping</div>
+  <div class="xlink"><a href="index.html">All brackets</a> · <a href="professions.html">All professions</a> · <a href="crafted.html">Crafted sets →</a> · <a href="guides.html">Class guides →</a></div>
+  <h1>Camping</h1>
+  <div class="pswitch"><a href="profession-blacksmithing.html">Blacksmithing</a><a href="profession-leatherworking.html">Leatherworking</a><a href="profession-tailoring.html">Tailoring</a><a href="profession-enchanting.html">Enchanting</a><a href="profession-engineering.html">Engineering</a><a href="profession-alchemy.html">Alchemy</a><a href="profession-cooking.html">Cooking</a><a href="profession-first-aid.html">First Aid</a><a href="profession-mining.html">Mining</a><a href="profession-herbalism.html">Herbalism</a><a href="profession-skinning.html">Skinning</a><a href="profession-fishing.html">Fishing</a><span class="on">Camping</span></div>
+  <p class="lede">Camping is new in Forever and is not quite a profession: it sits alongside the ones you have. You place a campsite, and every profession contributes <b>three camp objects</b> that give a buff to anyone who visits — yours or another player's.</p>
+  <p class="lede">Around level 5 a quest called The Great Outdoors asks you to /sit at the campfire by the quest giver. It sends you to train Cooking and craft a Basic Campfire from Simple Wood and Flint and Tinder, both sold by the Cooking trainer. A Basic Campfire holds three items, but you may only place one of them yourself - the other two come from other players visiting your camp.</p>
+  <div class="facts">
+    <span><b>12</b> professions contribute</span>
+    <span><b>24</b> objects reachable before 35</span>
+    <span>tier 3 needs <b>level 35</b></span>
+  </div>
+</header>
+
+<main>
+  <div class="pick">
+    <h3>The ones worth having while leveling</h3>
+    <p><b>Fish Bowl</b> is the standout: <b>8% increased stats</b> for Fishing skill 20, which is an afternoon's work and costs you nothing since Fishing is secondary. <b>Camp Chair</b> gives <b>2% critical strike</b> for Skinning 20, and <b>Camp Tent</b> gives <b>rested experience worth up to 5% of a level</b> for Leatherworking 20.</p>
+    <p>All three are tier 1, which means <b>skill 20 and a quest from your trainer</b>. There is no reason to be without the ones your professions cover.</p>
+  </div>
+
+  <section>
+    <h2>Every camp object by profession</h2>
+    <p class="sub">Tier 1 comes from a quest and your trainer at skill 20. Tier 2 needs skill 140 and the recipe has to be found — drop or vendor — which is what each profession page lists. Tier 3 is greyed out: it needs skill 300, and that needs Artisan at level 35.</p>
+    <div class="bands"><div class="band">
+      <table class="camp">
+        <thead><tr><th>Profession</th><th>Tier 1 · skill 20</th><th>Tier 2 · skill 140</th><th>Tier 3 · out of range</th></tr></thead>
+        <tbody><tr><td class="pf"><a href="profession-alchemy.html">Alchemy</a></td><td class=""><b>Mana Well</b><span class="sk">skill 20</span><span class="eff">Mana regeneration</span></td><td class=""><b>Fermenter</b><span class="sk">skill 140</span><span class="eff">Creates certain reagents, plus the mana regeneration</span></td><td class="oor"><b>Alchemy Laboratory</b><span class="sk">skill 300</span><span class="eff">Enables recipes that need an Alchemy Lab</span></td></tr><tr><td class="pf"><a href="profession-blacksmithing.html">Blacksmithing</a></td><td class=""><b>Sharpening Wheel</b><span class="sk">skill 20</span><span class="eff">Increased Strength</span></td><td class=""><b>Anvil</b><span class="sk">skill 140</span><span class="eff">A usable anvil in camp, plus the Strength</span></td><td class="oor"><b>Master Forge</b><span class="sk">skill 300</span><span class="eff">Enables recipes that need a Forge</span></td></tr><tr><td class="pf"><a href="profession-enchanting.html">Enchanting</a></td><td class=""><b>Enchanted Lute</b><span class="sk">skill 20</span><span class="eff">Increased Armor, all stats and resistances</span></td><td class=""><b>Arcane Salvager</b><span class="sk">skill 140</span><span class="eff">More efficient disenchanting, plus the Lute's buffs</span></td><td class="oor"><b>Arcane Forge</b><span class="sk">skill 300</span><span class="eff">Enables recipes that need an Arcane Forge</span></td></tr><tr><td class="pf"><a href="profession-engineering.html">Engineering</a></td><td class=""><b>Reagent Bot</b><span class="sk">skill 20</span><span class="eff">Sells reagents</span></td><td class=""><b>Repair Bot</b><span class="sk">skill 140</span><span class="eff">Sells reagents and repairs your gear</span></td><td class="oor"><b>Anarchist's Workbench</b><span class="sk">skill 300</span><span class="eff">Enables recipes that need it</span></td></tr><tr><td class="pf"><a href="profession-herbalism.html">Herbalism</a></td><td class=""><b>Incense Candle</b><span class="sk">skill 20</span><span class="eff">Increased Intellect</span></td><td class=""><b>Greenhouse</b><span class="sk">skill 140</span><span class="eff">Grows herbs over time from planted seeds, plus the Intellect</span></td><td class="oor"><b>Seed Hybridizer</b><span class="sk">skill 300</span><span class="eff">Multiplies or combines seeds into rarer tiers</span></td></tr><tr><td class="pf"><a href="profession-leatherworking.html">Leatherworking</a></td><td class=""><b>Camp Tent</b><span class="sk">skill 20</span><span class="eff">Rested experience, up to 5% of a level</span></td><td class=""><b>Tanning Rack</b><span class="sk">skill 140</span><span class="eff">Creates certain reagents, and keeps the tent's rested experience</span></td><td class="oor"><b>Sewing Machine</b><span class="sk">skill 300</span><span class="eff">Enables recipes that need it</span></td></tr><tr><td class="pf"><a href="profession-mining.html">Mining</a></td><td class=""><b>Lodestone</b><span class="sk">skill 20</span><span class="eff">Increased melee Attack Power</span></td><td class=""><b>Rock Garden</b><span class="sk">skill 140</span><span class="eff">Spawns a common mining node over time, plus the Attack Power</span></td><td class="oor"><b>Molten Foundry</b><span class="sk">skill 300</span><span class="eff">Enables recipes that need it</span></td></tr><tr><td class="pf"><a href="profession-skinning.html">Skinning</a></td><td class=""><b>Camp Chair</b><span class="sk">skill 20</span><span class="eff">2% Critical Strike</span></td><td class=""><b>Field Guide</b><span class="sk">skill 140</span><span class="eff">Grants Track Beasts, plus the 2% crit</span></td><td class="oor"><b>Trapper's Workbench</b><span class="sk">skill 300</span><span class="eff">Contains one trap, plus the crit</span></td></tr><tr><td class="pf"><a href="profession-tailoring.html">Tailoring</a></td><td class=""><b>Faction Banner</b><span class="sk">skill 20</span><span class="eff">Increased Spirit</span></td><td class=""><b>Spinning Wheel</b><span class="sk">skill 140</span><span class="eff">Creates certain reagents, plus the Spirit</span></td><td class="oor"><b>Loom</b><span class="sk">skill 300</span><span class="eff">Enables recipes that need it</span></td></tr><tr><td class="pf"><a href="profession-cooking.html">Cooking</a></td><td class=""><b>Basic Campfire</b><span class="sk">skill 20</span><span class="eff">Lets you cook, and holds up to 3 camp features</span></td><td class=""><b>Journeyman Campfire</b><span class="sk">skill 90</span><span class="eff">Cooking, and up to 5 camp features. Cookie's Feast at 140 is stamina-boosting food</span></td><td class="oor"><b>Expert Campfire</b><span class="sk">skill 200</span><span class="eff">Cooking, and up to 10 camp features</span></td></tr><tr><td class="pf"><a href="profession-first-aid.html">First Aid</a></td><td class=""><b>First Aid Kit</b><span class="sk">skill 20</span><span class="eff">Increased Stamina</span></td><td class=""><b>Toxin Study</b><span class="sk">skill 140</span><span class="eff">Healing potions and antivenom</span></td><td class="oor"><b>Plague Doctor's Laboratory</b><span class="sk">skill 300</span><span class="eff">Healing potions and poultices</span></td></tr><tr><td class="pf"><a href="profession-fishing.html">Fishing</a></td><td class=""><b>Fish Bowl</b><span class="sk">skill 20</span><span class="eff">8% increased stats</span></td><td class=""><b>Fishing Rack</b><span class="sk">skill 140</span><span class="eff">Catch uncommon fish for an hour, and fishing-skill lures, plus the 8% stats</span></td><td class="oor"><b>Fishing Hut</b><span class="sk">skill 300</span><span class="eff">Catch rare fish for an hour, plus the lures and stats</span></td></tr></tbody>
+      </table>
+    </div></div>
+  </section>
+</main>
+
+<div class="notes">
+  <h3>How the tiers work</h3>
+  <p><b>Tier 1</b> — skill 20, quest and trainer. Trivially reachable. Every profession hands you its tier 1 camp item at skill 20.</p>
+  <p><b>Tier 2</b> — skill 140, drop or vendor. Reachable by level 20, when Expert lifts your cap to 225. The recipe has to be found - which is what the profession pages on this site list.</p>
+  <p><b>Tier 3</b> — skill 300, not recorded yet. Needs Artisan, which requires level 35, so it is out of reach for anything this site covers.</p>
+  <p>Cooking is the one profession that breaks the pattern: its campfires sit at skill 20, 90 and 200 rather than 20, 140 and 300, and the campfire itself is what sets how many objects your camp can hold — three at Basic, five at Journeyman, ten at Expert.</p>
+  <p>Tier 2 recipes are the interesting ones, because you have to go and find them. Each is listed on its profession's page with the source Wowhead records for it.</p>
+</div>
+<footer class="foot">Perks from Wowhead's Camping overview; skills and recipe sources from the profession data, pulled 23 Oct 2026.</footer>
+</div>
+</body>
+</html>
