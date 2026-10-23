@@ -71,6 +71,9 @@ section>p.sub{margin:0 0 20px;color:var(--ink-dim);max-width:70ch}
 .hordenote{background:linear-gradient(180deg,#1d1012 0%,var(--tip) 100%);border:1px solid #5c2b2b;border-left:3px solid #a8312f;border-radius:4px;padding:11px 14px;margin-bottom:22px;color:var(--ink-dim);font-size:14.5px;max-width:74ch}
 .hordenote b{color:var(--ink);font-weight:500}
 .tt .faconly{margin-top:4px;font-size:12.5px;color:#7aa7e0}
+.tt .skyonly{margin-top:4px;font-size:12.5px;color:#d8a8f0}
+.skynote{background:linear-gradient(180deg,#160f22 0%,var(--tip) 100%);border:1px solid #4a2f63;border-left:3px solid #b56cf0;border-radius:4px;padding:11px 14px;margin-bottom:22px;color:var(--ink-dim);font-size:14.5px;max-width:74ch}
+.skynote b{color:var(--ink);font-weight:500}
 .chip[data-r]:not([data-r="all"])::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--cc);margin-right:6px;vertical-align:1px}
 .chip[data-r][aria-pressed="true"]:not([data-r="all"]){background:var(--cc);border-color:var(--cc);color:#111}
 .chip[data-r][aria-pressed="true"]:not([data-r="all"])::before{background:#111}
@@ -95,9 +98,6 @@ section>p.sub{margin:0 0 20px;color:var(--ink-dim);max-width:70ch}
 .tag{font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--ink-dim);border:1px solid #273046;border-radius:2px;padding:1px 6px}
 .tag.src{color:#d7c9a0;border-color:#4a4127}
 .tag.star{color:#111;background:var(--gold);border-color:var(--gold)}
-.gap{font-family:var(--mono);font-size:12px;color:var(--gold-soft)}
-
-.notes{margin-top:48px;border-top:1px solid var(--tip-edge);padding-top:24px;color:var(--ink-dim);font-size:14.5px;display:grid;gap:10px;max-width:78ch}
 <style>
 .gcards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
 a.gcard{display:grid;gap:4px;text-decoration:none;background:linear-gradient(180deg,#0a1024 0%,var(--tip) 100%);border:1px solid var(--tip-edge);border-left:3px solid var(--cc);border-radius:4px;box-shadow:inset 0 0 0 1px #000,0 6px 18px rgba(0,0,0,.45);padding:14px 16px}

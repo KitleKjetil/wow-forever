@@ -70,6 +70,9 @@ section>p.sub{margin:0 0 20px;color:var(--ink-dim);max-width:70ch}
 .hordenote{background:linear-gradient(180deg,#1d1012 0%,var(--tip) 100%);border:1px solid #5c2b2b;border-left:3px solid #a8312f;border-radius:4px;padding:11px 14px;margin-bottom:22px;color:var(--ink-dim);font-size:14.5px;max-width:74ch}
 .hordenote b{color:var(--ink);font-weight:500}
 .tt .faconly{margin-top:4px;font-size:12.5px;color:#7aa7e0}
+.tt .skyonly{margin-top:4px;font-size:12.5px;color:#d8a8f0}
+.skynote{background:linear-gradient(180deg,#160f22 0%,var(--tip) 100%);border:1px solid #4a2f63;border-left:3px solid #b56cf0;border-radius:4px;padding:11px 14px;margin-bottom:22px;color:var(--ink-dim);font-size:14.5px;max-width:74ch}
+.skynote b{color:var(--ink);font-weight:500}
 .chip[data-r]:not([data-r="all"])::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--cc);margin-right:6px;vertical-align:1px}
 .chip[data-r][aria-pressed="true"]:not([data-r="all"]){background:var(--cc);border-color:var(--cc);color:#111}
 .chip[data-r][aria-pressed="true"]:not([data-r="all"])::before{background:#111}
@@ -309,6 +312,7 @@ function card(x){
   for(const e of x.eq) h+=`<div class="eq">${esc(e)}</div>`;
   h+=`<div class="why">${x.why}</div>`;
   if(x.fac) h+=`<div class="faconly">${x.fac==="A"?"Alliance":"Horde"} only — the source is faction-locked</div>`;
+  if(x.race) h+=`<div class="skyonly">${x.race} only — the quest is race-locked</div>`;
   h+=`<div class="fits">Good for: ${x.classes.length===9?"every class":x.classes.map(c=>`<span style="color:${CC[c]}">${c}</span>`).join(" · ")}</div>`;
   h+=`<details class="where"><summary>Where to get it</summary>${WHERE[x.id]||""}</details>`;
   h+=`<div class="src"><span class="tag src">${esc(x.src)}</span><span class="gap">${gap>0?"+"+gap:gap} ilvl</span></div>`;
@@ -339,7 +343,8 @@ function render(){
     if(!xs.length)continue;
     h+=`<section><h2>${title}</h2><p class="sub">${sub}</p><div class="grid">${xs.map(card).join("")}</div></section>`;
   }
-  out.innerHTML=(side==="H"?`<div class="hordenote"><b>Reading this as Horde.</b> Items from Alliance-only quests and vendors are hidden. This site was built from the Alliance item list, so <b>Horde-only items are not covered yet</b> — read this as "what you can also get", not a complete Horde list. Drops, world drops and crafted gear reach both factions and are always shown.</div>`:"")+(h||`<section><p class="empty">Nothing matches that filter. Try another role or clear the search.</p></section>`);
+  const skyN=I.filter(x=>x.race).length;
+  out.innerHTML=(skyN?`<div class="skynote"><b>${skyN} of the ${I.length} items here come from High Order Skyborne quests.</b> Skyborne is sold as a Forever pack, so on any other race those quests cannot be picked up at all. They are marked on the card and left in the list rather than hidden, because they are real options if you have the pack.</div>`:"")+(side==="H"?`<div class="hordenote"><b>Reading this as Horde.</b> Items from Alliance-only quests and vendors are hidden. This site was built from the Alliance item list, so <b>Horde-only items are not covered yet</b> — read this as "what you can also get", not a complete Horde list. Drops, world drops and crafted gear reach both factions and are always shown.</div>`:"")+(h||`<section><p class="empty">Nothing matches that filter. Try another role or clear the search.</p></section>`);
   count.textContent=`${n} of ${I.length} items`;
 }
 // Search suggestions. initSuggest(input, terms, onPick): terms is [{t:"Spell Power", n:16, kind:"stat"}].
