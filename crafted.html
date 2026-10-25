@@ -71,6 +71,9 @@ section>p.sub{margin:0 0 20px;color:var(--ink-dim);max-width:70ch}
 .hordenote{background:linear-gradient(180deg,#1d1012 0%,var(--tip) 100%);border:1px solid #5c2b2b;border-left:3px solid #a8312f;border-radius:4px;padding:11px 14px;margin-bottom:22px;color:var(--ink-dim);font-size:14.5px;max-width:74ch}
 .hordenote b{color:var(--ink);font-weight:500}
 .tt .faconly{margin-top:4px;font-size:12.5px;color:#7aa7e0}
+.tt .skyonly{margin-top:4px;font-size:12.5px;color:#d8a8f0}
+.skynote{background:linear-gradient(180deg,#160f22 0%,var(--tip) 100%);border:1px solid #4a2f63;border-left:3px solid #b56cf0;border-radius:4px;padding:11px 14px;margin-bottom:22px;color:var(--ink-dim);font-size:14.5px;max-width:74ch}
+.skynote b{color:var(--ink);font-weight:500}
 .chip[data-r]:not([data-r="all"])::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--cc);margin-right:6px;vertical-align:1px}
 .chip[data-r][aria-pressed="true"]:not([data-r="all"]){background:var(--cc);border-color:var(--cc);color:#111}
 .chip[data-r][aria-pressed="true"]:not([data-r="all"])::before{background:#111}
@@ -95,9 +98,6 @@ section>p.sub{margin:0 0 20px;color:var(--ink-dim);max-width:70ch}
 .tag{font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--ink-dim);border:1px solid #273046;border-radius:2px;padding:1px 6px}
 .tag.src{color:#d7c9a0;border-color:#4a4127}
 .tag.star{color:#111;background:var(--gold);border-color:var(--gold)}
-.gap{font-family:var(--mono);font-size:12px;color:var(--gold-soft)}
-
-.notes{margin-top:48px;border-top:1px solid var(--tip-edge);padding-top:24px;color:var(--ink-dim);font-size:14.5px;display:grid;gap:10px;max-width:78ch}
 <style>
 .setgrid{display:grid;gap:22px}
 .set{background:linear-gradient(180deg,#0a1024 0%,var(--tip) 100%);border:1px solid var(--tip-edge);border-radius:4px;box-shadow:inset 0 0 0 1px #000,0 6px 18px rgba(0,0,0,.45);padding:14px 16px 8px}
@@ -134,7 +134,7 @@ table.pieces .bop,.notes .bop{font:500 10px var(--mono);letter-spacing:.06em;col
 <div class="wrap">
 <header>
   <div class="eyebrow">WoW Forever · Alliance · Crafted gear</div>
-  <div class="xlink"><a href="index.html">All brackets</a> · <a href="level-21-30.html">Level 21–30 →</a> · <a href="dungeons.html">Dungeon loot →</a> · <a href="guides.html">Class guides →</a> · <a href="professions.html">Professions →</a></div>
+  <div class="xlink"><a href="index.html">All brackets</a> · <a href="level-21-30.html">Level 21–30 →</a> · <a href="level-31-40.html">Level 31–40 →</a> · <a href="level-41-50.html">Level 41–50 →</a> · <a href="dungeons.html">Dungeon loot →</a> · <a href="guides.html">Class guides →</a> · <a href="professions.html">Professions →</a></div>
   <h1>Forever Crafted Sets</h1>
   <p class="lede">Every crafted piece in WoW Forever that a character under 31 can wear — <b>268 items</b> across 30 sets. Forever replaced the old crafted greens with proper sets: nine pieces each, one flavor per playstyle, and no dungeon or drop luck involved. Each table lists the required level, the item level and the <b>profession skill</b> the recipe needs.</p>
   <div class="facts">
@@ -162,7 +162,7 @@ table.pieces .bop,.notes .bop{font:500 10px var(--mono);letter-spacing:.06em;col
   <p>A <span class="bop">BoP</span> tag means the piece binds when you pick it up, so <b>you need the profession yourself</b> — a crafter cannot make one for you. That covers 191 of the 268 pieces here, most of the set armour among them. The rest are Bind on Equip, so they can be bought or traded.</p>
   <p>Class markers come from the same rules as the level pages: armor and weapon proficiency before 40, plus whether the piece carries a stat that class wants. Shamans are included because Forever lets the Alliance play them.</p>
 </div>
-<footer class="foot">Item data from <a href="https://www.wowhead.com/forever">Wowhead</a>, pulled 23 Oct 2026. Piece names link to their Wowhead pages.</footer>
+<footer class="foot">Item data from <a href="https://www.wowhead.com/forever">Wowhead</a>, pulled 25 Oct 2026. Piece names link to their Wowhead pages.</footer>
 </div>
 
 <script>
