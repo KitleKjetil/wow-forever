@@ -234,7 +234,7 @@ function questCards(d,t){
     const items=qq.items.filter(x=>(hit||hay(x).includes(t))&&forCls(x));
     if(!items.length) continue;
     n+=items.length;
-    h+=`<article class="boss"><div class="boss-h"><span><a href="${W}quest=${qq.id}" target="_blank" rel="noopener">${esc(qq.n)}</a></span><span class="boss-k">${qq.side===1?"Alliance":"Both factions"}</span></div><p class="qnote">Quest reward${qq.choice&&qq.items.length>1?" · choose one":""}</p>${giver(QLOC[qq.id])}${zmark(QLOC[qq.id])}`;
+    h+=`<article class="boss"><div class="boss-h"><span><a href="${W}quest=${qq.id}" target="_blank" rel="noopener">${esc(qq.n)}</a></span><span class="boss-k">${qq.side===1?"Alliance":qq.side===2?"Horde":"Both factions"}</span></div><p class="qnote">Quest reward${qq.choice&&qq.items.length>1?" · choose one":""}</p>${giver(QLOC[qq.id])}${zmark(QLOC[qq.id])}`;
     for(const x of items) h+=row(x,"q"+qq.id,`ilvl ${x.il}`);
     h+=`</article>`;
   }
