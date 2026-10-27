@@ -66,6 +66,7 @@ section>p.sub{margin:0 0 20px;color:var(--ink-dim);max-width:70ch}
 .tt .fits span{font-weight:500}
 .chip.side-A[aria-pressed="true"]{background:#2f6fd0;border-color:#2f6fd0;color:#fff}
 .chip.side-H[aria-pressed="true"]{background:#a8312f;border-color:#a8312f;color:#fff}
+.chip.side-B[aria-pressed="true"]{background:#4a4a52;border-color:#6a6a74;color:#fff}
 .facwarn{font:12px var(--mono);color:var(--ink-faint)}
 .hordenote{background:linear-gradient(180deg,#1d1012 0%,var(--tip) 100%);border:1px solid #5c2b2b;border-left:3px solid #a8312f;border-radius:4px;padding:11px 14px;margin-bottom:22px;color:var(--ink-dim);font-size:14.5px;max-width:74ch}
 .hordenote b{color:var(--ink);font-weight:500}
@@ -332,11 +333,11 @@ function card(x){
 
 let role="all";try{role=localStorage.getItem("f30role")||"all"}catch(e){}
 if(!ROLES.some(r=>r[0]===role))role="all";
-let side="A";try{side=localStorage.getItem("cg-side")||"A"}catch(e){}
-if(side!=="A"&&side!=="H")side="A";
+let side="H";try{side=localStorage.getItem("cg-side")||"H"}catch(e){}
+if(side!=="A"&&side!=="H"&&side!=="B")side="H";
 const fchips=document.getElementById("fchips"),facnote=document.getElementById("facnote");
-const SIDES=[["A","Alliance"],["H","Horde"]];
-function drawFaction(){fchips.innerHTML=SIDES.map(([k,l])=>`<button class="chip side-${k}" data-s="${k}" aria-pressed="${k===side}">${l}</button>`).join("");const n=I.filter(x=>x.fac&&x.fac!==side).length;facnote.innerHTML=n?`<span class="facwarn">${n} item${n>1?"s":""} hidden — ${side==="H"?"Alliance":"Horde"}-only sources</span>`:"";}
+const SIDES=[["A","Alliance"],["H","Horde"],["B","Both"]];
+function drawFaction(){fchips.innerHTML=SIDES.map(([k,l])=>`<button class="chip side-${k}" data-s="${k}" aria-pressed="${k===side}">${l}</button>`).join("");const lk=I.filter(x=>x.fac).length,n=side==="B"?0:I.filter(x=>x.fac&&x.fac!==side).length;facnote.innerHTML=side==="B"?`<span class="facwarn">both factions — ${lk} faction-locked item${lk>1?"s":""} shown, pick a side to filter them</span>`:(n?`<span class="facwarn">${n} item${n>1?"s":""} hidden — ${side==="H"?"Alliance":"Horde"}-only sources</span>`:"");}
 const chips=document.getElementById("chips"),out=document.getElementById("out"),q=document.getElementById("q"),count=document.getElementById("count");
 chips.innerHTML=ROLES.map(([k,l])=>`<button class="chip" id="r-${k}" data-r="${k}" style="--cc:${CC[k]||"var(--gold)"}" aria-pressed="${k===role}">${l}</button>`).join("");
 chips.addEventListener("click",e=>{const b=e.target.closest(".chip");if(!b)return;role=b.dataset.r;try{localStorage.setItem("f30role",role)}catch(e){}chips.querySelectorAll(".chip").forEach(c=>c.setAttribute("aria-pressed",c.dataset.r===role));render()});
@@ -347,7 +348,7 @@ const DN={RFC:"Ragefire Chasm",DM:"Deadmines",WC:"Wailing Caverns",SFK:"Shadowfa
 const dn=s=>Object.keys(DN).filter(k=>new RegExp("\\b"+k+"\\b").test(s)).map(k=>DN[k]).join(" ");
 function render(){
   const t=q.value.trim().toLowerCase();
-  const hit=x=>(!x.fac||x.fac===side)&&(role==="all"||x.classes.includes(role))&&(!t||[x.n,x.src,dn(x.src),...x.classes,x.type,x.slot,x.cls||"",x.how||"",...x.st,...x.eq,x.why].join(" ").toLowerCase().includes(t));
+  const hit=x=>(!x.fac||side==="B"||x.fac===side)&&(role==="all"||x.classes.includes(role))&&(!t||[x.n,x.src,dn(x.src),...x.classes,x.type,x.slot,x.cls||"",x.how||"",...x.st,...x.eq,x.why].join(" ").toLowerCase().includes(t));
   let n=0,h="";
   for(const [k,title,sub] of SECS){
     const xs=I.filter(x=>x.sec===k&&hit(x));n+=xs.length;
